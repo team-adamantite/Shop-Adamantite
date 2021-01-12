@@ -31,7 +31,7 @@ results
 
 npm-debug.log
 node_modules
-public/app.js
+public/budle.js
 
 # Floobits
 .floo
