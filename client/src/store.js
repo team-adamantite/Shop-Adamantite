@@ -2,7 +2,7 @@ import { createStore, combineReducers, applyMiddleware } from 'redux';
 import thunk from 'redux-thunk';
 import { composeWithDevTools } from 'redux-devtools-extension';
 
-import { productReviewReducer } from './Reviews/reducers/productReviewReducers.js';
+import { productReviewReducer } from './ratings&reviews/reducers/productReviewReducers.js';
 
 import {
   product,
@@ -17,7 +17,7 @@ import {
 } from './dummyData.js';
 
 const reducer = combineReducers({
-  productReview: productReviewReducers
+  productReview: productReviewReducer
 });
 
 const initialState = {
