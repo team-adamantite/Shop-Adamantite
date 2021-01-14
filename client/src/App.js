@@ -2,6 +2,9 @@ import React, { Component } from 'react';
 import Reviews from './ratings&reviews/components/Reviews';
 
 export default class App extends Component {
+  constructor(props) {
+    super(props);
+  }
   render() {
     return (
       <div id='main'>

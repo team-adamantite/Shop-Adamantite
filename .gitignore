@@ -3,6 +3,7 @@
 .DS_Store
 .AppleDouble
 .LSOverride
+
 Icon
 
 
@@ -31,7 +32,7 @@ results
 
 npm-debug.log
 node_modules
-public/bundle.js
+client/public/bundle.js
 
 # Floobits
 .floo
