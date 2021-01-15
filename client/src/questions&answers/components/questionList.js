@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import Question from './question';
-import token from '../config';
+import token from '../../../config/config.js';
 
 const QuestionList = (props) => {
   //console.log(props.productId);
@@ -12,8 +12,8 @@ const QuestionList = (props) => {
         `https://app-hrsei-api.herokuapp.com/api/fec2/hratx/qa/questions?product_id=${id}`,
         {
           headers: {
-            Authorization: token,
-          },
+            Authorization: token
+          }
         }
       )
       .then((res) => {
