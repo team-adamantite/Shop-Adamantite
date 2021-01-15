@@ -17,13 +17,13 @@ const QuestionList = (props) => {
         }
       )
       .then((res) => {
-        //console.log(res.data.results);
+        console.log(res.data.results);
         setQuestions(res.data.results);
       });
   }
   useEffect(() => {
     loadQuestionList(props.productId);
-  });
+  }, []);
 
   return (
     <div>
