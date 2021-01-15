@@ -5,7 +5,7 @@ import Box from '@material-ui/core/Box';
 
 const StarRating = ({ value }) => {
   return (
-    <Box component='fieldset' mb={3} borderColor='transparent'>
+    <Box component='fieldset' mb={1} borderColor='transparent'>
       <Rating
         name='customized-empty'
         defaultValue={value}
