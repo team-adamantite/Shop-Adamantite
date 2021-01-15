@@ -33,6 +33,7 @@ results
 npm-debug.log
 node_modules
 client/public/bundle.js
+client/src/questions&answers/config.js
 
 # Floobits
 .floo
