@@ -11,16 +11,10 @@ export default class App extends Component {
     return (
       <div id='main'>
         {/* Placeholder for ProductOverview Component: */}
-<<<<<<< HEAD
         <div className="container m-2">
           <div className="card border-1 border-dark text-center py-3">
             <h5 className="card-title">Product Overview</h5>
             <OverviewContainer />
-=======
-        <div className='container m-2'>
-          <div className='card border-1 border-dark text-center py-3'>
-            <h5 className='card-title'>Product Overview</h5>
->>>>>>> 28455ed630e10e1679d1f408a2e987b71b4859b2
           </div>
         </div>
         <ProductRatings />

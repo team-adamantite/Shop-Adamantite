@@ -34,14 +34,9 @@ var productStylesReducer = (state = { productStyles: [] }, action) => {
 };
 
 const rootReducer = combineReducers({
-<<<<<<< HEAD
-  //productReview: productReviewReducer,
   currentProduct: currentProductReducer,
-  productStyles: productStylesReducer
-=======
-  reviews: productReviewReducer,
-  currentProduct: currentProductReducer
->>>>>>> 28455ed630e10e1679d1f408a2e987b71b4859b2
+  productStyles: productStylesReducer,
+  reviews: productReviewReducer
 });
 
 const store = createStore(
