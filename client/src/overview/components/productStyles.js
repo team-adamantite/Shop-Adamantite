@@ -1,20 +1,20 @@
 import React from 'react';
 
-var productStyle = ({styles}) => {
+var productStyle = ({ styles }) => {
   return (
-    <div id = 'productInfo'>
-      <label>Style > {styles.results[0].style_id}
-        <div id = 'productCategory'>
+    <div id='productInfo'>
+      <label>
+        Style {styles.results[0].style_id}
+        <div id='productCategory'>
           {styles.results.map((style) => {
-            return (
-              <span key = {style.style_id}>{style.style_id} | </span>
-            )
+            return <span key={style.style_id}>{style.style_id} | </span>;
           })}
         </div>
       </label>
-      <br/>
-      <label>Size:
-        <div id = 'Size'>
+      <br />
+      <label>
+        Size:
+        <div id='Size'>
           <select>
             <option>XS</option>
             <option>S</option>
@@ -25,11 +25,11 @@ var productStyle = ({styles}) => {
           </select>
         </div>
       </label>
-      <br/>
-      <br/>
-      <button id = 'addToBag'>Add To Bag</button>
+      <br />
+      <br />
+      <button id='addToBag'>Add To Bag</button>
     </div>
-  )
-}
+  );
+};
 
 export default productStyle;
