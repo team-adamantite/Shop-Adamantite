@@ -8,7 +8,7 @@ import { product } from './dummyData.js';
 //action
 var changeCurrentProduct = (product) => ({
   type: 'CHANGE_PRODUCT',
-  payload: product
+  payload: product,
 });
 //reducer
 var currentProductReducer = (state = { currentProduct: {} }, action) => {
@@ -32,7 +32,7 @@ var productStylesReducer = (state = { productStyles: [] }, action) => {
 const rootReducer = combineReducers({
   currentProduct: currentProductReducer,
   // productStyles: productStylesReducer,
-  reviews: productReviewReducer
+  reviews: productReviewReducer,
 });
 
 const store = createStore(
