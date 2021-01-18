@@ -11,6 +11,8 @@
   "license": "MIT",
   "homepage": "https://github.com/team-adamantite/Front-End-Capstone",
   "dependencies": {
+    "@material-ui/core": "^4.11.2",
+    "@material-ui/icons": "^4.11.2",
     "axios": "^0.21.1",
     "babel-loader": "^8.1.0",
     "config": "^3.3.3",
