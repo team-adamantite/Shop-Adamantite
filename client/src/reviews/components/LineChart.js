@@ -42,6 +42,8 @@ function LineChart({ data, split }) {
         )
         .attr('class', 'bg_full')
         .style('fill', '#eee') //#dee2e6 #ced4da
+        .transition()
+        .duration(1200)
         .attr('x', 0)
         .attr('y', (entry, index) => yScale(index));
     } else {
@@ -63,6 +65,8 @@ function LineChart({ data, split }) {
         )
         .attr('class', 'bg')
         .style('fill', '#eee') //#dee2e6 #ced4da
+        .transition()
+        .duration(1200)
         .attr('x', 0)
         .attr('y', (entry, index) => yScale(index));
 
@@ -84,6 +88,8 @@ function LineChart({ data, split }) {
         )
         .attr('class', 'bg2')
         .style('fill', '#eee') //#dee2e6 #ced4da
+        .transition()
+        .duration(1200)
         .attr('x', 0)
         .attr('y', (entry, index) => yScale(index));
 
@@ -104,7 +110,9 @@ function LineChart({ data, split }) {
             )
         )
         .attr('class', 'bg3')
-        .style('fill', '#eee') //#e9ecef #dee2e6 #ced4da
+        .style('fill', '#eee')
+        .transition()
+        .duration(1200) //#e9ecef #dee2e6 #ced4da
         .attr('x', 0)
         .attr('y', (entry, index) => yScale(index));
     }
@@ -124,7 +132,14 @@ function LineChart({ data, split }) {
         .style('text-anchor', 'start')
         // .style('text-decoration', 'underline')
         .text((entry, index) => entry.labels[0])
-        .attr('class', 'label');
+        .attr('class', 'label')
+        .transition()
+        .duration(1200)
+        .attr('x', 0)
+        .attr(
+          'y',
+          (entry, index) => yScale(index) + yScale.bandwidth() / 2 + 28
+        );
 
       svg
         .selectAll('.label3')
@@ -139,7 +154,14 @@ function LineChart({ data, split }) {
         .style('text-anchor', 'middle')
         // .style('text-decoration', 'underline')
         .text((entry, index) => entry.labels[1])
-        .attr('class', 'label3');
+        .attr('class', 'label3')
+        .transition()
+        .duration(1200)
+        .attr('x', 0)
+        .attr(
+          'y',
+          (entry, index) => yScale(index) + yScale.bandwidth() / 2 + 28
+        );
 
       svg
         .selectAll('.label2')
@@ -162,7 +184,14 @@ function LineChart({ data, split }) {
         .style('text-anchor', 'end')
         // .style('text-decoration', 'underline')
         .text((entry, index) => entry.labels[2])
-        .attr('class', 'label2');
+        .attr('class', 'label2')
+        .transition()
+        .duration(1200)
+        .attr('x', 0)
+        .attr(
+          'y',
+          (entry, index) => yScale(index) + yScale.bandwidth() / 2 + 28
+        );
     } else {
       svg
         .selectAll('.label')
@@ -177,7 +206,14 @@ function LineChart({ data, split }) {
         .style('text-anchor', 'start')
         // .style('text-decoration', 'underline')
         .text((entry, index) => entry.labels[0])
-        .attr('class', 'label');
+        .attr('class', 'label')
+        .transition()
+        .duration(1200)
+        .attr('x', 0)
+        .attr(
+          'y',
+          (entry, index) => yScale(index) + yScale.bandwidth() / 2 + 28
+        );
 
       svg
         .selectAll('.label2')
@@ -200,7 +236,22 @@ function LineChart({ data, split }) {
         .style('text-anchor', 'end')
         // .style('text-decoration', 'underline')
         .text((entry, index) => entry.labels[1])
-        .attr('class', 'label2');
+        .attr('class', 'label2')
+        .transition()
+        .duration(1200)
+        .attr(
+          'x',
+          (entry, index) =>
+            dimensions.width / 3.16 +
+            dimensions.width / 3.16 +
+            dimensions.width / 3.16 -
+            entry.labels[1].length +
+            4
+        )
+        .attr(
+          'y',
+          (entry, index) => yScale(index) + yScale.bandwidth() / 2 + 28
+        );
     }
 
     // draw arrow markers

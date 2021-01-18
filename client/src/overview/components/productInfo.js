@@ -1,26 +1,31 @@
 import React from 'react';
+import {connect} from 'react-redux';
 
-var productInfo = ({ currentProduct }) => {
+var productInfo = ({currentProduct, currentStyle}) => {
   return (
-    <div id='productInfo'>
-      <br />
-      <br />
-      <label>
-        Category:
-        <div id='productCategory'>{currentProduct.category}</div>
+    <div id = 'productInfo'>
+          <span>
+          Rating goes here
+          </span>
+        <a href = 'http://localhost:3000/'>Read all Reviews</a>
+      <br/>
+      <br/>
+      <label>Category:
+        <div id = 'productCategory'>{currentProduct.category}</div>
       </label>
       <br />
-      <label>
-        Name:
-        <div id='productName'>{currentProduct.name}</div>
-      </label>
-      <br />
-      <label>
-        Price:
-        <div id='productName'>{currentProduct.default_price}</div>
+      <label>Price:
+        <div id = 'productName'>{currentStyle.original_price}</div>
       </label>
     </div>
   );
 };
 
-export default productInfo;
+var mapStateToProps = (state) => (
+  {currentProduct: state.currentProduct,
+  currentStyle: state.currentStyle}
+);
+
+var productInfoContainer = connect(mapStateToProps, null)(productInfo);
+
+export default productInfoContainer;
