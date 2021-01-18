@@ -1,0 +1,102 @@
+@import url('https://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic&subset=latin');
+@import url('https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@300;400&display=swap');
+
+#reviews__container {
+  font-family: 'Source Sans Pro', sans-serif;
+  font-weight: 300;
+  padding: 0.2rem;
+  box-sizing: border-box;
+  max-width: 100%;
+}
+
+.reviews__btn {
+  height: 3.6rem;
+}
+
+.reviews__btn:nth-of-type(1) {
+  margin-top: 7px;
+  margin-bottom: 7px;
+  margin-left: 0;
+  margin-right: 7px;
+}
+
+.reviews__col {
+  width: 58%;
+  padding: 2rem;
+  padding-top: 0.4rem;
+  margin: 2rem;
+  margin-top: 0.4rem;
+}
+
+.charts__col {
+  width: 42%;
+  padding: 2rem;
+  padding-top: 1rem;
+  /* padding-right: 1rem; */
+}
+
+.charts__container {
+  width: 100%;
+}
+
+.chart__wrapper {
+  box-sizing: border-box;
+  max-width: inherit;
+  width: inherit;
+}
+
+.reviews__title {
+  font-family: 'Source Sans Pro', sans-serif;
+  padding-left: 2rem;
+  font-weight: 400;
+}
+
+.review__sort {
+  margin-bottom: 2rem;
+}
+
+.review__sort_span {
+  margin-right: 0.2rem;
+  text-decoration: underline;
+}
+
+.review__sort_span:hover {
+  cursor: crosshair;
+  font-size: 1.5rem;
+}
+
+.review__sort_span:hover ~ .chevron {
+  cursor: crosshair;
+  font-size: 1.5rem;
+  animation: 0.65s anim-rotate-360 ease forwards;
+}
+
+.chevron {
+  display: inline-block;
+  cursor: crosshair;
+  font-size: 1.4rem;
+  box-sizing: content;
+}
+
+.chevron:hover {
+  cursor: crosshair;
+  font-size: 1.65rem;
+  animation: 0.65s anim-rotate-360 ease forwards;
+}
+
+@keyframes anim-rotate-360 {
+  from {
+    -moz-transform: rotate(0deg);
+    -ms-transform: rotate(0deg);
+    -o-transform: rotate(0deg);
+    -webkit-transform: rotate(0deg);
+    transform: rotate(0deg);
+  }
+  to {
+    -moz-transform: rotate(360deg);
+    -ms-transform: rotate(360deg);
+    -o-transform: rotate(360deg);
+    -webkit-transform: rotate(360deg);
+    transform: rotate(360deg);
+  }
+}

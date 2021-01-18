@@ -1,5 +1,81 @@
+@import url('https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@300;400&display=swap');
+
+/* Reset */
+:root {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-family: 'Source Sans Pro', sans-serif;
+  vertical-align: baseline;
+  background: transparent;
+  box-sizing: border-box;
+}
+
+html,
+body,
+div {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-family: 'Source Sans Pro', sans-serif;
+  vertical-align: baseline;
+  background: transparent;
+  box-sizing: border-box;
+}
+
+#main {
+  margin: 1.4rem 2rem;
+  box-sizing: border-box;
+}
+
+.__scrollable-parent {
+  height: 560px;
+  overflow-y: scroll;
+  position: relative;
+}
+
 .star-rating {
+  position: relative;
+}
+
+.half-star-rating {
+  position: relative;
+  box-sizing: content;
+}
+
+.overlay {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 105;
+  background: transparent;
+}
+
+.overlay-item {
+  z-index: 110;
+  height: 100%;
+  width: 10%;
+}
+
+.star-rating,
+.half-star-rating {
   color: #ffb400;
+}
+
+.star-rating-avg {
+  color: #ffb400;
+  font-size: 1.6rem;
+  margin-left: 1.2rem;
+  margin-top: 0.6rem;
+}
+
+.far {
+  color: #999;
 }
 
 #pic {
@@ -7,10 +83,8 @@
   text-align: center;
 }
 
-.styleSpan{
-  width: 5px;
-}
 
-.styleImg{
-  width: 60px;
+.img-thumbnail {
+  width: 200px;
+  height: auto;
 }

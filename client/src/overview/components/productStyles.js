@@ -2,6 +2,7 @@ import React from 'react';
 import {connect} from 'react-redux';
 import changeStyle from '../overviewActions/currentStyleActions.js';
 
+
 var productStyles = ({styles, changeStyle, currentStyle}) => {
   console.log(currentStyle)
   var currentSku;
@@ -37,12 +38,13 @@ var productStyles = ({styles, changeStyle, currentStyle}) => {
           </select>
         </span>
       </label>
-      <br/>
-      <br/>
-      <button id = 'addToBag'>Add To Bag</button>
+      <br />
+      <br />
+      <button id='addToBag'>Add To Bag</button>
     </div>
-  )
-}
+  );
+};
+
 
 var mapStateToProps = (state) => (
   {styles: state.productStyles,
