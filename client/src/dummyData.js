@@ -285,10 +285,10 @@ export const styles = {
           quantity: 17,
           size: 'M'
         },
-        333416: {
-          quantity: 10,
-          size: 'L'
-        },
+        // 333416: {
+        //   quantity: 10,
+        //   size: 'L'
+        // },
         333417: {
           quantity: 15,
           size: 'XL'
