@@ -3,7 +3,7 @@ const productReviewReducer = (state = {}, action) => {
     case 'GET_PRODUCT_REVIEWS':
       return {
         ...state,
-        reviews: action.payload
+        list: action.payload
       };
     case 'PRODUCT_REVIEWS_ERROR':
       console.error(action.payload);

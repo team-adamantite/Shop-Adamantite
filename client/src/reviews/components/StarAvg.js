@@ -1,8 +1,8 @@
 import React from 'react';
 
-const StarRating = ({ value }) => {
+const StarAvg = ({ value }) => {
   return (
-    <div className='star-rating'>
+    <div className='star-rating-avg'>
       <span>
         <i
           className={
@@ -62,4 +62,4 @@ const StarRating = ({ value }) => {
   );
 };
 
-export default StarRating;
+export default StarAvg;
