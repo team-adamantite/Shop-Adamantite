@@ -5,7 +5,7 @@ export const data = [
   },
   {
     name: '4 stars',
-    value: 25
+    value: 35
   },
   {
     name: '3 stars',

@@ -48,67 +48,116 @@ function BarChart({ data }) {
     svg
       .selectAll('.bg')
       .data(data, (entry, index) => entry.name)
-      .enter()
-      .append('path')
-      .attr('d', (entry, index) =>
-        rightRoundedRect(
-          44,
-          yScale(index),
-          dimensions.width / 1.16,
-          yScale.bandwidth(),
-          0
-        )
+      .join(
+        (enter) =>
+          enter
+            .append('rect')
+            .attr('x', 46)
+            .attr('y', (entry, index) => yScale(index))
+            .attr('width', dimensions.width / 1.34)
+            .attr('height', yScale.bandwidth())
+        // .append('path')
+        // .attr('d', (entry, index) =>
+        //   rightRoundedRect(
+        //     44,
+        //     yScale(index),
+        //     dimensions.width / 1.16,
+        //     yScale.bandwidth(),
+        //     0
+        //   )
+        // )
       )
       .attr('class', 'bg')
-      .style('fill', '#eee') //#dee2e6 #ced4da
-      .attr('x', 0)
-      .attr('y', (entry, index) => yScale(index));
+      .style('fill', '#bebebe')
+      .transition()
+      .duration(1200)
+      .attr('x', 46)
+      .attr('y', (entry, index) => yScale(index))
+      .attr('width', dimensions.width / 1.34)
+      .attr('height', yScale.bandwidth());
 
     // draw the bars
     svg
       .selectAll('.bar')
       .data(data, (entry, index) => entry.name)
-      .enter()
-      .append('path')
+      .join((enter) =>
+        enter
+          .append('path')
+          .attr('d', (entry, index) =>
+            rightRoundedRect(
+              46,
+              yScale(index),
+              xScale(entry.value) / 1.35 + 2,
+              yScale.bandwidth(),
+              5
+            )
+          )
+          .attr('x', (entry) => xScale(entry.value) / 1.35 + 62)
+          .attr(
+            'y',
+            (entry, index) => yScale(index) + yScale.bandwidth() / 2 + 5
+          )
+          .attr('id', (entry, index) => `bar_${index}`)
+      )
+      .attr('class', 'bar')
+      .style('fill', 'url(#svgGradient)')
+      .transition()
+      .duration(1200)
       .attr('d', (entry, index) =>
         rightRoundedRect(
-          44,
+          46,
           yScale(index),
-          xScale(entry.value) / 1.16,
+          xScale(entry.value) / 1.35 + 2,
           yScale.bandwidth(),
           5
         )
       )
-      .attr('id', (entry, index) => `bar_${index}`)
-      .attr('class', 'bar')
-      .style('fill', 'url(#svgGradient)')
-      .attr('x', 0);
+      .attr('x', (entry) => xScale(entry.value) / 1.35 + 62)
+      .attr('y', (entry, index) => yScale(index) + yScale.bandwidth() / 2 + 5);
 
     svg
       .selectAll('.tick')
       .data(data, (entry, index) => entry.name)
-      .enter()
-      .append('text')
-      .attr('x', (entry) => xScale(entry.value) / 1.16 + 62)
-      .attr('y', (entry, index) => yScale(index) + yScale.bandwidth() / 2 + 5)
-      .style('text-anchor', 'end')
-      .style('font-weight', 300)
-      .style('opacity', 0)
-      .text((entry) => `${entry.value}`)
-      .attr('class', 'tick');
+      .join((enter) =>
+        enter
+          .append('text')
+          .attr('x', (entry) => xScale(entry.value) / 1.32 + 62)
+          .attr(
+            'y',
+            (entry, index) => yScale(index) + yScale.bandwidth() / 2 + 5
+          )
+          .style('text-anchor', 'end')
+          .style('font-weight', 300)
+          .style('opacity', 0)
+          .text((entry) => `${entry.value}`)
+      )
+      .attr('class', 'tick')
+      .transition()
+      .duration(1200)
+      .attr('x', (entry) => xScale(entry.value) / 1.32 + 62)
+      .attr('y', (entry, index) => yScale(index) + yScale.bandwidth() / 2 + 5);
 
     // draw the labels
     svg
       .selectAll('.label')
       .data(data, (entry, index) => entry.name)
-      .enter()
-      .append('text')
+      .join((enter) =>
+        enter
+          .append('text')
+          .attr('x', 0)
+          .attr(
+            'y',
+            (entry, index) => yScale(index) + yScale.bandwidth() / 2 + 5
+          )
+          .style('text-anchor', 'start')
+          .style('text-decoration', 'underline')
+          .text((entry) => `${entry.name}`)
+      )
+      .attr('class', 'label')
+      .transition()
+      .duration(1200)
       .attr('x', 0)
-      .attr('y', (entry, index) => yScale(index) + yScale.bandwidth() / 2 + 5)
-      .style('text-anchor', 'start')
-      .style('text-decoration', 'underline')
-      .text((entry) => `${entry.name}`)
-      .attr('class', 'label');
+      .attr('y', (entry, index) => yScale(index) + yScale.bandwidth() / 2 + 5);
   }, [data, dimensions]);
 
   return (

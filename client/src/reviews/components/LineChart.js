@@ -41,11 +41,20 @@ function LineChart({ data, split }) {
             )
         )
         .attr('class', 'bg_full')
-        .style('fill', '#eee') //#dee2e6 #ced4da
+        .style('fill', '#bebebe')
         .transition()
         .duration(1200)
-        .attr('x', 0)
-        .attr('y', (entry, index) => yScale(index));
+        .attr('d', (entry, index) =>
+          rightRoundedRect(
+            0,
+            yScale(index) + 6,
+            dimensions.width / 3.16 +
+              dimensions.width / 3.16 +
+              dimensions.width / 3.16,
+            yScale.bandwidth() + 3,
+            0
+          )
+        );
     } else {
       svg
         .selectAll('.bg')
@@ -64,11 +73,18 @@ function LineChart({ data, split }) {
             )
         )
         .attr('class', 'bg')
-        .style('fill', '#eee') //#dee2e6 #ced4da
+        .style('fill', '#bebebe') //#dee2e6 #ced4da
         .transition()
         .duration(1200)
-        .attr('x', 0)
-        .attr('y', (entry, index) => yScale(index));
+        .attr('d', (entry, index) =>
+          rightRoundedRect(
+            0,
+            yScale(index) + 6,
+            dimensions.width / 3.16 - 2,
+            yScale.bandwidth() + 3,
+            0
+          )
+        );
 
       svg
         .selectAll('.bg2')
@@ -87,11 +103,18 @@ function LineChart({ data, split }) {
             )
         )
         .attr('class', 'bg2')
-        .style('fill', '#eee') //#dee2e6 #ced4da
+        .style('fill', '#bebebe') //#dee2e6 #ced4da
         .transition()
         .duration(1200)
-        .attr('x', 0)
-        .attr('y', (entry, index) => yScale(index));
+        .attr('d', (entry, index) =>
+          rightRoundedRect(
+            dimensions.width / 3.16 + 2,
+            yScale(index) + 6,
+            dimensions.width / 3.16 - 2,
+            yScale.bandwidth() + 3,
+            0
+          )
+        );
 
       svg
         .selectAll('.bg3')
@@ -110,11 +133,18 @@ function LineChart({ data, split }) {
             )
         )
         .attr('class', 'bg3')
-        .style('fill', '#eee')
+        .style('fill', '#bebebe')
         .transition()
-        .duration(1200) //#e9ecef #dee2e6 #ced4da
-        .attr('x', 0)
-        .attr('y', (entry, index) => yScale(index));
+        .duration(1200)
+        .attr('d', (entry, index) =>
+          rightRoundedRect(
+            dimensions.width / 3.16 + dimensions.width / 3.16 + 4,
+            yScale(index) + 6,
+            dimensions.width / 3.16 - 2,
+            yScale.bandwidth() + 3,
+            0
+          )
+        );
     }
 
     // draw the labels
@@ -144,82 +174,53 @@ function LineChart({ data, split }) {
       svg
         .selectAll('.label3')
         .data(data, (entry, index) => entry.name)
-        .enter()
-        .append('text')
+        .join((enter) =>
+          enter
+            .append('text')
+            .attr('x', dimensions.width / 3.16 + dimensions.width / 3.16 / 2)
+            .attr(
+              'y',
+              (entry, index) => yScale(index) + yScale.bandwidth() / 2 + 28
+            )
+            .style('text-anchor', 'middle')
+            // .style('text-decoration', 'underline')
+            .text((entry, index) => entry.labels[1])
+        )
+        .attr('class', 'label3')
+        .transition()
+        .duration(1200)
         .attr('x', dimensions.width / 3.16 + dimensions.width / 3.16 / 2)
         .attr(
           'y',
           (entry, index) => yScale(index) + yScale.bandwidth() / 2 + 28
-        )
-        .style('text-anchor', 'middle')
-        // .style('text-decoration', 'underline')
-        .text((entry, index) => entry.labels[1])
-        .attr('class', 'label3')
-        .transition()
-        .duration(1200)
-        .attr('x', 0)
-        .attr(
-          'y',
-          (entry, index) => yScale(index) + yScale.bandwidth() / 2 + 28
         );
 
       svg
         .selectAll('.label2')
         .data(data, (entry, index) => entry.name)
-        .enter()
-        .append('text')
-        .attr(
-          'x',
-          (entry, index) =>
-            dimensions.width / 3.16 +
-            dimensions.width / 3.16 +
-            dimensions.width / 3.16 -
-            entry.labels[2].length +
-            10
+        .join((enter) =>
+          enter
+            .append('text')
+            .attr(
+              'x',
+              (entry, index) =>
+                dimensions.width / 3.16 +
+                dimensions.width / 3.16 +
+                dimensions.width / 3.16 -
+                entry.labels[2].length +
+                10
+            )
+            .attr(
+              'y',
+              (entry, index) => yScale(index) + yScale.bandwidth() / 2 + 28
+            )
+            .style('text-anchor', 'end')
+            // .style('text-decoration', 'underline')
+            .text((entry, index) => entry.labels[2])
         )
-        .attr(
-          'y',
-          (entry, index) => yScale(index) + yScale.bandwidth() / 2 + 28
-        )
-        .style('text-anchor', 'end')
-        // .style('text-decoration', 'underline')
-        .text((entry, index) => entry.labels[2])
         .attr('class', 'label2')
         .transition()
         .duration(1200)
-        .attr('x', 0)
-        .attr(
-          'y',
-          (entry, index) => yScale(index) + yScale.bandwidth() / 2 + 28
-        );
-    } else {
-      svg
-        .selectAll('.label')
-        .data(data, (entry, index) => entry.name)
-        .enter()
-        .append('text')
-        .attr('x', 0)
-        .attr(
-          'y',
-          (entry, index) => yScale(index) + yScale.bandwidth() / 2 + 28
-        )
-        .style('text-anchor', 'start')
-        // .style('text-decoration', 'underline')
-        .text((entry, index) => entry.labels[0])
-        .attr('class', 'label')
-        .transition()
-        .duration(1200)
-        .attr('x', 0)
-        .attr(
-          'y',
-          (entry, index) => yScale(index) + yScale.bandwidth() / 2 + 28
-        );
-
-      svg
-        .selectAll('.label2')
-        .data(data, (entry, index) => entry.name)
-        .enter()
-        .append('text')
         .attr(
           'x',
           (entry, index) =>
@@ -232,8 +233,53 @@ function LineChart({ data, split }) {
         .attr(
           'y',
           (entry, index) => yScale(index) + yScale.bandwidth() / 2 + 28
+        );
+    } else {
+      svg
+        .selectAll('.label')
+        .data(data, (entry, index) => entry.name)
+        .join((enter) =>
+          enter
+            .append('text')
+            .attr('x', 0)
+            .attr(
+              'y',
+              (entry, index) => yScale(index) + yScale.bandwidth() / 2 + 28
+            )
+            .style('text-anchor', 'start')
+            // .style('text-decoration', 'underline')
+            .text((entry, index) => entry.labels[0])
         )
-        .style('text-anchor', 'end')
+        .attr('class', 'label')
+        .transition()
+        .duration(1200)
+        .attr('x', 0)
+        .attr(
+          'y',
+          (entry, index) => yScale(index) + yScale.bandwidth() / 2 + 28
+        );
+
+      svg
+        .selectAll('.label2')
+        .data(data, (entry, index) => entry.name)
+        .join((enter) =>
+          enter
+            .append('text')
+            .attr(
+              'x',
+              (entry, index) =>
+                dimensions.width / 3.16 +
+                dimensions.width / 3.16 +
+                dimensions.width / 3.16 -
+                entry.labels[1].length +
+                4
+            )
+            .attr(
+              'y',
+              (entry, index) => yScale(index) + yScale.bandwidth() / 2 + 28
+            )
+            .style('text-anchor', 'end')
+        )
         // .style('text-decoration', 'underline')
         .text((entry, index) => entry.labels[1])
         .attr('class', 'label2')
@@ -264,12 +310,12 @@ function LineChart({ data, split }) {
           .attr('xlink:href', 'https://img.icons8.com/ios/452/chevron-down.png')
           .attr('width', 40)
           .attr('height', 40)
-          .attr('y', (entry, index) => yScale(index) - 14)
+          .attr('y', (entry, index) => yScale(index) - 15)
       )
       .attr('class', 'point')
       .transition()
       .duration(1200)
-      .attr('y', (entry, index) => yScale(index) - 14)
+      .attr('y', (entry, index) => yScale(index) - 15)
       .attr('x', (entry) => xScale(entry.value));
   }, [data, dimensions, split]);
 

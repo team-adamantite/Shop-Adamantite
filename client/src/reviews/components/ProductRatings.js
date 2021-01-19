@@ -85,7 +85,7 @@ const ProductRatings = () => {
       <div className='d-flex'>
         <div className='charts__col w-40'>
           <div className='ratings__avg d-flex justify-content-left'>
-            <h2 className='ratings__avg_num fs-1'>3.5</h2>
+            <h1 className='ratings__avg_num'>3.5</h1>
             <StarAvg value={3.5} />
           </div>
           <h3 className='chart__title fs-5 my-2' style={{ textAlign: 'left' }}>
@@ -110,26 +110,7 @@ const ProductRatings = () => {
             <strong className='review__sort_span'>relevance </strong>
             <div className='chevron'> &#x25BE;</div>
           </h4>
-          {/* {reviews2.list &&
-            reviews2.list.results.map((review) => {
-              return (
-                // <Review key={review.review_id} review={review} />
-                <Fragment key={review.review_id}>
-                  <ListGroup>
-                    <ListGroup.Item className='d-inline-block'>
-                      <div className='review__header d-flex justify-content-lg-between align-items-center'>
-                        <StarRating value={review.rating} />
-                        <p className='review__date text-end'>
-                          {review.reviewer_name}, {review.date.substring(0, 10)}
-                        </p>
-                      </div>
-                      <strong>{review.summary}</strong>
-                      <p>{review.body}</p>
-                    </ListGroup.Item>
-                  </ListGroup>
-                </Fragment>
-              );
-            })} */}
+
           <div className='__scrollable-parent'>
             {items.map((review) => {
               return (
@@ -137,7 +118,7 @@ const ProductRatings = () => {
                 <Fragment key={review.review_id}>
                   <ListGroup>
                     <ListGroup.Item className='d-inline-block'>
-                      <div className='review__header d-flex justify-content-lg-between align-items-center'>
+                      <div className='review__header d-flex justify-content-between '>
                         <StarRating value={review.rating} />
                         <p className='review__date text-end'>
                           {review.reviewer_name}, {review.date.substring(0, 10)}
@@ -187,7 +168,7 @@ const ProductRatings = () => {
               <Modal.Header>
                 <Modal.Title>Write A Review</Modal.Title>
               </Modal.Header>
-              <div className='d-flex justify-content-lg-between align-items-center m-2'>
+              <div className='d-flex justify-content-between align-items-center m-2'>
                 <HalfStarRating value={0} />
               </div>
               <Modal.Body>Modal Form Fields</Modal.Body>

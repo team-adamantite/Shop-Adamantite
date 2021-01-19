@@ -22,16 +22,16 @@
 
 .reviews__col {
   width: 58%;
-  padding: 2rem;
+  padding: 0.6rem;
   padding-top: 0.4rem;
-  margin: 2rem;
+  margin: 0;
   margin-top: 0.4rem;
 }
 
 .charts__col {
   width: 42%;
-  padding: 2rem;
-  padding-top: 1rem;
+  padding: 0;
+  padding-top: 0.6rem;
   /* padding-right: 1rem; */
 }
 
@@ -47,16 +47,17 @@
 
 .reviews__title {
   font-family: 'Source Sans Pro', sans-serif;
-  padding-left: 2rem;
+  padding-left: 0;
   font-weight: 400;
 }
 
 .review__sort {
-  margin-bottom: 2rem;
+  margin-top: 0.6rem;
+  padding-left: 1rem;
 }
 
 .review__sort_span {
-  margin-right: 0.2rem;
+  margin-right: 0;
   text-decoration: underline;
 }
 
@@ -69,6 +70,12 @@
   cursor: crosshair;
   font-size: 1.5rem;
   animation: 0.65s anim-rotate-360 ease forwards;
+}
+
+.ratings__avg_num {
+  font-weight: bold;
+  font-size: 3rem;
+  /* font-weight: 400; */
 }
 
 .chevron {
