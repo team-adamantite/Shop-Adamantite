@@ -32,7 +32,7 @@ div {
 
 .__scrollable-parent {
   height: 560px;
-  overflow-y: scroll;
+  overflow-y: hidden;
   position: relative;
 }
 
@@ -82,7 +82,6 @@ div {
   width: 25vw;
   text-align: center;
 }
-
 
 .img-thumbnail {
   width: 200px;

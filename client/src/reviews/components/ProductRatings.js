@@ -130,7 +130,7 @@ const ProductRatings = () => {
 
           <div
             className='__scrollable-parent'
-            style={{ height: expandedView ? '86vh' : '560px' }}
+            style={{ height: expandedView ? '86vh' : '660px' }}
           >
             {items.map((review) => {
               return (
@@ -146,6 +146,7 @@ const ProductRatings = () => {
                       </div>
                       <strong>{review.summary}</strong>
                       <p>{review.body}</p>
+                      <hr />
                     </ListGroup.Item>
                   </ListGroup>
                 </Fragment>
