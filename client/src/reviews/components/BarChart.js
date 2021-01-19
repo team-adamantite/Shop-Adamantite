@@ -70,7 +70,7 @@ function BarChart({ data }) {
       .attr('class', 'bg')
       .style('fill', '#bebebe')
       .transition()
-      .duration(1200)
+      .duration(1000)
       .attr('x', 46)
       .attr('y', (entry, index) => yScale(index))
       .attr('width', dimensions.width / 1.34)
@@ -102,7 +102,7 @@ function BarChart({ data }) {
       .attr('class', 'bar')
       .style('fill', 'url(#svgGradient)')
       .transition()
-      .duration(1200)
+      .duration(1540)
       .attr('d', (entry, index) =>
         rightRoundedRect(
           46,
@@ -133,7 +133,7 @@ function BarChart({ data }) {
       )
       .attr('class', 'tick')
       .transition()
-      .duration(1200)
+      .duration(1000)
       .attr('x', (entry) => xScale(entry.value) / 1.32 + 62)
       .attr('y', (entry, index) => yScale(index) + yScale.bandwidth() / 2 + 5);
 
@@ -155,7 +155,7 @@ function BarChart({ data }) {
       )
       .attr('class', 'label')
       .transition()
-      .duration(1200)
+      .duration(1000)
       .attr('x', 0)
       .attr('y', (entry, index) => yScale(index) + yScale.bandwidth() / 2 + 5);
   }, [data, dimensions]);

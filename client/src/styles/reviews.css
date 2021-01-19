@@ -16,8 +16,10 @@
 .reviews__btn:nth-of-type(1) {
   margin-top: 7px;
   margin-bottom: 7px;
-  margin-left: 0;
+  margin-left: 1rem;
   margin-right: 7px;
+  padding: 0.6rem;
+  padding-top: 0.4rem;
 }
 
 .reviews__col {
@@ -26,6 +28,7 @@
   padding-top: 0.4rem;
   margin: 0;
   margin-top: 0.4rem;
+  /* width: 80vw; */
 }
 
 .charts__col {

@@ -43,7 +43,7 @@ function LineChart({ data, split }) {
         .attr('class', 'bg_full')
         .style('fill', '#bebebe')
         .transition()
-        .duration(1200)
+        .duration(1000)
         .attr('d', (entry, index) =>
           rightRoundedRect(
             0,
@@ -75,7 +75,7 @@ function LineChart({ data, split }) {
         .attr('class', 'bg')
         .style('fill', '#bebebe') //#dee2e6 #ced4da
         .transition()
-        .duration(1200)
+        .duration(1000)
         .attr('d', (entry, index) =>
           rightRoundedRect(
             0,
@@ -105,7 +105,7 @@ function LineChart({ data, split }) {
         .attr('class', 'bg2')
         .style('fill', '#bebebe') //#dee2e6 #ced4da
         .transition()
-        .duration(1200)
+        .duration(1000)
         .attr('d', (entry, index) =>
           rightRoundedRect(
             dimensions.width / 3.16 + 2,
@@ -135,7 +135,7 @@ function LineChart({ data, split }) {
         .attr('class', 'bg3')
         .style('fill', '#bebebe')
         .transition()
-        .duration(1200)
+        .duration(1000)
         .attr('d', (entry, index) =>
           rightRoundedRect(
             dimensions.width / 3.16 + dimensions.width / 3.16 + 4,
@@ -164,7 +164,7 @@ function LineChart({ data, split }) {
         .text((entry, index) => entry.labels[0])
         .attr('class', 'label')
         .transition()
-        .duration(1200)
+        .duration(1000)
         .attr('x', 0)
         .attr(
           'y',
@@ -188,7 +188,7 @@ function LineChart({ data, split }) {
         )
         .attr('class', 'label3')
         .transition()
-        .duration(1200)
+        .duration(1000)
         .attr('x', dimensions.width / 3.16 + dimensions.width / 3.16 / 2)
         .attr(
           'y',
@@ -220,7 +220,7 @@ function LineChart({ data, split }) {
         )
         .attr('class', 'label2')
         .transition()
-        .duration(1200)
+        .duration(1000)
         .attr(
           'x',
           (entry, index) =>
@@ -252,7 +252,7 @@ function LineChart({ data, split }) {
         )
         .attr('class', 'label')
         .transition()
-        .duration(1200)
+        .duration(1000)
         .attr('x', 0)
         .attr(
           'y',
@@ -284,7 +284,7 @@ function LineChart({ data, split }) {
         .text((entry, index) => entry.labels[1])
         .attr('class', 'label2')
         .transition()
-        .duration(1200)
+        .duration(1000)
         .attr(
           'x',
           (entry, index) =>
@@ -314,7 +314,7 @@ function LineChart({ data, split }) {
       )
       .attr('class', 'point')
       .transition()
-      .duration(1200)
+      .duration(2400)
       .attr('y', (entry, index) => yScale(index) - 15)
       .attr('x', (entry) => xScale(entry.value));
   }, [data, dimensions, split]);

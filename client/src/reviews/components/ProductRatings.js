@@ -1,4 +1,4 @@
-import React, { useState, useEffect, Fragment } from 'react';
+import React, { useState, useEffect, useRef, Fragment } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Waypoint } from 'react-waypoint';
 import {
@@ -38,9 +38,18 @@ const ProductRatings = () => {
   const [hasNextPage, setHasNextPage] = useState(true);
   const [loading, setLoading] = useState(false);
   const [show, setShow] = useState(false);
+  const [expandedView, setExpandedView] = useState(false);
 
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
+
+  const block = useRef(null);
+
+  const handleScrollToElement = function (e) {
+    setTimeout(() => {
+      block.current.scrollIntoView({ behavior: 'smooth' });
+    }, 60);
+  };
 
   useEffect(() => {
     dispatch(getProductReviews(id));
@@ -83,9 +92,14 @@ const ProductRatings = () => {
     <Container id='reviews__container'>
       <h3 className='reviews__title fs-4 my-3'>RATINGS &amp; REVIEWS</h3>
       <div className='d-flex'>
-        <div className='charts__col w-40'>
+        <div
+          className='charts__col w-40'
+          style={{ width: expandedView ? '30vw' : '40vw' }}
+        >
           <div className='ratings__avg d-flex justify-content-left'>
-            <h1 className='ratings__avg_num'>3.5</h1>
+            <h1 className='ratings__avg_num' ref={block}>
+              3.5
+            </h1>
             <StarAvg value={3.5} />
           </div>
           <h3 className='chart__title fs-5 my-2' style={{ textAlign: 'left' }}>
@@ -103,7 +117,10 @@ const ProductRatings = () => {
             <LineChart data={data3} split={false} />
           </div>
         </div>
-        <div className='reviews__col w-60'>
+        <div
+          className='reviews__col w-60'
+          style={{ width: expandedView ? '70vw' : '60vw' }}
+        >
           {/* {reviews.list && <Message>No Reviews</Message>} */}
           <h4 className='review__sort fs-5' style={{ textAlign: 'left' }}>
             <strong>248 reviews, sorted by </strong>{' '}
@@ -111,7 +128,10 @@ const ProductRatings = () => {
             <div className='chevron'> &#x25BE;</div>
           </h4>
 
-          <div className='__scrollable-parent'>
+          <div
+            className='__scrollable-parent'
+            style={{ height: expandedView ? '86vh' : '560px' }}
+          >
             {items.map((review) => {
               return (
                 // <Review key={review.review_id} review={review} />
@@ -153,8 +173,12 @@ const ProductRatings = () => {
             <button
               type='button'
               className='reviews__btn btn btn-outline-dark btn-lg'
+              onClick={(e) => {
+                setExpandedView((prevView) => !prevView);
+                handleScrollToElement(e);
+              }}
             >
-              MORE REVIEWS
+              {expandedView ? 'LESS REVIEWS' : 'MORE REVIEWS'}
             </button>
             <button
               type='button'
