@@ -57,7 +57,7 @@ export default function Question({ question, name }) {
     setInputs({ ...inputs, [e.target.name]: e.target.value });
   }
   function fileSelectedHandler(e) {
-    console.log(e.target.files[0]);
+    console.log('what is e.target.files?', e.target.files);
     setInputs({ ...inputs, photos: [...e.target.files] });
   }
   function handleInputSubmit(e) {
@@ -76,21 +76,26 @@ export default function Question({ question, name }) {
     //handle multiple input files upload
     const fd = new FormData();
     fd.append('image', inputs.photos[0], inputs.photos[0].name);
+    // setInputs here for the photos
   }
   return (
-    <div>
+    <div className="question_box">
       <div className="row">
         <div className="col-sm-8">
           <strong>Q: {question.question_body}</strong>
         </div>
 
         <div className="col-sm-4">
-          Helpful? <u onClick={handleHelpfulCount}>Yes</u> ({countHelpfulness})
-          |{' '}
+          Helpful? <u onClick={handleHelpfulCount}> Yes</u> ({countHelpfulness})
+          |
           <>
-            <Button variant="link" onClick={handleShow}>
+            <button
+              type="button"
+              className="btn btn-link btn-sm"
+              onClick={handleShow}
+            >
               Add an Answer
-            </Button>
+            </button>
 
             <Modal
               show={show}
