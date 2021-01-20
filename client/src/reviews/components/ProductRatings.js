@@ -10,7 +10,7 @@ import {
   Card,
   Button,
   Form,
-  Modal
+  Modal,
 } from 'react-bootstrap';
 
 import Review from './Review';
@@ -50,7 +50,7 @@ const ProductRatings = () => {
     // eslint-disable-next-line
   }, [dispatch, id]);
 
-  console.log(reviews2.list.results.length - items.length);
+  //console.log(reviews2.list.results.length - items.length);
 
   const loadMoreItems = () => {
     const itemsToAdd = 3;
@@ -77,38 +77,38 @@ const ProductRatings = () => {
     }, secondsToWait * 1000);
   };
 
-  console.log(items);
+  //console.log(items);
 
   return (
-    <Container id='reviews__container'>
-      <h3 className='reviews__title fs-4 my-3'>RATINGS &amp; REVIEWS</h3>
-      <div className='d-flex'>
-        <div className='charts__col w-40'>
-          <div className='ratings__avg d-flex justify-content-left'>
-            <h2 className='ratings__avg_num fs-1'>3.5</h2>
+    <Container id="reviews__container">
+      <h3 className="reviews__title fs-4 my-3">RATINGS &amp; REVIEWS</h3>
+      <div className="d-flex">
+        <div className="charts__col w-40">
+          <div className="ratings__avg d-flex justify-content-left">
+            <h2 className="ratings__avg_num fs-1">3.5</h2>
             <StarAvg value={3.5} />
           </div>
-          <h3 className='chart__title fs-5 my-2' style={{ textAlign: 'left' }}>
+          <h3 className="chart__title fs-5 my-2" style={{ textAlign: 'left' }}>
             <strong>100%</strong> of reviews recommend this product
           </h3>
-          <div className='charts__container'>
+          <div className="charts__container">
             <BarChart data={data} />
-            <h4 className='chart__subtitle' style={{ textAlign: 'left' }}>
+            <h4 className="chart__subtitle" style={{ textAlign: 'left' }}>
               Size
             </h4>
             <LineChart data={data2} split={true} />
-            <h4 className='chart__subtitle' style={{ textAlign: 'left' }}>
+            <h4 className="chart__subtitle" style={{ textAlign: 'left' }}>
               Comfort
             </h4>
             <LineChart data={data3} split={false} />
           </div>
         </div>
-        <div className='reviews__col w-60'>
+        <div className="reviews__col w-60">
           {/* {reviews.list && <Message>No Reviews</Message>} */}
-          <h4 className='review__sort fs-5' style={{ textAlign: 'left' }}>
+          <h4 className="review__sort fs-5" style={{ textAlign: 'left' }}>
             <strong>248 reviews, sorted by </strong>{' '}
-            <strong className='review__sort_span'>relevance </strong>
-            <div className='chevron'> &#x25BE;</div>
+            <strong className="review__sort_span">relevance </strong>
+            <div className="chevron"> &#x25BE;</div>
           </h4>
           {/* {reviews2.list &&
             reviews2.list.results.map((review) => {
@@ -130,16 +130,16 @@ const ProductRatings = () => {
                 </Fragment>
               );
             })} */}
-          <div className='__scrollable-parent'>
+          <div className="__scrollable-parent">
             {items.map((review) => {
               return (
                 // <Review key={review.review_id} review={review} />
                 <Fragment key={review.review_id}>
                   <ListGroup>
-                    <ListGroup.Item className='d-inline-block'>
-                      <div className='review__header d-flex justify-content-lg-between align-items-center'>
+                    <ListGroup.Item className="d-inline-block">
+                      <div className="review__header d-flex justify-content-lg-between align-items-center">
                         <StarRating value={review.rating} />
-                        <p className='review__date text-end'>
+                        <p className="review__date text-end">
                           {review.reviewer_name}, {review.date.substring(0, 10)}
                         </p>
                       </div>
@@ -152,32 +152,32 @@ const ProductRatings = () => {
             })}
             {loading && hasNextPage && (
               <div
-                className='spinner-border text-primary text-center  m-2'
-                role='status'
+                className="spinner-border text-primary text-center  m-2"
+                role="status"
               ></div>
             )}
             {!hasNextPage && (
-              <div className='text-primary text-center  m-2' role='status'>
+              <div className="text-primary text-center  m-2" role="status">
                 <span>No More Results...</span>
               </div>
             )}
-            <div className='infinite-scroll__waypoint'>
+            <div className="infinite-scroll__waypoint">
               {/* waypoint */}
               {!loading && hasNextPage && (
-                <Waypoint onEnter={loadMoreItems} bottomOffset='-1%' />
+                <Waypoint onEnter={loadMoreItems} bottomOffset="-1%" />
               )}
             </div>
           </div>
           <div>
             <button
-              type='button'
-              className='reviews__btn btn btn-outline-dark btn-lg'
+              type="button"
+              className="reviews__btn btn btn-outline-dark btn-lg"
             >
               MORE REVIEWS
             </button>
             <button
-              type='button'
-              className='reviews__btn btn btn-outline-primary btn-lg m-2'
+              type="button"
+              className="reviews__btn btn btn-outline-primary btn-lg m-2"
               onClick={handleShow}
             >
               ADD A REVIEW +
@@ -187,15 +187,15 @@ const ProductRatings = () => {
               <Modal.Header>
                 <Modal.Title>Write A Review</Modal.Title>
               </Modal.Header>
-              <div className='d-flex justify-content-lg-between align-items-center m-2'>
+              <div className="d-flex justify-content-lg-between align-items-center m-2">
                 <HalfStarRating value={0} />
               </div>
               <Modal.Body>Modal Form Fields</Modal.Body>
               <Modal.Footer>
-                <Button variant='secondary' onClick={handleClose}>
+                <Button variant="secondary" onClick={handleClose}>
                   Close
                 </Button>
-                <Button variant='primary' onClick={handleClose}>
+                <Button variant="primary" onClick={handleClose}>
                   Submit Review
                 </Button>
               </Modal.Footer>

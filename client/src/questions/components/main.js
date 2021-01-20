@@ -3,14 +3,14 @@ import { connect } from 'react-redux';
 import { Modal, Button, Form } from 'react-bootstrap';
 import axios from 'axios';
 import Question from './question';
-// import AddQuestion from './modal';
 import token from '../../../config/config.js';
+import '../style/question.css';
 axios.defaults.headers.common['Authorization'] = token;
 
 const QA = ({ product }) => {
   const [questions, setQuestions] = useState([]);
   const [allQuestions, setAllQuestions] = useState([]);
-  const [count, setCount] = useState(2);
+  const [count, setCount] = useState(4);
   const [show, setShow] = useState(false);
   const [inputs, setInputs] = useState({
     body: '',
@@ -49,7 +49,7 @@ const QA = ({ product }) => {
   function loadQuestionList(id) {
     axios
       .get(
-        `https://app-hrsei-api.herokuapp.com/api/fec2/hratx/qa/questions?product_id=${id}`
+        `https://app-hrsei-api.herokuapp.com/api/fec2/hratx/qa/questions?product_id=${id}&count=50`
       )
       .then((res) => {
         const questionList = res.data.results
@@ -65,10 +65,10 @@ const QA = ({ product }) => {
   }, []);
 
   function handleClickLoadMore() {
-    if (count === 2) {
+    if (count === 4) {
       setCount(questions.length);
     } else {
-      setCount(2);
+      setCount(4);
     }
   }
 
@@ -79,17 +79,15 @@ const QA = ({ product }) => {
           return question;
         }
       });
-      console.log(`what is filtered question`, filteredQuestions);
+      // console.log(`what is filtered question`, filteredQuestions);
       setQuestions(filteredQuestions);
     } else {
       setQuestions(allQuestions);
     }
   }
-  // console.log(`inputs`, inputs);
   return (
-    <React.Fragment>
-      {/* {console.log('what is question?', questions)} */}
-      <h5>QUESTIONS & ANSWERS</h5>
+    <div id="question_body">
+      <h3 className="title">QUESTIONS &amp; ANSWERS </h3>
       <input
         placeholder="HAVE A QUESTION? SEARCH FOR ANSWERS"
         type="text"
@@ -120,7 +118,7 @@ const QA = ({ product }) => {
         </button>
       )}
       <>
-        <Button variant="outline-secondary" onClick={handleShow}>
+        <Button variant="outline-primary" onClick={handleShow}>
           Add a Question
         </Button>
 
@@ -191,7 +189,7 @@ const QA = ({ product }) => {
           </Form>
         </Modal>
       </>
-    </React.Fragment>
+    </div>
   );
 };
 

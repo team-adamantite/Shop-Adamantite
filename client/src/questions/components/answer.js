@@ -17,7 +17,6 @@ const Answer = ({ answer }) => {
   }
 
   function handleHelpfulness() {
-    // need to fix this, user can only click once.
     if (clicked === false) {
       axios
         .put(
@@ -41,30 +40,33 @@ const Answer = ({ answer }) => {
   }
 
   return (
-    <div className="row">
+    <React.Fragment>
       <span>
-        <strong>A: </strong>
-        {answer.body}
+        <strong>A: {answer.body}</strong>
       </span>
-      <div className="col-sm-8">
-        by{' '}
-        {answer.answerer_name === 'Seller' ? (
-          <strong>Seller</strong>
-        ) : (
-          answer.answerer_name
-        )}
-        , {formatDate(answer.date)}
+      <div>
+        <span className="poster">
+          by{' '}
+          {answer.answerer_name === 'Seller' ? (
+            <strong>Seller</strong>
+          ) : (
+            answer.answerer_name
+          )}
+          , {formatDate(answer.date)}
+        </span>
+        <span>|</span>
+        <span className="helper_bar">
+          Helpful?
+          <u onClick={handleHelpfulness}> Yes</u> ({countHelpfulness}) |
+          <u onClick={handleReport}>{report}</u>
+        </span>
       </div>
-      <div className="col-sm-4">
-        Helpful?
-        <u onClick={handleHelpfulness}>Yes</u> ({countHelpfulness}) |{' '}
-        <u onClick={handleReport}>{report}</u>
-      </div>
+
       {answer.photos.length > 0 &&
         answer.photos.map((url, index) => {
           return <img key={index} src={url} className="img-thumbnail" alt="" />;
         })}
-    </div>
+    </React.Fragment>
   );
 };
 
