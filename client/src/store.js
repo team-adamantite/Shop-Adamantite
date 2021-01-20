@@ -33,7 +33,7 @@ const rootReducer = combineReducers({
 const store = createStore(
   rootReducer,
   { currentProduct: product,
-    productStyles: styles,
+    productStyles: {results: []},
     currentStyle: styles.results[0]
   },
   composeWithDevTools(applyMiddleware(thunk))

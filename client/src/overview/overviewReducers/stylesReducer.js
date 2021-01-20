@@ -1,5 +1,5 @@
 
-var productStylesReducer = (state = { productStyles: [] }, action) => {
+var productStylesReducer = (state = [], action) => {
   switch (action.type) {
     case 'CHANGE_STYLES':
       return action.payload || [];
