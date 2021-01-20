@@ -1,13 +1,9 @@
 import { createStore, combineReducers, applyMiddleware } from 'redux';
 import thunk from 'redux-thunk';
 import { composeWithDevTools } from 'redux-devtools-extension';
-<<<<<<< HEAD
-import { productReviewReducer } from './ratings&reviews/reducers/productReviewReducers.js';
-import { product, styles } from './dummyData.js';
-=======
 import productReviewReducer from './reviews/reviewReducers/reviewsReducer';
-import { product } from './dummyData.js';
->>>>>>> 28455ed630e10e1679d1f408a2e987b71b4859b2
+import { product, styles } from './dummyData.js';
+import relatedProductsReducer from './related-outfits/reducers/relatedReducer.js'
 
 //action
 var changeCurrentProduct = (product) => ({
@@ -36,7 +32,8 @@ var productStylesReducer = (state = { productStyles: [] }, action) => {
 const rootReducer = combineReducers({
   currentProduct: currentProductReducer,
   productStyles: productStylesReducer,
-  reviews: productReviewReducer
+  reviews: productReviewReducer,
+  relatedProducts: relatedProductsReducer
 });
 
 const store = createStore(

@@ -1,0 +1,21 @@
+#relatedContainer {
+  font-family: 'Source Sans Pro', sans-serif;
+  font-weight: 300;
+  padding: 0.2rem;
+  box-sizing: border-box;
+  max-width: 100%;
+}
+
+.productName {}
+
+.productCategory {}
+
+.productDesc {}
+
+.productPrice {}
+
+.productRating {}
+
+.modalStar {}
+
+.modal {}
