@@ -13,10 +13,21 @@ var productInfo = ({currentProduct, currentStyle}) => {
       <label>Category:
         <div id = 'productCategory'>{currentProduct.category}</div>
       </label>
-      <br />
+      <br />{
+      (currentStyle.sale_price) ?
+      <div>
+        <label>Sale Price:
+          <div id = 'productName'>{currentStyle.sale_price}</div>
+        </label>
+        <label>Price:
+          <div id = 'productName'>{currentStyle.original_price}</div>
+        </label>
+      </div>
+      :
       <label>Price:
         <div id = 'productName'>{currentStyle.original_price}</div>
       </label>
+      }
     </div>
   );
 };

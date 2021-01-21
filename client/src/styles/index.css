@@ -97,3 +97,14 @@ div {
   height: 50px;
   object-fit: cover;
 }
+
+.gallery {
+  margin: 0;
+}
+
+.galleryPic {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 50%;
+}

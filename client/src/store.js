@@ -34,7 +34,7 @@ const store = createStore(
   rootReducer,
   { currentProduct: product,
     productStyles: {results: []},
-    currentStyle: styles.results[0]
+    currentStyle: {}
   },
   composeWithDevTools(applyMiddleware(thunk))
 );
