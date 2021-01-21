@@ -71,8 +71,6 @@ const ProductRatings = () => {
     // eslint-disable-next-line
   }, [reorder]); // dispatch, id
 
-  console.log(reviews2.list.results.length - items.length);
-
   const loadMoreItems = () => {
     const itemsToAdd = 3;
     const secondsToWait = 2;
@@ -88,7 +86,6 @@ const ProductRatings = () => {
         }
 
         setItems(currentItems);
-        // setItems(currentItems);
         setLoading(false);
         // setPage((page) => page + 1);
       } else {
@@ -107,7 +104,7 @@ const ProductRatings = () => {
     }, 1200);
   };
 
-  console.log(items);
+  // console.log(items);
 
   return (
     <Container id='reviews__container'>
@@ -146,16 +143,12 @@ const ProductRatings = () => {
           <div className='dropdown-group'>
             <h4 className='review__sort fs-5' style={{ textAlign: 'left' }}>
               <strong>248 reviews, sorted by </strong>{' '}
-              {/* <button className='review__sort_span' onClick={reorder}>
-              relevance{' '}
-            </button>
-            <div className='chevron'> &#x25BE;</div> */}
             </h4>
-            <div class='dropdown'>
-              <button class='dropbtn fs-5'>
+            <div className='dropdown'>
+              <button className='dropbtn fs-5'>
                 <strong>Relevance</strong>
               </button>
-              <div class='dropdown-content'>
+              <div className='dropdown-content'>
                 <a onClick={reorder}>Relevance</a>
                 <a onClick={reorder}>Highest Rating</a>
               </div>
@@ -209,25 +202,7 @@ const ProductRatings = () => {
                 )}
               </AnimateReviews>
             )}
-            {/* {items.map((review) => {
-              return (
-                <Fragment key={review.review_id}>
-                  <ListGroup>
-                    <ListGroup.Item className='d-inline-block'>
-                      <div className='review__header d-flex justify-content-between '>
-                        <StarRating value={review.rating} />
-                        <p className='review__date text-end'>
-                          {review.reviewer_name}, {review.date.substring(0, 10)}
-                        </p>
-                      </div>
-                      <strong>{review.summary}</strong>
-                      <p>{review.body}</p>
-                      <hr />
-                    </ListGroup.Item>
-                  </ListGroup>
-                </Fragment>
-              );
-            })} */}
+
             {loading && hasNextPage && (
               <div
                 className='spinner-border text-primary text-center  m-2'
@@ -239,6 +214,7 @@ const ProductRatings = () => {
                 <span>No More Results...</span>
               </div>
             )}
+
             <div className='infinite-scroll__waypoint'>
               {!loading && hasNextPage && (
                 <Waypoint onEnter={loadMoreItems} bottomOffset='-1%' />
@@ -263,24 +239,6 @@ const ProductRatings = () => {
             >
               ADD A REVIEW +
             </button>
-
-            <Modal show={show} onHide={handleClose}>
-              <Modal.Header>
-                <Modal.Title>Write A Review</Modal.Title>
-              </Modal.Header>
-              <div className='d-flex justify-content-between align-items-center m-2'>
-                <HalfStarRating value={0} />
-              </div>
-              <Modal.Body>Modal Form Fields</Modal.Body>
-              <Modal.Footer>
-                <Button variant='secondary' onClick={handleClose}>
-                  Close
-                </Button>
-                <Button variant='primary' onClick={handleClose}>
-                  Submit Review
-                </Button>
-              </Modal.Footer>
-            </Modal>
           </div>
         </div>
       </div>
