@@ -15,6 +15,7 @@ import {
 } from 'react-bootstrap';
 
 import Review from './Review';
+import ReviewModal from './ReviewModal';
 import AnimateReviews from './AnimateReviews';
 import Message from './Message';
 import BarChart from './BarChart';
@@ -22,26 +23,30 @@ import LineChart from './LineChart';
 import HalfStarRating from './HalfStarRating';
 import StarRating from './StarRating';
 import StarAvg from './StarAvg';
-import { data, data2, data3, reviews2, reviews3 } from '../utils/data';
+import { data2, data3, reviews2, reviews3 } from '../utils/data';
 import '../../styles/chart.css';
 import '../../styles/reviews.css';
 
 import { getProductReviews } from '../reviewActions/productReviewsActions';
-import { reviews } from '../../dummyData';
 
 const ProductRatings = () => {
   const dispatch = useDispatch();
   const product = useSelector((state) => state.currentProduct);
   const { id } = product;
   const reviews = useSelector((state) => state.reviews);
-  const [comment, setComment] = useState('');
   const [rating, setRating] = useState(0);
   const [items, setItems] = useState([]);
   const [removedItems, setRemovedItems] = useState([]);
   const [page, setPage] = useState(1);
   const [hasNextPage, setHasNextPage] = useState(true);
   const [loading, setLoading] = useState(false);
+  const [chart, updateChart] = useState(false);
   const [sorting, setSorting] = useState(false);
+  const [retrieved, setRetreived] = useState(false);
+  const [sortType, setSortType] = useState('Relevance');
+  const [percent, setPercent] = useState(100);
+  const [average, setAverage] = useState(3);
+
   const [show, setShow] = useState(false);
   const [expandedView, setExpandedView] = useState(false);
 
@@ -58,53 +63,112 @@ const ProductRatings = () => {
 
   useEffect(() => {
     dispatch(getProductReviews(id));
+    reorder();
 
-    if (reviews.length) {
-      setItems(reviews.list.results);
-    }
-
-    setTimeout(() => {
-      reorder();
-    }, 1200);
-
-    setSorting(false);
     // eslint-disable-next-line
-  }, [reorder]); // dispatch, id
+  }, [dispatch, id]); // dispatch, id
+
+  useEffect(() => {
+    if (reviews.hasOwnProperty('list')) {
+      if (!retrieved) {
+        setItems([...reviews.list.results]);
+        setRetreived(true);
+      }
+
+      setPercent(
+        (
+          (reviews.list.results.filter((review) => review.recommend).length /
+            reviews.list.results.length) *
+          100
+        ).toFixed(0)
+      );
+
+      setAverage(
+        ((
+          reviews.list.results
+            .map((review) => review.rating)
+            .reduce((acc, current) => acc + current, 0) /
+          reviews.list.results.reduce((acc) => acc + 5, 0)
+        ).toFixed(1) *
+          10) /
+          2
+      );
+    }
+  }, [reviews]);
 
   const loadMoreItems = () => {
+    if (!retrieved) {
+      setItems([...reviews.list.results]);
+      setRetreived(true);
+    }
+    // console.log('loading more items...');
     const itemsToAdd = 3;
     const secondsToWait = 2;
-
-    setLoading(true);
-
-    setTimeout(() => {
-      // add data
-      let currentItems = items;
-      if (reviews2.list.results.length) {
-        for (let i = 0; i < itemsToAdd; i++) {
-          currentItems.push(reviews2.list.results.shift());
+    if (reviews3) {
+      setLoading(true);
+      setTimeout(() => {
+        // add data
+        let currentItems = [...items];
+        if (reviews3.list.results.length) {
+          for (let i = 0; i < itemsToAdd; i++) {
+            if (reviews3.list.results.length) {
+              currentItems.push(reviews3.list.results.shift());
+            }
+          }
+          setItems(currentItems);
+          setLoading(false);
+          // setPage((page) => page + 1);
+        } else {
+          setLoading(false);
+          setHasNextPage(false);
         }
-
-        setItems(currentItems);
-        setLoading(false);
-        // setPage((page) => page + 1);
-      } else {
-        setHasNextPage(false);
-      }
-    }, secondsToWait * 1000);
+      }, secondsToWait * 1000);
+    }
   };
 
   const reorder = () => {
-    const shuffled = shuffle(items);
-    setItems(shuffled);
     setSorting(true);
+    setSortType('Relevance');
+    setItems([...shuffle(items)]);
 
     setTimeout(() => {
       setSorting(false);
     }, 1200);
   };
 
-  // console.log(items);
+  const sortRatingsAsc = () => {
+    setSorting(true);
+    setSortType('Highest Ratings');
+    setItems([...items.sort((a, b) => (a.rating < b.rating ? 1 : -1))]);
+
+    setTimeout(() => {
+      setSorting(false);
+    }, 1200);
+  };
+
+  const sortHelpfulness = () => {
+    setSorting(true);
+    setSortType('Helpfulness');
+    setItems([
+      ...items.sort((a, b) =>
+        a.helpfulness < b.helpfulness ? 1 : a.rating < b.rating ? 0 : -1
+      )
+    ]);
+
+    setTimeout(() => {
+      setSorting(false);
+    }, 1200);
+  };
+
+  const sortRatingsDesc = () => {
+    setSorting(true);
+    setSortType('Lowest Ratings');
+    setItems([...items.sort((a, b) => (a.rating > b.rating ? 1 : -1))]);
+
+    setTimeout(() => {
+      setSorting(false);
+    }, 1200);
+  };
 
   return (
     <Container id='reviews__container'>
@@ -116,15 +180,15 @@ const ProductRatings = () => {
         >
           <div className='ratings__avg d-flex justify-content-left'>
             <h1 className='ratings__avg_num' ref={block}>
-              3.5
+              {average}
             </h1>
-            <StarAvg value={3.5} />
+            <StarAvg value={average} />
           </div>
           <h3 className='chart__title fs-5 my-2' style={{ textAlign: 'left' }}>
-            <strong>100%</strong> of reviews recommend this product
+            <strong>{percent}%</strong> of reviews recommend this product
           </h3>
           <div className='charts__container'>
-            <BarChart data={data} />
+            {items.length > 0 && <BarChart reviews={reviews} />}
             <h4 className='chart__subtitle' style={{ textAlign: 'left' }}>
               Size
             </h4>
@@ -142,41 +206,29 @@ const ProductRatings = () => {
           {/* {reviews.list && <Message>No Reviews</Message>} */}
           <div className='dropdown-group'>
             <h4 className='review__sort fs-5' style={{ textAlign: 'left' }}>
-              <strong>248 reviews, sorted by </strong>{' '}
+              <strong>
+                {items.length > 0 && items.length} reviews, sorted by{' '}
+              </strong>{' '}
             </h4>
             <div className='dropdown'>
-              <button className='dropbtn fs-5'>
-                <strong>Relevance</strong>
+              <button className='dropdown-btn fs-5'>
+                <strong>{sortType}</strong>
               </button>
               <div className='dropdown-content'>
                 <a onClick={reorder}>Relevance</a>
-                <a onClick={reorder}>Highest Rating</a>
+                <a onClick={sortHelpfulness}>Helpfulness</a>
+                <a onClick={sortRatingsAsc}>Highest Rating</a>
+                <a onClick={sortRatingsDesc}>Lowest Rating</a>
               </div>
             </div>
-            <div className='chevron'> &#x25BE;</div>
+            <div className='dropdown-chevron'> &#x25BE;</div>
           </div>
 
           <div
             className='__scrollable-parent'
             style={{ height: expandedView ? '86vh' : '660px' }}
           >
-            {items.length && loading ? (
-              items.map(
-                ({ review_id, summary, rating, reviewer_name, date, body }) => (
-                  <Review
-                    key={review_id}
-                    id={review_id}
-                    text={summary}
-                    date={date}
-                    name={reviewer_name}
-                    body={body}
-                    rating={rating}
-                    ref={createRef()}
-                    sorting={sorting}
-                  />
-                )
-              )
-            ) : (
+            {items.length > 0 && !loading ? (
               <AnimateReviews>
                 {items.map(
                   ({
@@ -184,6 +236,9 @@ const ProductRatings = () => {
                     summary,
                     rating,
                     reviewer_name,
+                    response,
+                    helpfulness,
+                    recommend,
                     date,
                     body
                   }) => (
@@ -194,6 +249,9 @@ const ProductRatings = () => {
                       date={date}
                       name={reviewer_name}
                       body={body}
+                      response={response}
+                      helpfulness={helpfulness}
+                      recommend={recommend}
                       rating={rating}
                       ref={createRef()}
                       sorting={sorting}
@@ -201,6 +259,35 @@ const ProductRatings = () => {
                   )
                 )}
               </AnimateReviews>
+            ) : (
+              items.map(
+                ({
+                  review_id,
+                  summary,
+                  rating,
+                  reviewer_name,
+                  response,
+                  helpfulness,
+                  recommend,
+                  date,
+                  body
+                }) => (
+                  <Review
+                    key={review_id}
+                    id={review_id}
+                    text={summary}
+                    date={date}
+                    name={reviewer_name}
+                    body={body}
+                    response={response}
+                    helpfulness={helpfulness}
+                    recommend={recommend}
+                    rating={rating}
+                    ref={createRef()}
+                    sorting={sorting}
+                  />
+                )
+              )
             )}
 
             {loading && hasNextPage && (
@@ -241,6 +328,7 @@ const ProductRatings = () => {
             </button>
           </div>
         </div>
+        <ReviewModal show={show} handleClose={handleClose} />
       </div>
     </Container>
   );

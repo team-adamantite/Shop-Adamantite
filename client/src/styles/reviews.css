@@ -7,6 +7,15 @@
   padding: 0.2rem;
   box-sizing: border-box;
   max-width: 100%;
+  justify-content: center;
+}
+
+.output {
+  z-index: 60;
+}
+
+.review__recommended i {
+  margin-right: 0.1rem;
 }
 
 .reviews__btn {
@@ -25,11 +34,11 @@
 .reviews__col {
   width: 58%;
   padding: 0.6rem;
+  padding-right: 0;
   padding-top: 0.4rem;
   margin: 0;
   margin-top: 0.4rem;
   overflow-y: hidden;
-  /* width: 80vw; */
 }
 
 .charts__col {
@@ -98,11 +107,64 @@
   box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
   z-index: 23;
 }
-/*
-.review__card:hover {
-  box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
-  z-index: 22;
-} */
+
+.review__header {
+  margin-top: 0.2rem;
+}
+
+.review__title-first {
+  padding-top: 0;
+  display: inline-block;
+  white-space: nowrap;
+  overflow: hidden;
+}
+
+.review__title {
+  padding-top: 0;
+  padding-right: 1.4rem;
+  font-size: 0.94rem;
+  overflow: hidden;
+  color: #525252;
+}
+
+.review__line {
+  margin-top: 0.12rem;
+  margin-bottom: 0;
+}
+
+.review__badge {
+  margin-right: 0.2rem;
+}
+
+.review__response {
+  margin-top: 0.6rem;
+  margin-left: 1.2rem;
+}
+
+.review__body {
+  margin-top: 0.6rem;
+}
+
+.review__text-sm {
+  font-size: 0.8rem;
+}
+
+.review__text-sm-underline {
+  font-size: 0.8rem;
+  margin-left: 0.2rem;
+  text-decoration: underline;
+}
+
+.review__text-sm-light {
+  font-size: 0.8rem;
+  margin-left: 0.2rem;
+  margin-right: 0.2rem;
+}
+
+.review__vertical-bar {
+  margin-left: 0.2rem;
+  margin-right: 0.2rem;
+}
 
 .ratings__avg_num {
   font-weight: bold;
@@ -110,14 +172,14 @@
   /* font-weight: 400; */
 }
 
-.chevron {
+.dropdown-chevron {
   color: #212529;
   display: inline-block;
   font-size: 1.4rem;
   box-sizing: content;
 }
 
-.chevron:hover {
+.dropdown-chevron:hover {
   font-size: 1.65rem;
 }
 
