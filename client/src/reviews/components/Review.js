@@ -33,9 +33,7 @@ const Review = forwardRef(
 
     useEffect(() => {
       if (text) {
-        setTitle(
-          text.substring(0, Math.floor(ref.current.offsetWidth) / 8) + '...'
-        );
+        setTitle(text.substring(0, Math.floor(ref.current.offsetWidth) / 8));
         setSubTitle(
           '...' +
             text.substring(Math.floor(ref.current.offsetWidth) / 8, text.length)
@@ -58,7 +56,7 @@ const Review = forwardRef(
                 <div className='review__header d-flex justify-content-between '>
                   <StarRating value={rating} />
                   <p className='review__date text-end text-muted'>
-                    {Math.floor(Math.random() * 3) + 1 === 3 && (
+                    {date.startsWith('2021') && (
                       <i
                         className='review__badge fa fa-check-circle fa-lg'
                         aria-hidden='true'
@@ -70,6 +68,7 @@ const Review = forwardRef(
                 <div className='review__title-container'>
                   <strong className='review__title-first text-dark my-1'>
                     {title}
+                    {subTitle.length > 3 && '...'}
                   </strong>
                   <div className='review__title review__text'>
                     {subTitle.length > 3 && subTitle}

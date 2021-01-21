@@ -21,7 +21,9 @@ const RelatedModal = ({ comparisonProducts }) => {
     let features = {}
 
     for (let i = 0; i < features.length; i++) {
-
+      features.id: counter;
+      features.value: '✓';
+      features.category: features.
     }
   }
 

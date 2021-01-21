@@ -19,7 +19,7 @@ const RelatedSlide = ({product, thumbnail, handleOpen, handleClose }) => {
 
   return (
     <>
-      <div onClick={() => handleOpen(product)}>
+      <div onClick={() => handleOpen(product, thumbnail)}>
         <div className="modalStar">&#9733;</div>
         <div style={thumbnailStyle}></div>
         <div className="productCategory">{product.category}</div>
