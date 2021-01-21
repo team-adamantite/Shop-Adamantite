@@ -34,8 +34,10 @@ const ProductRatings = () => {
   const product = useSelector((state) => state.currentProduct);
   const { id } = product;
   const reviews = useSelector((state) => state.reviews);
-  const [rating, setRating] = useState(0);
+  const [comment, setComment] = useState('');
   const [items, setItems] = useState([]);
+  const [show, setShow] = useState(false);
+  const [rating, setRating] = useState(0);
   const [removedItems, setRemovedItems] = useState([]);
   const [page, setPage] = useState(1);
   const [hasNextPage, setHasNextPage] = useState(true);
@@ -46,8 +48,6 @@ const ProductRatings = () => {
   const [sortType, setSortType] = useState('Relevance');
   const [percent, setPercent] = useState(100);
   const [average, setAverage] = useState(3);
-
-  const [show, setShow] = useState(false);
   const [expandedView, setExpandedView] = useState(false);
 
   const handleClose = () => setShow(false);

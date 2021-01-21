@@ -98,7 +98,9 @@ div {
   display: block;
 }
 
-.dropdown-content a:nth-last-child(1) {
+.dropdown-content a:nth-last-child(1),
+.dropdown-content a:nth-last-child(2),
+.dropdown-content a:nth-last-child(3) {
   border-top: 1px solid #000;
 }
 
@@ -113,7 +115,6 @@ div {
   display: block;
   /* font-size: 1.5rem; */
 }
-
 .overlay {
   width: 100%;
   height: 100%;
@@ -157,10 +158,15 @@ div {
   height: auto;
 }
 
+.img-thumbnail {
+  width: 200px;
+  height: auto;
+}
+
 .styleThumb {
   border-radius: 50%;
   float: left;
-  width:  50px;
+  width: 50px;
   height: 50px;
   object-fit: cover;
 }
@@ -175,4 +181,3 @@ div {
   margin-right: auto;
   width: 50%;
 }
-
