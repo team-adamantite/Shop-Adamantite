@@ -200,7 +200,7 @@ export const reviews2 = {
         date: '2019-01-01T00:00:00.000Z',
         summary: 'This product was great!',
         body:
-          'I really did or did not like this product based on whether it was sustainably sourced. Then I found out that its made from nothing at all.'
+          'I >>>>>>> mainreally did or did not like this product based on whether it was sustainably sourced. Then I found out that its made from nothing at all.'
       },
       {
         review_id: 92484,

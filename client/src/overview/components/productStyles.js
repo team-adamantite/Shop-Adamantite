@@ -16,7 +16,7 @@ var productStyles = ({
 
   const currentSku = React.useState();
 
-  console.log('this is styles ----->', styles);
+  // console.log('this is styles ----->', styles);
 
   return (
     <div id='productInfo'>
@@ -26,6 +26,12 @@ var productStyles = ({
           {styles.results.map((style) => {
             return (
               <span className='styleSpan' key={style.style_id}>
+                <img
+                  className='styleImg'
+                  src={style.photos[0].thumbnail_url}
+                  onClick={() => changeStyle(style)}
+                />
+
                 <img
                   className='styleThumb'
                   src={style.photos[0].thumbnail_url}
