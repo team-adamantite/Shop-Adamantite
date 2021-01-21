@@ -70,11 +70,39 @@
   font-size: 1.5rem;
 }
 
-.review__sort_span:hover ~ .chevron {
+/* .review__sort_span:hover ~ .chevron {
   cursor: crosshair;
   font-size: 1.5rem;
   animation: 0.65s anim-rotate-360 ease forwards;
+} */
+
+.dropdown-menu {
+  z-index: 50;
 }
+
+.review__card {
+  border-radius: 2px 2px 4px 4px;
+  /* border: 1px solid #bebebe; */
+  position: relative;
+  /* box-shadow: rgba(0, 0, 0, 0.09) 0px 2px 1px, rgba(0, 0, 0, 0.09) 0px 4px 2px,
+    rgba(0, 0, 0, 0.09) 0px 8px 4px, rgba(0, 0, 0, 0.09) 0px 16px 8px,
+    rgba(0, 0, 0, 0.09) 0px 32px 16px; */
+  transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+  z-index: 22;
+}
+
+.review__card_sorting,
+.review__card:hover {
+  border-radius: 2px 2px 4px 4px;
+  border: 1px solid #000;
+  box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
+  z-index: 23;
+}
+/*
+.review__card:hover {
+  box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
+  z-index: 22;
+} */
 
 .ratings__avg_num {
   font-weight: bold;
@@ -83,16 +111,14 @@
 }
 
 .chevron {
+  color: #212529;
   display: inline-block;
-  cursor: crosshair;
   font-size: 1.4rem;
   box-sizing: content;
 }
 
 .chevron:hover {
-  cursor: crosshair;
   font-size: 1.65rem;
-  animation: 0.65s anim-rotate-360 ease forwards;
 }
 
 @keyframes anim-rotate-360 {

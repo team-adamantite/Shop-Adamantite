@@ -232,3 +232,73 @@ export const reviews2 = {
     ]
   }
 };
+
+export const reviews3 = {
+  list: {
+    results: [
+      {
+        review_id: 91466,
+        rating: 5,
+        reviewer_name: 'Gandalf',
+        date: '2019-01-01T00:00:00.000Z',
+        summary: 'This product was great!',
+        body:
+          'I really did or did not like this product based on whether it was sustainably sourced. Then I found out that its made from nothing at all.'
+      },
+      {
+        review_id: 91467,
+        rating: 4,
+        reviewer_name: 'Gandalf',
+        date: '2019-01-01T00:00:00.000Z',
+        summary: 'This product was great!',
+        body:
+          'I really did or did not like this product based on whether it was sustainably sourced. Then I found out that its made from nothing at all.'
+      },
+      {
+        review_id: 91468,
+        rating: 5,
+        reviewer_name: 'Gandalf',
+        date: '2019-01-01T00:00:00.000Z',
+        summary: 'This product was great!',
+        body:
+          'I really did or did not like this product based on whether it was sustainably sourced. Then I found out that its made from nothing at all.'
+      },
+      {
+        review_id: 91469,
+        rating: 3,
+        reviewer_name: 'Gandalf',
+        date: '2019-01-01T00:00:00.000Z',
+        summary: 'This product was great!',
+        body:
+          'I really did or did not like this product based on whether it was sustainably sourced. Then I found out that its made from nothing at all.'
+      },
+      {
+        review_id: 91470,
+        rating: 4,
+        reviewer_name: 'Gandalf',
+        date: '2019-01-01T00:00:00.000Z',
+        summary: 'This product was great!',
+        body:
+          'I really did or did not like this product based on whether it was sustainably sourced. Then I found out that its made from nothing at all.'
+      },
+      {
+        review_id: 91471,
+        rating: 2,
+        reviewer_name: 'Gandalf',
+        date: '2019-01-01T00:00:00.000Z',
+        summary: 'This product was great!',
+        body:
+          'I really did or did not like this product based on whether it was sustainably sourced. Then I found out that its made from nothing at all.'
+      },
+      {
+        review_id: 91472,
+        rating: 3,
+        reviewer_name: 'Gandalf',
+        date: '2019-01-01T00:00:00.000Z',
+        summary: 'This product was great!',
+        body:
+          'I really did or did not like this product based on whether it was sustainably sourced. Then I found out that its made from nothing at all.'
+      }
+    ]
+  }
+};

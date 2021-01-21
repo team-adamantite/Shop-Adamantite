@@ -1,5 +1,6 @@
-import React, { useState, useEffect, useRef, Fragment } from 'react';
+import React, { useState, useEffect, useRef, createRef, Fragment } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import shuffle from 'lodash/shuffle';
 import { Waypoint } from 'react-waypoint';
 import {
   Row,
@@ -14,17 +15,19 @@ import {
 } from 'react-bootstrap';
 
 import Review from './Review';
+import AnimateReviews from './AnimateReviews';
 import Message from './Message';
 import BarChart from './BarChart';
 import LineChart from './LineChart';
 import HalfStarRating from './HalfStarRating';
 import StarRating from './StarRating';
 import StarAvg from './StarAvg';
-import { data, data2, data3, reviews2 } from '../utils/data';
+import { data, data2, data3, reviews2, reviews3 } from '../utils/data';
 import '../../styles/chart.css';
 import '../../styles/reviews.css';
 
 import { getProductReviews } from '../reviewActions/productReviewsActions';
+import { reviews } from '../../dummyData';
 
 const ProductRatings = () => {
   const dispatch = useDispatch();
@@ -34,9 +37,11 @@ const ProductRatings = () => {
   const [comment, setComment] = useState('');
   const [rating, setRating] = useState(0);
   const [items, setItems] = useState([]);
+  const [removedItems, setRemovedItems] = useState([]);
   const [page, setPage] = useState(1);
   const [hasNextPage, setHasNextPage] = useState(true);
   const [loading, setLoading] = useState(false);
+  const [sorting, setSorting] = useState(false);
   const [show, setShow] = useState(false);
   const [expandedView, setExpandedView] = useState(false);
 
@@ -53,11 +58,18 @@ const ProductRatings = () => {
 
   useEffect(() => {
     dispatch(getProductReviews(id));
-    // if (reviews.length) {
-    //   setItems(reviews.list.results);
-    // }
+
+    if (reviews.length) {
+      setItems(reviews.list.results);
+    }
+
+    setTimeout(() => {
+      reorder();
+    }, 1200);
+
+    setSorting(false);
     // eslint-disable-next-line
-  }, [dispatch, id]);
+  }, [reorder]); // dispatch, id
 
   console.log(reviews2.list.results.length - items.length);
 
@@ -67,7 +79,6 @@ const ProductRatings = () => {
 
     setLoading(true);
 
-    // fake an async ajax call with setTimeout
     setTimeout(() => {
       // add data
       let currentItems = items;
@@ -84,6 +95,16 @@ const ProductRatings = () => {
         setHasNextPage(false);
       }
     }, secondsToWait * 1000);
+  };
+
+  const reorder = () => {
+    const shuffled = shuffle(items);
+    setItems(shuffled);
+    setSorting(true);
+
+    setTimeout(() => {
+      setSorting(false);
+    }, 1200);
   };
 
   console.log(items);
@@ -122,19 +143,74 @@ const ProductRatings = () => {
           style={{ width: expandedView ? '70vw' : '60vw' }}
         >
           {/* {reviews.list && <Message>No Reviews</Message>} */}
-          <h4 className='review__sort fs-5' style={{ textAlign: 'left' }}>
-            <strong>248 reviews, sorted by </strong>{' '}
-            <strong className='review__sort_span'>relevance </strong>
+          <div className='dropdown-group'>
+            <h4 className='review__sort fs-5' style={{ textAlign: 'left' }}>
+              <strong>248 reviews, sorted by </strong>{' '}
+              {/* <button className='review__sort_span' onClick={reorder}>
+              relevance{' '}
+            </button>
+            <div className='chevron'> &#x25BE;</div> */}
+            </h4>
+            <div class='dropdown'>
+              <button class='dropbtn fs-5'>
+                <strong>Relevance</strong>
+              </button>
+              <div class='dropdown-content'>
+                <a onClick={reorder}>Relevance</a>
+                <a onClick={reorder}>Highest Rating</a>
+              </div>
+            </div>
             <div className='chevron'> &#x25BE;</div>
-          </h4>
+          </div>
 
           <div
             className='__scrollable-parent'
             style={{ height: expandedView ? '86vh' : '660px' }}
           >
-            {items.map((review) => {
+            {items.length && loading ? (
+              items.map(
+                ({ review_id, summary, rating, reviewer_name, date, body }) => (
+                  <Review
+                    key={review_id}
+                    id={review_id}
+                    text={summary}
+                    date={date}
+                    name={reviewer_name}
+                    body={body}
+                    rating={rating}
+                    ref={createRef()}
+                    sorting={sorting}
+                  />
+                )
+              )
+            ) : (
+              <AnimateReviews>
+                {items.map(
+                  ({
+                    review_id,
+                    summary,
+                    rating,
+                    reviewer_name,
+                    date,
+                    body
+                  }) => (
+                    <Review
+                      key={review_id}
+                      id={review_id}
+                      text={summary}
+                      date={date}
+                      name={reviewer_name}
+                      body={body}
+                      rating={rating}
+                      ref={createRef()}
+                      sorting={sorting}
+                    />
+                  )
+                )}
+              </AnimateReviews>
+            )}
+            {/* {items.map((review) => {
               return (
-                // <Review key={review.review_id} review={review} />
                 <Fragment key={review.review_id}>
                   <ListGroup>
                     <ListGroup.Item className='d-inline-block'>
@@ -151,7 +227,7 @@ const ProductRatings = () => {
                   </ListGroup>
                 </Fragment>
               );
-            })}
+            })} */}
             {loading && hasNextPage && (
               <div
                 className='spinner-border text-primary text-center  m-2'
@@ -164,7 +240,6 @@ const ProductRatings = () => {
               </div>
             )}
             <div className='infinite-scroll__waypoint'>
-              {/* waypoint */}
               {!loading && hasNextPage && (
                 <Waypoint onEnter={loadMoreItems} bottomOffset='-1%' />
               )}
