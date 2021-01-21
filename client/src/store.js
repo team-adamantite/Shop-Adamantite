@@ -3,6 +3,7 @@ import thunk from 'redux-thunk';
 import { composeWithDevTools } from 'redux-devtools-extension';
 import productReviewReducer from './reviews/reviewReducers/reviewsReducer';
 import { product, styles } from './dummyData.js';
+//import { relatedProductsReducer, relatedDetailsReducer } from './related-outfits/reducers/relatedReducer.js'
 import productStylesReducer from './overview/overviewReducers/stylesReducer.js';
 import currentStyleReducer from './overview/overviewReducers/currentStyle.js';
 
@@ -26,9 +27,10 @@ var currentProductReducer = (state = { currentProduct: {} }, action) => {
 const rootReducer = combineReducers({
   currentProduct: currentProductReducer,
   productStyles: productStylesReducer,
+  reviews: productReviewReducer,
   currentStyle: currentStyleReducer,
-  reviews: productReviewReducer
-})
+  relatedProducts: relatedProductsReducer,
+});
 
 const store = createStore(
   rootReducer,

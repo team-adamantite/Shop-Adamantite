@@ -14,7 +14,6 @@ var productStyles = ({currentProduct, styles, currentStyle, changeStyles, change
 
   console.log('this is styles ----->',styles)
 
-
   return (
     <div id = 'productInfo'>
       <label>Style > {currentStyle ? currentStyle.name : styles.results[0].name}
@@ -22,6 +21,9 @@ var productStyles = ({currentProduct, styles, currentStyle, changeStyles, change
           {styles.results.map((style) => {
             return (
               <span className = 'styleSpan' key = {style.style_id}>
+
+                <img className = 'styleImg' src = {style.photos[0].thumbnail_url} onClick = {() => changeStyle(style)}/>
+
                 <img className = 'styleThumb' src = {style.photos[0].thumbnail_url} onClick = {() => changeStyle(style)}/>
               </span>
             )

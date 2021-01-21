@@ -113,7 +113,6 @@ div {
   display: block;
   /* font-size: 1.5rem; */
 }
-
 .overlay {
   width: 100%;
   height: 100%;
@@ -156,6 +155,11 @@ div {
   width: 200px;
   height: auto;
 }
+=======
+.img-thumbnail {
+  width: 200px;
+  height: auto;
+}
 
 .styleThumb {
   border-radius: 50%;
@@ -175,4 +179,3 @@ div {
   margin-right: auto;
   width: 50%;
 }
-
