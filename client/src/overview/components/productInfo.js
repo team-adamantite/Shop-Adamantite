@@ -1,11 +1,16 @@
 import React from 'react';
-import {connect} from 'react-redux';
+import {connect, useDispatch, useSelector} from 'react-redux';
+import StarRating from '../../reviews/components/StarRating';
+
 
 var productInfo = ({currentProduct, currentStyle}) => {
+  const dispatch = useDispatch();
+  const reviews = useSelector((state) => state.reviews);
+  console.log('reviews -------->', reviews)
   return (
     <div id = 'productInfo'>
           <span>
-          Rating goes here
+          <StarRating value = { (reviews.list) ? reviews.list.results[0].rating : 0}/>
           </span>
         <a href = 'http://localhost:3000/'>Read all Reviews</a>
       <br/>

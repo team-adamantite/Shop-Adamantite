@@ -61,14 +61,14 @@ export const products = [
 ];
 
 export const product = {
-  id: 12014,
+  id: 12012,
   campus: 'hratx',
-  name: 'Morning Joggers',
-  slogan: 'Make yourself a morning person',
+  name: 'Camo Onesie',
+  slogan: 'Blend in to your crowd',
   description:
-    "Whether you're a morning person or not.  Whether you're gym bound or not.  Everyone looks good in joggers.",
-  category: 'Pants',
-  default_price: '40.00',
+    'The So Fatigues will wake you up and fit you in. This high energy camo will have you blending in to even the wildest surroundings.',
+  category: 'Jackets',
+  default_price: '140.00',
   created_at: '2021-01-12T21:43:28.366Z',
   updated_at: '2021-01-12T21:43:28.366Z',
 };

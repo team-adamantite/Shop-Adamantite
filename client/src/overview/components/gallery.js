@@ -10,8 +10,8 @@ var gallery = ({styles, currentStyle}) => {
     <Carousel width = {'450px'} height = {'400px'}infiniteLoop={true} thumbWidth={"70px"}>
       {currentStyle.photos && currentStyle.photos.map((photo, index) => {
         return (
-          <div key={index}>
-            <img className = {'galleryPic'} src={photo.url} />
+          <div style = {{height: '500px', width: '500px', backgroundColor: 'pink'}} key={index}>
+            <img className = {'galleryPic'} style = {{height: '100%', width: '100%'}} src={photo.url} />
             <p className="legend">photo {index}</p>
           </div>
         )
