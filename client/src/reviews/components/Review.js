@@ -58,7 +58,7 @@ const Review = forwardRef(
                 <div className='review__header d-flex justify-content-between '>
                   <StarRating value={rating} />
                   <p className='review__date text-end text-muted'>
-                    {Math.floor(Math.random() * 3) + 1 === 4 && (
+                    {Math.floor(Math.random() * 3) + 1 === 3 && (
                       <i
                         className='review__badge fa fa-check-circle fa-lg'
                         aria-hidden='true'
