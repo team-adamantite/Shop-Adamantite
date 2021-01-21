@@ -71,6 +71,7 @@ export const product = {
   default_price: '140.00',
   created_at: '2021-01-12T21:43:28.366Z',
   updated_at: '2021-01-12T21:43:28.366Z',
+
   features: [
     {
       feature: 'Fabric',
