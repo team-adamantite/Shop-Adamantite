@@ -11,6 +11,8 @@
   "license": "MIT",
   "homepage": "https://github.com/team-adamantite/Front-End-Capstone",
   "dependencies": {
+    "@material-ui/core": "^4.11.2",
+    "@material-ui/icons": "^4.11.2",
     "axios": "^0.21.1",
     "babel-loader": "^8.1.0",
     "config": "^3.3.3",
@@ -18,6 +20,7 @@
     "css-loader": "^4.2.1",
     "d3": "^6.3.1",
     "express": "^4.17.1",
+    "lodash": "^4.17.20",
     "react": "latest",
     "react-bootstrap": "^1.4.3",
     "react-dom": "latest",
@@ -39,7 +42,8 @@
     "babel-plugin-transform-runtime": "^6.23.0",
     "nodemon": "^2.0.7",
     "webpack": "^4.44.1",
-    "webpack-cli": "^3.3.12"
+    "webpack-cli": "^3.3.12",
+    "webpack-dev-server": "^3.11.2"
   },
   "development": [
     "last 1 chrome version",
