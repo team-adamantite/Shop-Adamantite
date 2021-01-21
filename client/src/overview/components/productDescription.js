@@ -1,4 +1,5 @@
 import React from 'react';
+import {connect} from 'react-redux';
 
 var productDescription = ({currentProduct}) => {
   return (
@@ -8,4 +9,10 @@ var productDescription = ({currentProduct}) => {
   )
 }
 
-export default productDescription;
+var mapStateToProps = (state) => (
+  {currentProduct: state.currentProduct}
+);
+
+var productDescriptionContainer = connect(mapStateToProps, null)(productDescription);
+
+export default productDescriptionContainer;

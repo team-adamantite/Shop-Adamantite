@@ -11,7 +11,7 @@ export default class App extends Component {
   render() {
     return (
       <div id="main">
-        {/* <OverviewContainer /> */}
+        <OverviewContainer />
         <QAcontainer />
         <ProductRatings />
       </div>
