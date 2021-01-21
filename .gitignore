@@ -36,6 +36,7 @@ npm-debug.log
 node_modules
 client/public/bundle.js
 client/config/config.js
+package-lock.json
 
 # Floobits
 .floo
