@@ -307,11 +307,11 @@ function LineChart({ data, split }) {
       .join((enter) =>
         enter
           .append('image')
-          // .attr('xlink:href', 'https://img.icons8.com/ios/452/chevron-down.png')
-          .attr(
-            'xlink:href',
-            'https://www.flaticon.com/svg/vstatic/svg/271/271210.svg?token=exp=1611026698~hmac=778780a79054f6f2bb17325ef64b4720'
-          )
+          .attr('xlink:href', 'https://img.icons8.com/ios/452/chevron-down.png')
+          // .attr(
+          //   'xlink:href',
+            // 'https://www.flaticon.com/svg/vstatic/svg/271/271210.svg?token=exp=1611026698~hmac=778780a79054f6f2bb17325ef64b4720'
+          // )
           .attr('width', 40)
           .attr('height', 40)
           .attr('y', (entry, index) => yScale(index) - 15)
