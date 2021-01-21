@@ -47,7 +47,7 @@ div {
 }
 
 /* Dropdown Button */
-.dropbtn {
+.dropdown-btn {
   color: #212529;
   margin: 0.1rem;
   font-size: 1rem;
@@ -56,10 +56,10 @@ div {
   border: none;
   text-decoration: underline;
 }
-
-.dropbtn strong:hover {
+/*
+.dropdown-btn strong:hover {
   font-size: 1.5rem;
-}
+} */
 
 .dropdown-group {
   display: flex;
@@ -73,7 +73,7 @@ div {
   font-weight: 400;
 }
 
-.dropdown:hover ~ .chevron {
+.dropdown:hover ~ .dropdown-chevron {
   animation: 0.65s anim-rotate-360 ease forwards;
 }
 

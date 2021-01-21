@@ -20,7 +20,7 @@ const getProductReviews = (id) => async (dispatch) => {
   } catch (err) {
     dispatch({
       type: 'PRODUCT_REVIEWS_ERROR',
-      payload: err.response.statusText
+      payload: err
     });
   }
 };

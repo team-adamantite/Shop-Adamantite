@@ -1,13 +1,47 @@
-import React, { useRef, useEffect } from 'react';
+import React, { useRef, useState, useEffect } from 'react';
 import { select, scaleBand, scaleLinear, max } from 'd3';
 import useResizeObserver from '../utils/useResizeObserver';
 import rightRoundedRect from '../utils/handleCornersSvg';
 import '../../styles/chart.css';
 
-function BarChart({ data }) {
+function BarChart({ reviews }) {
   const svgRef = useRef();
   const wrapperRef = useRef();
   const dimensions = useResizeObserver(wrapperRef);
+  const [data, setData] = useState([
+    {
+      name: '1 stars',
+      value: 5
+    },
+    {
+      name: '2 stars',
+      value: 2
+    },
+    {
+      name: '3 stars',
+      value: 2
+    },
+    {
+      name: '4 stars',
+      value: 4
+    },
+    {
+      name: '5 stars',
+      value: 1
+    }
+  ]);
+
+  useEffect(() => {
+    if (reviews) {
+      setData((prevData) => {
+        reviews.list.results.forEach((review) => {
+          prevData[Math.floor(review.rating.toFixed(0)) - 1].value =
+            prevData[Math.floor(review.rating.toFixed(0)) - 1].value + 1;
+        });
+        return prevData.reverse();
+      });
+    }
+  }, [reviews]);
 
   useEffect(() => {
     const svg = select(svgRef.current);
@@ -31,9 +65,6 @@ function BarChart({ data }) {
       .attr('offset', '100%')
       .style('stop-color', '#4391d0') // #1266f1 #007bff #3f51b5 #4391d0 #4267b2
       .style('stop-opacity', 1);
-
-    // sort the data
-    // data.sort((a, b) => b.value - a.value);
 
     const yScale = scaleBand()
       .paddingInner(0.4)

@@ -300,21 +300,26 @@ function LineChart({ data, split }) {
         );
     }
 
+    let svgImg = `<svg version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+    viewBox="0 0 256 256" style="enable-background:new 0 0 256 256;" xml:space="preserve">
+ <g>
+   <g>
+     <polygon points="225.813,48.907 128,146.72 30.187,48.907 0,79.093 128,207.093 256,79.093"/>
+   </g>
+ </g>
+  </svg>`;
+
     // draw arrow markers
     svg
       .selectAll('.point')
       .data(data, (entry, index) => entry.name)
       .join((enter) =>
         enter
-          .append('image')
-          .attr('xlink:href', 'https://img.icons8.com/ios/452/chevron-down.png')
-          // .attr(
-          //   'xlink:href',
-            // 'https://www.flaticon.com/svg/vstatic/svg/271/271210.svg?token=exp=1611026698~hmac=778780a79054f6f2bb17325ef64b4720'
-          // )
+          .append('svg')
           .attr('width', 40)
           .attr('height', 40)
           .attr('y', (entry, index) => yScale(index) - 15)
+          .html(svgImg)
       )
       .attr('class', 'point')
       .transition()
