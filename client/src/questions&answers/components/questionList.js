@@ -4,7 +4,7 @@ import Question from './question';
 import token from '../../../config/config.js';
 
 const QuestionList = (props) => {
-  //console.log(props.productId);
+  // console.log(props.productId);
   const [questions, setQuestions] = useState([]);
   function loadQuestionList(id) {
     axios

@@ -1,9 +1,8 @@
 import React from 'react';
-import ProductInfo from './productInfo.js';
-import ProductInfoContainer from '../containers/productInfoContainer';
-import ProductStylesContainer from '../containers/productStylesContainer';
-import ProductDescriptionContainer from '../containers/productDescriptionContainer';
-import GalleryContainer from '../containers/galleryContainer';
+import ProductInfoContainer from './productInfo';
+import ProductStylesContainer from './productStyles';
+import ProductDescriptionContainer from './productDescription';
+import GalleryContainer from './gallery';
 
 function overviewMain () {
   return(

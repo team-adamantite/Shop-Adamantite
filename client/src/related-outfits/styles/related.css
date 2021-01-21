@@ -1,21 +1,54 @@
 #relatedContainer {
   font-family: 'Source Sans Pro', sans-serif;
   font-weight: 300;
-  padding: 0.2rem;
+  /* padding: 0.2rem; */
   box-sizing: border-box;
-  max-width: 100%;
+  max-width: 62%;
 }
 
-.productName {}
+h1 {
+  font-size: 24px;
+  font-weight: bold;
+  text-align: center;
+  padding-bottom: 1.2em;
+}
+
+.productName {
+  font-size: 18px;
+  font-weight: bold;
+  text-align: left;
+  padding-top: 2em;
+}
 
 .productCategory {}
 
-.productDesc {}
+.productDesc {
+  font-size: 16px;
+  text-align: justify;
+  line-height: 1.5;
+  padding-top: 1em;
+  padding-right: 3em;
+}
 
-.productPrice {}
+.productPrice {
+  text-align: left;
+}
 
 .productRating {}
 
-.modalStar {}
+.modalStar {
+  float: right;
+  text-align: right;
+  color: 	#484848;
+  padding-right: 1em;
+  margin-right: 3em;
+}
 
-.modal {}
+.modalHeader {
+  font-size: 22px;
+  font-weight: bold;
+}
+
+.modalRows {
+  font-size: 18px;
+}
