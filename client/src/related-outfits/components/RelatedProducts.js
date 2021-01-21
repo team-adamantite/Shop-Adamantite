@@ -15,48 +15,26 @@ const RelatedProducts = (props) => {
   const [productIds, setProducts] = useState([]);
   const [thumbnails, setThumbnails] = useState([]);
   const [show, setShow] = useState(false);
-  const product = useSelector(state => state.currentProduct);
-  const products = useSelector(state => state.relatedProducts.productIds);
-  // const productId = useSelector(state => state.currentProduct.id);
-  const { id, name, category, price } = product;
+  const currentProduct = useSelector(state => state.currentProduct);
+  // const currentThumbnail = useSelector(state => state.productStyles.results[0].photos[0].thumbnail_url);
+  const products = useSelector(state => state.relatedProducts.productDetails);
+  const { id, name, category, price } = currentProduct;
 
-  useEffect(() => {
-    console.log('What even is this? ', products);
-  });
+  // useEffect(() => {
+  //   console.log('this is product ', product);
+  // })
 
   useLayoutEffect(() => {
       dispatch(getRelatedProducts(id))
   }, [dispatch, getRelatedProducts, id]);
 
-  // MAPPING FUNCTIONALITY
-  // .then(products => {
-  //   products.map(product => {
-  //     dispatch(getProductDetails(product))
-  //   })
-  // })
-
-
-  // useLayoutEffect(() => {
-  //   if (products) {
-  //     products.map(product => {
-  //       dispatch(getProductDetails(product, dispatch))
-  //     })
-  //   }
-  // }, [dispatch, products]);
-
-
-  // function getRelatedDetails() {
-  //   products.map(product => {
-  //     dispatch(getProductDetails(product, dispatch))
-  //   })
-  // }
-
   const tableProducts = [
-    { id: 1, value1: '✓', category: 'Does the Job', value2: 'Meh'},
-    { id: 2, value1: '✓', category: 'Impresses Strangers', value2: '✓'},
-    { id: 3, value1: 'They\'re never impressed.', category: 'Impresses Friends', value2: 'See left'},
+    { id: 1, value1: '', category: 'Features', value2: ''},
+    { id: 2, value1: '✓', category: 'Does the Job', value2: 'Meh'},
+    { id: 3, value1: '✓', category: 'Impresses Strangers', value2: '✓'},
+    { id: 4, value1: 'They\'re never impressed.', category: 'Impresses Friends', value2: 'See left'},
     { id: 5, value1: 'Taco Bell', category: 'Date Material', value2: '✓✓✓'},
-    { id: 4, value1: 'Do you know the deceased?', category: 'Can Be Worn at a Funeral', value2: 'Do you care about the deceased?'}
+    { id: 6, value1: 'Do you know the deceased?', category: 'Can Be Worn at a Funeral', value2: 'Do you care about the deceased?'}
   ];
 
   const columns = [
@@ -71,7 +49,8 @@ const RelatedProducts = (props) => {
     },
     {
       dataField: 'category',
-      text: 'Features'
+      text: '',
+      style: { backgroundColor: 'lightgray'}
     },
     {
       dataField: 'value2',
@@ -79,15 +58,30 @@ const RelatedProducts = (props) => {
     }
   ];
 
-  const handleOpen = () => setShow(true);
+  let comparisonProducts = {
+    currentProduct:
+      {
+        details: currentProduct
+        // thumbnail: currentThumbnail
+      },
+    compareProduct:
+      {
+        details: {},
+        thumbnail: ''
+      }
+  };
+
+  const handleOpen = (productDetails, compareThumbnail) => {
+    comparisonProducts.compareProduct.details = productDetails;
+    // comparisonProducts.compareProduct.thumbnail = compareThumbnail;
+    setShow(true);
+  }
   const handleClose = () => setShow(false);
 
   return (
     <>
 
-    <RelatedCarousel />
-
-    <Button variant="primary" onClick={handleOpen}>Open Modal</Button>
+    <RelatedCarousel handleOpen={handleOpen} handleClose={handleClose} />
 
     <Modal
       show={show}
@@ -99,12 +93,12 @@ const RelatedProducts = (props) => {
       </Modal.Header>
       <Modal.Body>
         <div style={{ padding: "20px", textAlign: "center"}}>
-          <BootstrapTable keyField="id" data={tableProducts} columns={columns} headerClasses="modalHeader" rowClasses="modalRows" />
+          <BootstrapTable keyField="id" data={comparisonProducts} columns={columns} headerClasses="modalHeader" rowClasses="modalRows" />
+          {/* <BootstrapTable keyField="id" data={tableProducts} columns={columns} headerClasses="modalHeader" rowClasses="modalRows" /> */}
         </div>
       </Modal.Body>
-
       <Modal.Footer>
-        <Button variant="primary" onClick={handleClose}>Close Modal</Button>
+        <Button variant="primary" onClick={handleClose}>Close</Button>
       </Modal.Footer>
     </Modal>
 

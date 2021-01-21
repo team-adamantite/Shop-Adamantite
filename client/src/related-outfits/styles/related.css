@@ -1,9 +1,14 @@
-#relatedContainer {
+.relatedContainer {
   font-family: 'Source Sans Pro', sans-serif;
   font-weight: 300;
   /* padding: 0.2rem; */
   box-sizing: border-box;
-  max-width: 62%;
+  /* max-width: 62%; */
+  padding: 1em;
+  margin-top: 2em;
+  margin-bottom: 2em;
+  border-top: 1px solid black;
+  border-bottom: 1px solid black;
 }
 
 h1 {
@@ -31,6 +36,7 @@ h1 {
 }
 
 .productPrice {
+  font-weight: bold;
   text-align: left;
 }
 
@@ -51,4 +57,8 @@ h1 {
 
 .modalRows {
   font-size: 18px;
+}
+
+.modalFeatureColumn {
+  background-color: lightgray;
 }

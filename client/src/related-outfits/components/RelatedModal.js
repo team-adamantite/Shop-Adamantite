@@ -11,7 +11,24 @@ const tableProducts = [
   { value1: 'Taco Bell', category: 'Date Material', value2: 'What date?'}
 ]
 
-const RelatedModal = () => {
+const RelatedModal = ({ comparisonProducts }) => {
+
+  let currentProduct = comparisonProducts.currentProduct;
+  let compProduct = comparisonProducts.compareProduct;
+
+  function featuresCheck(product) {
+    let counter = 2;
+    let features = {}
+
+    for (let i = 0; i < features.length; i++) {
+
+    }
+  }
+
+  // let data = {
+  //   {prod1: compare}
+  // }
+
   let product = products[0];
   const columns = [
     {

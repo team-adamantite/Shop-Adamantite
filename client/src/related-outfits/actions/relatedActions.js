@@ -9,29 +9,6 @@ export const GET_PRODUCT_DETAILS_FAILURE = 'GET_PRODUCT_DETAILS_FAILURE';
 
 const URL = 'https://app-hrsei-api.herokuapp.com/api/fec2/hratx';
 
-// export function getRelatedProducts (id) {
-//   return function(dispatch) {
-//     axios
-//       .get(`${URL}/products/${id}/related`, {
-//         headers: {
-//           Authorization: token
-//         }
-//       })
-//       .then(res => {
-//         dispatch({
-//           type: 'GET_RELATED_SUCCESS',
-//           payload: res.data
-//         })
-//       })
-//       .catch(err => {
-//         dispatch({
-//           type: 'GET_RELATED_FAILURE',
-//           payload: err.response.statusText
-//         })
-//       });
-//   }
-// };
-
 export function getRelatedProducts(id) {
   let productDetails = [];
   return function(dispatch) {
@@ -82,10 +59,3 @@ export function getRelatedProducts(id) {
       });
   }
 }
-
-
-
-// export {
-//   getRelatedProducts,
-//   getProductDetails
-// };

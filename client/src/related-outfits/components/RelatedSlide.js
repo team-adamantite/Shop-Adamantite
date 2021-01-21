@@ -5,7 +5,7 @@ import '../styles/related.css';
 // { name, description, category, default_price, thumbnail }
 // { name, category, default_price, thumbnail }
 
-const RelatedSlide = ({product, thumbnail }) => {
+const RelatedSlide = ({product, thumbnail, handleOpen, handleClose }) => {
 
   let thumbnailStyle = {
     backgroundImage: `url(${thumbnail})`,
@@ -19,12 +19,14 @@ const RelatedSlide = ({product, thumbnail }) => {
 
   return (
     <>
-      <div className="modalStar">&#9733;</div>
-      <div style={thumbnailStyle}></div>
-      <div className="productCategory">{product.category}</div>
-      <div className="productName">{product.name}</div>
-      <div className="productDesc">{product.description}</div>
-      <div className="productPrice">{product.default_price}</div>
+      <div onClick={() => handleOpen(product)}>
+        <div className="modalStar">&#9733;</div>
+        <div style={thumbnailStyle}></div>
+        <div className="productCategory">{product.category}</div>
+        <div className="productName">{product.name}</div>
+        <div className="productDesc">{product.description}</div>
+        <div className="productPrice">${product.default_price}</div>
+      </div>
     </>
   )
 }

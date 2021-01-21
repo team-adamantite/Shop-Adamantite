@@ -35,54 +35,9 @@ const ProductRatings = () => {
   const { id } = product;
   const reviews = useSelector((state) => state.reviews);
   const [comment, setComment] = useState('');
-  const [rating, setRating] = useState(0);
   const [items, setItems] = useState([]);
-  const [page, setPage] = useState(1);
-  const [hasNextPage, setHasNextPage] = useState(true);
-  const [loading, setLoading] = useState(false);
   const [show, setShow] = useState(false);
-
-  const handleClose = () => setShow(false);
-  const handleShow = () => setShow(true);
-
-  useEffect(() => {
-    dispatch(getProductReviews(id));
-    // if (reviews.length) {
-    //   setItems(reviews.list.results);
-    // }
-    // eslint-disable-next-line
-  }, [dispatch, id]);
-
-  console.log(reviews2.list.results.length - items.length);
-
-  const loadMoreItems = () => {
-    const itemsToAdd = 3;
-    const secondsToWait = 2;
-
-    setLoading(true);
-
-    // fake an async ajax call with setTimeout
-    setTimeout(() => {
-      // add data
-      let currentItems = items;
-      if (reviews2.list.results.length) {
-        for (let i = 0; i < itemsToAdd; i++) {
-          currentItems.push(reviews2.list.results.shift());
-        }
-
-        setItems(currentItems);
-        // setItems(currentItems);
-        setLoading(false);
-        // setPage((page) => page + 1);
-      } else {
-        setHasNextPage(false);
-      }
-    }, secondsToWait * 1000);
-  };
-
-  console.log(items);
   const [rating, setRating] = useState(0);
-  const [items, setItems] = useState([]);
   const [removedItems, setRemovedItems] = useState([]);
   const [page, setPage] = useState(1);
   const [hasNextPage, setHasNextPage] = useState(true);
@@ -93,8 +48,6 @@ const ProductRatings = () => {
   const [sortType, setSortType] = useState('Relevance');
   const [percent, setPercent] = useState(100);
   const [average, setAverage] = useState(3);
-
-  const [show, setShow] = useState(false);
   const [expandedView, setExpandedView] = useState(false);
 
   const handleClose = () => setShow(false);
