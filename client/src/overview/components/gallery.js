@@ -7,17 +7,32 @@ var gallery = ({styles, currentStyle}) => {
   console.log('what is the photo', currentStyle.photos)
   return (
     <span className = 'gallery'>
-    <Carousel width = {'450px'} height = {'400px'}infiniteLoop={true} thumbWidth={"70px"}>
-      {currentStyle.photos && currentStyle.photos.map((photo, index) => {
-        return (
-          <div style = {{height: '500px', width: '500px', backgroundColor: 'pink'}} key={index}>
-            <img className = {'galleryPic'} style = {{height: '100%', width: '100%'}} src={photo.url} />
-          </div>
-        )
-      })}
-    </Carousel>
+      <div id="carouselExampleIndicators" className="carousel slide" data-ride="carousel">
+  <ol className="carousel-indicators">
+    <li data-target="#carouselExampleIndicators" data-slide-to="0" className="active"></li>
+    <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
+    <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+  </ol>
+  <div className="carousel-inner">
+  {currentStyle.photos ? currentStyle.photos.map((photo, index) => {
+    return (
+      <div className="carousel-item">
+        <img src= {photo.url} key = {index} className="d-block w-100" alt="..."/>
+      </div>
+    )}
+  ): <div/>}
+  </div>
+  <a className="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+    <span className="carousel-control-prev-icon" aria-hidden="true"></span>
+    <span className="sr-only">Previous</span>
+  </a>
+  <a className="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+    <span className="carousel-control-next-icon" aria-hidden="true"></span>
+    <span className="sr-only">Next</span>
+  </a>
+</div>
     </span>
-  )
+)
 }
 
 var mapStateToProps = (state) => (

@@ -21,9 +21,9 @@ const QuestionList = (props) => {
         setQuestions(res.data.results);
       });
   }
-  useEffect(() => {
-    loadQuestionList(props.productId);
-  });
+  // useEffect(() => {
+  //   loadQuestionList(props.productId);
+  // });
 
   return (
     <div>
