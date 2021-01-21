@@ -79,12 +79,6 @@
   font-size: 1.5rem;
 }
 
-/* .review__sort_span:hover ~ .chevron {
-  cursor: crosshair;
-  font-size: 1.5rem;
-  animation: 0.65s anim-rotate-360 ease forwards;
-} */
-
 .dropdown-menu {
   z-index: 50;
 }
