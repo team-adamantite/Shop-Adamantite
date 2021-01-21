@@ -5,7 +5,7 @@ export const data = [
   },
   {
     name: '4 stars',
-    value: 25
+    value: 35
   },
   {
     name: '3 stars',
@@ -228,6 +228,92 @@ export const reviews2 = {
         summary: 'This product was great!',
         body:
           'I really did or did not like this product based on whether it was sustainably sourced. Then I found out that its made from nothing at all.'
+      }
+    ]
+  }
+};
+
+export const reviews3 = {
+  list: {
+    results: [
+      {
+        review_id: 91466,
+        rating: 5,
+        reviewer_name: 'Gandalf',
+        date: '2019-01-01T00:00:00.000Z',
+        summary: 'This product was great!',
+        body:
+          'I really did or did not like this product based on whether it was sustainably sourced. Then I found out that its made from nothing at all.',
+        helpfulness: 6,
+        recommend: true
+      },
+      {
+        review_id: 91467,
+        rating: 4,
+        reviewer_name: 'Gandalf',
+        date: '2019-01-01T00:00:00.000Z',
+        summary: 'This product was great!',
+        body:
+          'I really did or did not like this product based on whether it was sustainably sourced. Then I found out that its made from nothing at all.',
+        helpfulness: 11,
+        recommend: true
+      },
+      {
+        review_id: 91468,
+        rating: 5,
+        reviewer_name: 'Gandalf',
+        date: '2019-01-01T00:00:00.000Z',
+        summary:
+          'Lorem ipsum dolor sit amet consectetur adipisicing elit. Laudantium, nobis!',
+        body:
+          'I really did or did not like this product based on whether it was sustainably sourced. Then I found out that its made from nothing at all.',
+        helpfulness: 4,
+        recommend: true
+      },
+      {
+        review_id: 91469,
+        rating: 3,
+        reviewer_name: 'Gandalf',
+        date: '2019-01-01T00:00:00.000Z',
+        summary:
+          'Lorem ipsum dolor sit amet consectetur adipisicing elit. Blanditiis!',
+        body:
+          'I really did or did not like this product based on whether it was sustainably sourced. Then I found out that its made from nothing at all.',
+        helpfulness: 6
+      },
+      {
+        review_id: 91470,
+        rating: 4,
+        reviewer_name: 'Gandalf',
+        date: '2019-01-01T00:00:00.000Z',
+        summary:
+          'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Odio laboriosam ut, ad, maiores voluptates ipsum nemo iste fugit fuga est id deserunt.!',
+        body:
+          'I really did or did not like this product based on whether it was sustainably sourced. Then I found out that its made from nothing at all.',
+        helpfulness: 7,
+        recommend: true
+      },
+      {
+        review_id: 91471,
+        rating: 2,
+        reviewer_name: 'Gandalf',
+        date: '2019-01-01T00:00:00.000Z',
+        summary:
+          'Lorem, ipsum dolor sit amet consectetur adipisicing elit. Maxime, dicta voluptates!',
+        body:
+          'I really did or did not like this product based on whether it was sustainably sourced. Then I found out that its made from nothing at all.',
+        helpfulness: 9
+      },
+      {
+        review_id: 91472,
+        rating: 3,
+        reviewer_name: 'Gandalf',
+        date: '2019-01-01T00:00:00.000Z',
+        summary:
+          'Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quos aperiam eligendi earum quo, nam rem.!',
+        body:
+          'I really did or did not like this product based on whether it was sustainably sourced. Then I found out that its made from nothing at all.',
+        helpfulness: 2
       }
     ]
   }
