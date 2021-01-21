@@ -12,7 +12,6 @@ var gallery = ({styles, currentStyle}) => {
         return (
           <div style = {{height: '500px', width: '500px', backgroundColor: 'pink'}} key={index}>
             <img className = {'galleryPic'} style = {{height: '100%', width: '100%'}} src={photo.url} />
-            <p className="legend">photo {index}</p>
           </div>
         )
       })}
