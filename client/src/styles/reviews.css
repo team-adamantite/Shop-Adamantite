@@ -41,6 +41,11 @@
   overflow-y: hidden;
 }
 
+.ratings__avg {
+  margin-bottom: 1rem;
+  height: 3rem;
+}
+
 .charts__col {
   width: 42%;
   padding: 0;

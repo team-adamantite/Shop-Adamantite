@@ -97,7 +97,7 @@ const ProductRatings = () => {
   }, [reviews]);
 
   const loadMoreItems = () => {
-    if (!retrieved) {
+    if (!retrieved && reviews.list) {
       setItems([...reviews.list.results]);
       setRetreived(true);
     }
