@@ -6,7 +6,7 @@ import 'react-multi-carousel/lib/styles.css';
 import RelatedSlide from './RelatedSlide.js';
 import { products, styles } from '../../dummyData.js';
 import '../../store.js';
-import '../styles/related.css';
+// import '../styles/related.css';
 
 const RelatedCarousel = () => {
   let thumbnail = styles.results[0].photos[0].thumbnail_url;
@@ -46,16 +46,17 @@ const RelatedCarousel = () => {
 
   return (
     <>
-    <Container width="75%" align="center">
-    <div width="75%">
-      <h1>Related Products</h1>
-        <Carousel id="relatedContainer"
-          responsive={responsive}
-          swipeable={true}
-          draggable={true}
-          showDots={true}
-          renderButtonGroupOutside={true}
-        >
+      <Container width='75%' align='center'>
+        <div width='75%'>
+          <h1>Related Products</h1>
+          <Carousel
+            id='relatedContainer'
+            responsive={responsive}
+            swipeable={true}
+            draggable={true}
+            showDots={true}
+            renderButtonGroupOutside={true}
+          >
             {/* <div onClick={console.log('AAAHAAHHHAHHA ')}>abc</div> */}
             {/* console.log(products); */}
 
@@ -63,16 +64,22 @@ const RelatedCarousel = () => {
               return <div>{product.description}</div>
             }), 1000)} */}
 
-            {products.map(product => {
+            {products.map((product) => {
               // return <RelatedSlide key={product.id} product={product} />
               // console.log('What the hell is this? ', product);
-              return <RelatedSlide key={product.id} product={product} thumbnail={thumbnail} />
+              return (
+                <RelatedSlide
+                  key={product.id}
+                  product={product}
+                  thumbnail={thumbnail}
+                />
+              );
             })}
-        </Carousel>
-      </div>
+          </Carousel>
+        </div>
       </Container>
     </>
-  )
-}
+  );
+};
 
 export default RelatedCarousel;

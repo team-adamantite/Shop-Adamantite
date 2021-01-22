@@ -17,12 +17,9 @@ import {
 import Review from './Review';
 import ReviewModal from './ReviewModal';
 import AnimateReviews from './AnimateReviews';
-import Message from './Message';
 import BarChart from './BarChart';
 import LineChart from './LineChart';
-import HalfStarRating from './HalfStarRating';
 import StarRating from './StarRating';
-import StarAvg from './StarAvg';
 import { data2, data3, reviews2, reviews3 } from '../utils/data';
 import '../../styles/chart.css';
 import '../../styles/reviews.css';
@@ -182,7 +179,7 @@ const ProductRatings = () => {
             <h1 className='ratings__avg_num' ref={block}>
               {average}
             </h1>
-            <StarAvg value={average} />
+            <StarRating value={average} type='avg' />
           </div>
           <h3 className='chart__title fs-5 my-2' style={{ textAlign: 'left' }}>
             <strong>{percent}%</strong> of reviews recommend this product
