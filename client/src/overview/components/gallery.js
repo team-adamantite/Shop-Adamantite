@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import ImageGallery from 'react-image-gallery';
 
 var gallery = ({ styles, currentStyle }) => {
-  console.log('what is the photo', currentStyle.photos);
+  // console.log('what is the photo', currentStyle.photos);
 
   if (!currentStyle.photos) {
     return null;
@@ -15,7 +15,7 @@ var gallery = ({ styles, currentStyle }) => {
         thumbnail: image.thumbnail_url,
       });
     }
-    console.log('newimage', newImages);
+    // console.log('newimage', newImages);
     return (
       <div style={{ width: '55%', height: 'auto' }}>
         <ImageGallery

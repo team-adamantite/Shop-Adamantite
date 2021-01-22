@@ -1,7 +1,7 @@
 import GET_RELATED_SUCCESS from '../actions/relatedActions.js'
 import GET_RELATED_FAILURE from '../actions/relatedActions.js'
-import GET_PRODUCT_DETAILS_SUCCESS from '../actions/relatedActions.js'
-import GET_PRODUCT_DETAILS_FAILURE from '../actions/relatedActions.js'
+// import GET_PRODUCT_DETAILS_SUCCESS from '../actions/relatedActions.js'
+// import GET_PRODUCT_DETAILS_FAILURE from '../actions/relatedActions.js'
 
 const relatedProductsReducer = (state = {}, action) => {
   switch (action.type) {
