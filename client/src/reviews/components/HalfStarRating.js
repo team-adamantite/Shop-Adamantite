@@ -2,7 +2,7 @@ import React, { useState, Fragment } from 'react';
 
 const HalfStarRating = ({ value }) => {
   const [rating, setRating] = useState(0);
-
+  // Use .map() or for loop
   return (
     <Fragment>
       <div className='half-star-rating'>

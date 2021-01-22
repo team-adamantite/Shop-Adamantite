@@ -54,7 +54,7 @@ const Review = forwardRef(
             <ListGroup.Item className='d-inline-block py-0 px-1'>
               <Card>
                 <div className='review__header d-flex justify-content-between '>
-                  <StarRating value={rating} />
+                  <StarRating value={rating} type={'read-only'} />
                   <p className='review__date text-end text-muted'>
                     {date.startsWith('2021') && (
                       <i

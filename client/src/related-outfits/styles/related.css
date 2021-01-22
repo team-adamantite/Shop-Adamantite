@@ -20,8 +20,6 @@ h1 {
   padding-top: 2em;
 }
 
-.productCategory {}
-
 .productDesc {
   font-size: 16px;
   text-align: justify;
@@ -34,12 +32,10 @@ h1 {
   text-align: left;
 }
 
-.productRating {}
-
 .modalStar {
   float: right;
   text-align: right;
-  color: 	#484848;
+  color: #484848;
   padding-right: 1em;
   margin-right: 3em;
 }
