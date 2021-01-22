@@ -18,12 +18,20 @@ var gallery = ({ styles, currentStyle }) => {
     }
     console.log('newimage', newImages);
     return (
-      <div style={{ width: '55%', height: 'auto' }}>
+      <div
+        style={{
+          width: '55%',
+          height: 'auto',
+          maxWidth: '200px',
+          maxHeight: '400px'
+        }}
+      >
         <ImageGallery
+          style={{ maxWidth: '200px', maxHeight: '400px' }}
           items={newImages}
           thumbnailPosition={'left'}
           showBullets={true}
-          autoPlay={true}
+          autoPlay={false}
           slideInterval={3000}
         />
       </div>
