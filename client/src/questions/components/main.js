@@ -56,12 +56,13 @@ const QA = ({ product }) => {
           .slice()
           .sort((a, b) => b.question_helpfulness - a.question_helpfulness);
         setQuestions(questionList);
-        setAllQuestions(questionList);
+        setAllQuestions(questionList); /// create a variable here
       });
   }
 
   useEffect(() => {
     loadQuestionList(product.id);
+    // assign it allquestions;
   }, []);
 
   function handleClickLoadMore() {
@@ -73,6 +74,7 @@ const QA = ({ product }) => {
   }
 
   function handleSearchInput(e) {
+    // save first,
     if (e.target.value.length >= 3) {
       var filteredQuestions = allQuestions.filter((question) => {
         if (question.question_body.includes(e.target.value)) {

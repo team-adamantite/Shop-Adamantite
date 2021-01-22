@@ -14,7 +14,7 @@ export default class App extends Component {
         <OverviewContainer />
         <RelatedOutfits />
         <QAcontainer />
-        <ProductRatings />
+        <ProductRatwqings />
       </div>
     );
   }
