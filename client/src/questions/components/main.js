@@ -4,13 +4,13 @@ import { Modal, Button, Form } from 'react-bootstrap';
 import axios from 'axios';
 import Question from './question';
 import token from '../../../config/config.js';
-import '../style/question.css';
+// import '../style/question.css';
 axios.defaults.headers.common['Authorization'] = token;
 
 const QA = ({ product }) => {
   const [questions, setQuestions] = useState([]);
   const [allQuestions, setAllQuestions] = useState([]);
-  const [count, setCount] = useState(4);
+  const [count, setCount] = useState(2);
   const [show, setShow] = useState(false);
   const [inputs, setInputs] = useState({
     body: '',
@@ -56,32 +56,29 @@ const QA = ({ product }) => {
           .slice()
           .sort((a, b) => b.question_helpfulness - a.question_helpfulness);
         setQuestions(questionList);
-        setAllQuestions(questionList); /// create a variable here
+        setAllQuestions(questionList);
       });
   }
 
   useEffect(() => {
     loadQuestionList(product.id);
-    // assign it allquestions;
   }, []);
 
   function handleClickLoadMore() {
-    if (count === 4) {
+    if (count === 2) {
       setCount(questions.length);
     } else {
-      setCount(4);
+      setCount(2);
     }
   }
 
   function handleSearchInput(e) {
-    // save first,
     if (e.target.value.length >= 3) {
       var filteredQuestions = allQuestions.filter((question) => {
         if (question.question_body.includes(e.target.value)) {
           return question;
         }
       });
-      // console.log(`what is filtered question`, filteredQuestions);
       setQuestions(filteredQuestions);
     } else {
       setQuestions(allQuestions);

@@ -25,6 +25,7 @@
     "express": "^4.17.1",
     "express-http-proxy": "^1.6.2",
     "file-loader": "^6.2.0",
+    "jest-css-modules": "^2.1.0",
     "lodash": "^4.17.20",
     "react": "latest",
     "react-bootstrap": "^1.4.3",
@@ -64,5 +65,10 @@
     "last 1 chrome version",
     "last 1 firefox version",
     "last 1 safari version"
-  ]
+  ],
+  "jest": {
+    "moduleNameMapper": {
+      "\\.(css|less|scss|sss|styl)$": "<rootDir>/node_modules/jest-css-modules"
+    }
+  }
 }

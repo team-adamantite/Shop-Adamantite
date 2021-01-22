@@ -1,12 +1,10 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import axios from 'axios';
 
 const Answer = ({ answer }) => {
   const [countHelpfulness, setCountHelpfulness] = useState(answer.helpfulness);
   const [report, setReport] = useState('Report');
   const [clicked, setClicked] = useState(false);
-
-  //console.log(`what is answers`, question_id);
 
   function formatDate(date) {
     const formattedDate = new Date(date).toLocaleDateString(
