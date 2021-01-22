@@ -13,6 +13,7 @@ var gallery = ({ styles, currentStyle }) => {
       newImages.push({
         original: image.url,
         thumbnail: image.thumbnail_url,
+
       });
     }
     console.log('newimage', newImages);
@@ -32,7 +33,7 @@ var gallery = ({ styles, currentStyle }) => {
 
 var mapStateToProps = (state) => ({
   styles: state.productStyles,
-  currentStyle: state.currentStyle,
+  currentStyle: state.currentStyle
 });
 
 var galleryContainer = connect(mapStateToProps, null)(gallery);

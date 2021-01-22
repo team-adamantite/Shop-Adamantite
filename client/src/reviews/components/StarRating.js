@@ -2,6 +2,7 @@ import React from 'react';
 
 const StarRating = ({ value }) => {
   return (
+    // Use .map() or for loop
     <div className='star-rating'>
       <span>
         <i

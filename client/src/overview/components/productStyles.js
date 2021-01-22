@@ -25,7 +25,6 @@ var productStyles = ({
           {styles.results.map((style) => {
             return (
               <span className='styleSpan' key={style.style_id}>
-
                 <img
                   className='styleThumb'
                   src={style.photos[0].thumbnail_url}
