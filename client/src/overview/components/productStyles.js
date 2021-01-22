@@ -27,12 +27,6 @@ var productStyles = ({
             return (
               <span className='styleSpan' key={style.style_id}>
                 <img
-                  className='styleImg'
-                  src={style.photos[0].thumbnail_url}
-                  onClick={() => changeStyle(style)}
-                />
-
-                <img
                   className='styleThumb'
                   src={style.photos[0].thumbnail_url}
                   onClick={() => changeStyle(style)}
