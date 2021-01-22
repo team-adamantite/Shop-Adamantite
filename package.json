@@ -5,7 +5,8 @@
   "main": "server.js",
   "scripts": {
     "start": "nodemon server/server.js",
-    "watch": "webpack -d --watch"
+    "watch": "webpack -d --watch",
+    "test": "jest"
   },
   "author": "Sean Brazil, Shinan Sun, Jerrick Ravelo, Chris Thackrey",
   "license": "MIT",
@@ -26,9 +27,9 @@
     "react-bootstrap": "^1.4.3",
     "react-bootstrap-table-next": "^4.0.3",
     "react-dom": "latest",
+    "react-image-gallery": "^1.0.8",
     "react-multi-carousel": "^2.6.1",
     "react-redux": "^7.2.2",
-    "react-responsive-carousel": "^3.2.11",
     "react-waypoint": "^9.0.3",
     "redux": "^4.0.5",
     "redux-devtools-extension": "^2.13.8",
@@ -44,8 +45,14 @@
     "@babel/preset-env": "^7.11.0",
     "@babel/preset-react": "^7.10.4",
     "babel-plugin-transform-runtime": "^6.23.0",
+    "enzyme": "^3.11.0",
+    "enzyme-adapter-react-16": "^1.15.6",
+    "jest": "^26.6.3",
+    "jest-enzyme": "^7.1.2",
     "nodemon": "^2.0.7",
-    "webpack": "^4.44.1",
+    "sass": "^1.32.5",
+    "sass-loader": "^10.1.1",
+    "webpack": "^4.46.0",
     "webpack-cli": "^3.3.12",
     "webpack-dev-server": "^3.11.2"
   },

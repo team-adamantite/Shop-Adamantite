@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { connect } from 'react-redux';
 import changeStyle from '../overviewActions/currentStyleActions.js';
 import getStyles from '../overviewActions/stylesActions.js';
@@ -10,22 +10,22 @@ var productStyles = ({
   changeStyles,
   changeStyle
 }) => {
-  React.useEffect(() => {
+  useEffect(() => {
     changeStyles(currentProduct.id);
   }, [currentProduct.id]);
 
-  const currentSku = React.useState();
+  const currentSku = useState();
 
-  // console.log('this is styles ----->', styles);
 
   return (
-    <div id='productInfo'>
+    <div>
       <label>
         Style {currentStyle ? currentStyle.name : styles.results[0].name}
-        <div id='productCategory'>
+        <div id='productStyles'>
           {styles.results.map((style) => {
             return (
               <span className='styleSpan' key={style.style_id}>
+
                 <img
                   className='styleThumb'
                   src={style.photos[0].thumbnail_url}

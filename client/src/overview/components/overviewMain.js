@@ -8,14 +8,13 @@ function overviewMain () {
   return(
 
 
-  <div>
+  <div class = 'wrapper'>
     <GalleryContainer/>
-    <br/>
+    <div>
+      <ProductInfoContainer/>
+      <ProductStylesContainer/>
     <ProductDescriptionContainer/>
-    <br/>
-    <ProductInfoContainer/>
-    <br/>
-    <ProductStylesContainer/>
+    </div>
   </div>
 
 
