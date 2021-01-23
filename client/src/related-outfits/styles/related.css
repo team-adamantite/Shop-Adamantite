@@ -28,7 +28,7 @@ h1 {
 .productDesc {
   font-size: 16px;
   text-align: justify;
-  line-height: 1.5;
+  line-height: 1;
   padding-top: 1em;
   padding-right: 3em;
 }
@@ -54,10 +54,7 @@ h1 {
 .modalRows {
   font-size: 18px;
 }
-<<<<<<< HEAD
 
 .modalFeatureColumn {
   background-color: lightgray;
 }
-=======
->>>>>>> main

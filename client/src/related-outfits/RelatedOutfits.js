@@ -1,6 +1,5 @@
 import React from 'react'
 import RelatedProductsContainer from './components/RelatedProducts.js';
-// import RelatedProducts from './components/RelatedProducts.js';
 import OutfitDesigner from './components/OutfitDesigner.js';
 
 const RelatedOutfits = () => {
