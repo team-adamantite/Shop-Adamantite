@@ -13,7 +13,6 @@ var getStyles = (productId) => (dispatch) => {
       }
     )
     .then((res) => {
-      console.log('results from call', res.data.results);
       dispatch({
         type: 'CHANGE_STYLES',
         payload: res.data

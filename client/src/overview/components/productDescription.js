@@ -3,7 +3,8 @@ import {connect} from 'react-redux';
 
 var productDescription = ({currentProduct}) => {
   return (
-    <div id = 'productInfo'>
+    <div id = 'descriptionBox'>
+      <div id='slogan'>{currentProduct.slogan}</div>
       <div id = 'description'>{currentProduct.description}</div>
     </div>
   )

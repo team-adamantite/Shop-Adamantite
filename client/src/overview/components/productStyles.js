@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { connect } from 'react-redux';
 import changeStyle from '../overviewActions/currentStyleActions.js';
 import getStyles from '../overviewActions/stylesActions.js';
@@ -10,72 +10,67 @@ var productStyles = ({
   changeStyles,
   changeStyle
 }) => {
-  React.useEffect(() => {
+  useEffect(() => {
     changeStyles(currentProduct.id);
   }, [currentProduct.id]);
 
-  const currentSku = React.useState();
+  const currentSku = useState();
 
-  // console.log('this is styles ----->', styles);
 
   return (
-    <div id='productInfo'>
-      <label>
-        Style {currentStyle ? currentStyle.name : styles.results[0].name}
-        <div id='productCategory'>
-          {styles.results.map((style) => {
-            return (
-              <span className='styleSpan' key={style.style_id}>
-                <img
-                  className='styleThumb'
-                  src={style.photos[0].thumbnail_url}
-                  onClick={() => changeStyle(style)}
-                />
-              </span>
-            );
-          })}
+    <div>
+      <div className='styleName fs-0'>
+        Style: {currentStyle ? currentStyle.name : styles.results[0].name}
+      </div>
+      <div id='productStyles'>
+        {styles.results.map((style) => {
+          return (
+            <span  className='styleSpan' key={style.style_id}>
+              <img
+                className='styleThumb'
+                src={style.photos[0].thumbnail_url}
+                onClick={() => changeStyle(style)}
+              />
+            </span>
+          );
+        })}
+      </div>
+        <div id='sizeQuant'>
+          <div id='size'>
+            <select
+              onChange={(e) => currentSku[1](currentStyle.skus[e.target.value])}>
+              <option>Select Size</option>
+              {currentStyle.skus ? (
+                Object.keys(currentStyle.skus).map((keyName) => (
+                  <option key={keyName} value={keyName}>
+                    {currentStyle.skus[keyName].size}
+                  </option>
+                ))
+              ) : (
+                <option> No sizes available</option>
+              )}
+            </select>
+          </div>
+          <div>
+            <span id='quantity'>
+              <select className = 'dropDown'>
+                {currentSku[0] ? (
+                  [...Array(currentSku[0].quantity)].map((e, i) => {
+                    if (i < 15) {
+                      return <option key={i + 1}>{i + 1}</option>;
+                    }
+                  })
+                ) : (
+                  <option>Select Qty</option>
+                )}
+              </select>
+            </span>
+          </div>
+          <button type="button" className="btn btn-primary btn-sm addToCart">Add To Cart</button>
         </div>
-      </label>
-      <br />
-      <label>
-        Size:
-        <span id='size'>
-          <select
-            onChange={(e) => currentSku[1](currentStyle.skus[e.target.value])}
-          >
-            <option>Select Size</option>
-            {currentStyle.skus ? (
-              Object.keys(currentStyle.skus).map((keyName) => (
-                <option key={keyName} value={keyName}>
-                  {currentStyle.skus[keyName].size}
-                </option>
-              ))
-            ) : (
-              <option> No sizes available</option>
-            )}
-          </select>
-        </span>
-      </label>
-      <label>
-        Qty:
-        <span id='quantity'>
-          <select>
-            {currentSku[0] ? (
-              [...Array(currentSku[0].quantity)].map((e, i) => {
-                if (i < 15) {
-                  return <option key={i + 1}>{i + 1}</option>;
-                }
-              })
-            ) : (
-              <option>Select a Size</option>
-            )}
-          </select>
-        </span>
-      </label>
-      <br />
-      <br />
-      <button id='addToBag'>Add To Bag</button>
-      <div className='sharethis-inline-share-buttons'></div>
+      <div className = 'shareButtons'>
+        <div className='sharethis-inline-share-buttons'></div>
+      </div>
     </div>
   );
 };
