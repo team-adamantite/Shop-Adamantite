@@ -8,32 +8,23 @@ var productInfo = ({ currentProduct, currentStyle }) => {
 
   return (
     <div id='productInfo'>
+      <div className='fs-2 py-0' id='productName'>{currentProduct.name}</div>
+      <div className= 'fs-0' id='productCategory'>{currentProduct.category}</div>
       <div id='overviewReviews'>
           <StarRating value={reviews.list ? reviews.list.results[0].rating : 0} />
-        <a href='http://localhost:3000/'>Read all Reviews</a>
+        <a href='http://localhost:3000/'>Read # Reviews</a>
       </div>
-      <label>
-        Category:
-        <div id='productCategory'>{currentProduct.category}</div>
-      </label>
+      <div className='priceDiv fs-3'>
 {/*Possibly change*/}
       {currentStyle.sale_price ? (
-        <>
-          <label>
-            Sale Price:
-            <div id='salePrice'>{currentStyle.sale_price}</div>
-          </label>
-          <label>
-            Price:
-            <div id='originalPrice'>{currentStyle.original_price}</div>
-          </label>
-        </>
+      <div id='onSaleDiv'>
+        <div id='salePrice'>${currentStyle.sale_price}</div>
+        <div id='oldOriginalPrice'>${currentStyle.original_price}</div>
+      </div>
       ) : (
-        <label>
-          Price:
-          <div id='oldOriginalPrice'>{currentStyle.original_price}</div>
-        </label>
+      <div id='originalPrice'>${currentStyle.original_price}</div>
       )}
+      </div>
     </div>
   );
 };

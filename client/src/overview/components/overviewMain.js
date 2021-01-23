@@ -8,7 +8,7 @@ function overviewMain () {
   return(
 
 
-  <div class = 'wrapper'>
+  <div className = 'wrapper'>
     <GalleryContainer/>
     <div>
       <ProductInfoContainer/>

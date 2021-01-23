@@ -159,16 +159,11 @@ div {
   height: auto;
 }
 
-.img-thumbnail {
-  width: 200px;
-  height: auto;
-}
-
 .styleThumb {
   border-radius: 50%;
   float: left;
-  width: 50px;
-  height: 50px;
+  width: 70px;
+  height: 70px;
   object-fit: cover;
 }
 
@@ -180,29 +175,34 @@ div {
   display: block;
   margin-left: auto;
   margin-right: auto;
-  width: 50%;
+  width: 600px;
 }
 
 .wrapper {
-  background-color: rgb(172, 161, 161);
+  /* background-color: rgb(172, 161, 161); */
   padding: 2em;
   display: grid;
-  grid-template-columns: 2fr 3fr;
-  grid-auto-rows: minmax(600px, auto);
+  grid-template-columns: 700px 1fr;
   grid-column-gap: 1em;
 }
-.wrapper div:nth-child(odd) {
+/* .wrapper div:nth-child(odd) {
   background-color: rgb(243, 128, 128);
 }
 
 .wrapper div:nth-child(even) {
   background-color:rgb(18, 184, 120)
-}
+} */
 
 .carouselDiv {
-  width: '475px';
-  height: 'auto';
+  min-width: 500px;
+  max-width: 750px;
 };
+/* .imageGallery img {
+  max-width: 100px;
+} */
+/* .image-gallery-slide img {
+  width: 400px;
+} */
 
 #productInfo{
   display: grid;
@@ -210,18 +210,71 @@ div {
   grid-auto-rows: auto;
   grid-row-gap: .25em;
 }
+#productName{
+  padding-top: 0;
+  margin: 0;
+}
 
 #overviewReviews {
   display: grid;
-  grid-template-columns: 1fr 1fr 2.5fr;
+  grid-template-columns: 100px 1fr;
   grid-auto-rows: auto;
+}
+
+#productCategory {
+  font-weight: 800;
+}
+
+.priceDiv {
+  margin: 15px 0px;
+}
+
+#onSaleDiv {
+  display:grid;
+  grid-template-columns: 100px 1fr;
+}
+#salePrice {
+  font-weight: 900;
+  color: red;
+}
+
+#oldOriginalPrice {
+  text-decoration: line-through;
+}
+
+.styleName {
+  font-weight: 800;
 }
 
 #productStyles{
   display: grid;
-  grid-template-columns: repeat(4, 20%);
+  grid-template-columns: repeat(4, 60px);
   grid-template-rows: 50% 50%;
   grid-auto-rows: auto;
-  grid-column-gap: 1em;
-  grid-row-gap: .25em;
+  grid-column-gap: 1.5em;
+  grid-row-gap: .5em;
+  margin: 1.5em 0em;
+}
+
+#sizeQuant {
+  display: grid;
+  grid-template-columns: 105px 105px 105px;
+}
+
+.dropDown{
+  width: 94px;
+}
+
+.addToCart{
+  font-size: 11px;
+}
+
+.shareButtons{
+  width: 240px;
+  margin: 1em 0em;
+}
+
+#slogan{
+  font-size: 26px;
+  font-style: italic;
 }

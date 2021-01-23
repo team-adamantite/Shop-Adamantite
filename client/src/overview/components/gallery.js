@@ -19,11 +19,12 @@ var gallery = ({ styles, currentStyle }) => {
     console.log('newimage', newImages);
     return (
       <div className = 'carouselDiv'>
-        <ImageGallery
+        <ImageGallery className = 'imageGallery'
           items={newImages}
-          thumbnailPosition={'bottom'}
+          thumbnailPosition={'left'}
           showBullets={false}
           autoPlay={false}
+          showPlayButton={false}
           slideInterval={3000}
         />
       </div>
