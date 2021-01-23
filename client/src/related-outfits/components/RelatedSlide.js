@@ -2,7 +2,7 @@ import React from 'react';
 import 'react-multi-carousel/lib/styles.css';
 import '../styles/related.css';
 
-const RelatedSlide = ({product, handleOpen, handleClose }) => {
+const RelatedSlide = ({product, handleOpen }) => {
 
   let thumbnailStyle = {
     backgroundImage: `url(${product.thumbnail})`,

@@ -10,10 +10,6 @@ import store from '../../store.js';
 import '../styles/related.css';
 
 const RelatedProducts = ({ product }) => {
-<<<<<<< HEAD
-=======
-  // console.log('top line product: ', product)
->>>>>>> main
   const dispatch = useDispatch();
   const [show, setShow] = useState(false);
   // const currentProduct = useSelector(state => state.currentProduct);
@@ -135,8 +131,3 @@ let RelatedProductsContainer = connect(
 )(RelatedProducts);
 
 export default RelatedProductsContainer;
-<<<<<<< HEAD
-=======
-
-// export default RelatedProducts;
->>>>>>> main

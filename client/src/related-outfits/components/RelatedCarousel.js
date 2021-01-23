@@ -44,14 +44,7 @@ const RelatedCarousel = ({ products, handleOpen }) => {
           keyboard={true}
         >
             {products.map(product => {
-<<<<<<< HEAD
               return <RelatedSlide key={product.id} product={product} handleOpen={handleOpen} />
-=======
-              // return <RelatedSlide key={product.id} product={product} />
-              // console.log('What the hell is this? ', product);
-              // return <div handleOpen={handleOpen} key={product.id}><RelatedSlide product={product} thumbnail={thumbnail} /></div>
-              return <RelatedSlide key={product.id} product={product} />
->>>>>>> main
             })}
           </Carousel>
         </div>
