@@ -7,11 +7,14 @@ const compression = require('compression');
 
 const app = express();
 
+// console.log('this is the token ', token)
+
 // middleware
 // compress all responses
 app.use(compression());
 app.use(express.json());
 app.use(cors());
+
 app.use(
   cacheControl({
     noCache: true

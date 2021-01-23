@@ -101,7 +101,8 @@ div {
 
 .dropdown-content a:nth-last-child(1),
 .dropdown-content a:nth-last-child(2),
-.dropdown-content a:nth-last-child(3) {
+.dropdown-content a:nth-last-child(3),
+.dropdown-content a:nth-last-child(4) {
   border-top: 1px solid #000;
 }
 
@@ -190,6 +191,18 @@ div {
   box-sizing: border-box;
   max-width: 100%;
   justify-content: center;
+}
+
+.modal-body {
+  padding-top: 0.2rem;
+}
+
+.modal-header {
+  padding-bottom: 0;
+}
+
+.form-label {
+  padding-top: 0.4rem;
 }
 
 .output {
@@ -646,14 +659,6 @@ u {
   background-color: #303f9f;
 }
 
-#relatedContainer {
-  font-family: 'Source Sans Pro', sans-serif;
-  font-weight: 300;
-  /* padding: 0.2rem; */
-  box-sizing: border-box;
-  max-width: 62%;
-}
-
 h1 {
   font-size: 24px;
   font-weight: bold;
@@ -695,6 +700,67 @@ h1 {
 
 .modalRows {
   font-size: 18px;
+}
+
+.relatedContainer {
+  font-family: 'Source Sans Pro', sans-serif;
+  font-weight: 300;
+  /* padding: 0.2rem; */
+  box-sizing: border-box;
+  /* max-width: 62%; */
+  padding: 1em;
+  margin-top: 2em;
+  margin-bottom: 2em;
+  border-top: 1px solid black;
+  border-bottom: 1px solid black;
+}
+
+h1 {
+  font-size: 24px;
+  font-weight: bold;
+  text-align: center;
+  padding-bottom: 1.2em;
+}
+
+.productName {
+  font-size: 18px;
+  font-weight: bold;
+  text-align: left;
+  padding-top: 2em;
+}
+
+.productDesc {
+  font-size: 16px;
+  text-align: justify;
+  line-height: 1.5;
+  padding-top: 1em;
+  padding-right: 3em;
+}
+
+.productPrice {
+  font-weight: bold;
+  text-align: left;
+}
+
+.modalStar {
+  float: right;
+  text-align: right;
+  color: #484848;
+  padding-right: 1em;
+  margin-right: 3em;
+}
+
+.modalHeader {
+  font-size: 22px;
+  font-weight: bold;
+}
+
+.modalRows {
+  font-size: 18px;
+}
+
+.modalFeatureColumn {
+  background-color: lightgray;
 }
 
 @keyframes anim-lightspeed-in {

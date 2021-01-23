@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import { connect, useDispatch, useSelector } from 'react-redux';
 import StarRating from '../../reviews/components/StarRating';
 

@@ -1,33 +1,34 @@
 import React, { useState, useLayoutEffect, useEffect } from 'react';
-import { useSelector, useDispatch } from 'react-redux';
+import { connect, useSelector, useDispatch } from 'react-redux';
 import BootstrapTable from 'react-bootstrap-table-next';
 import 'react-bootstrap-table-next/dist/react-bootstrap-table2.min.css';
 import RelatedCarousel from './RelatedCarousel.js';
 import RelatedModal from './RelatedModal.js';
 import { Container, Modal, Button } from 'react-bootstrap';
+
 import {
   getRelatedProducts,
   getProductDetails
 } from '../actions/relatedActions.js';
+
 import store from '../../store.js';
-// import '../styles/related.css';
 
 const RelatedProducts = (props) => {
   const dispatch = useDispatch();
-  const [productIds, setProducts] = useState([]);
-  const [thumbnails, setThumbnails] = useState([]);
   const [show, setShow] = useState(false);
   const product = useSelector((state) => state.currentProduct);
-  const products = useSelector((state) => state.relatedProducts.productIds);
+  const products = useSelector((state) => state.productDetails.productId);
   // const productId = useSelector(state => state.currentProduct.id);
   const { id, name, category, price } = product;
 
+  const [productDetails, setProductDetails] = useState(null);
   useEffect(() => {
     console.log('What even is this? ', products);
   });
 
   useLayoutEffect(() => {
     dispatch(getRelatedProducts(id));
+    console.log('What even is this? ', products);
   }, [dispatch, getRelatedProducts, id]);
 
   // MAPPING FUNCTIONALITY
@@ -43,7 +44,27 @@ const RelatedProducts = (props) => {
   //       dispatch(getProductDetails(product, dispatch))
   //     })
   //   }
-  // }, [dispatch, products]);
+  // ];
+
+  // let comparisonProducts = {
+  //   currentProduct:
+  //     {
+  //       details: currentProduct
+  //       // thumbnail: currentThumbnail
+  //     },
+  //   compareProduct:
+  //     {
+  //       details: {},
+  //       thumbnail: ''
+  //     }
+  // };
+
+  // const handleOpen = (productDetails, compareThumbnail) => {
+  //   comparisonProducts.compareProduct.details = productDetails;
+  //   // comparisonProducts.compareProduct.thumbnail = compareThumbnail;
+  //   setShow(true);
+  // }
+  // const handleClose = () => setShow(false);
 
   // function getRelatedDetails() {
   //   products.map(product => {
@@ -126,7 +147,19 @@ const RelatedProducts = (props) => {
   );
 };
 
-export default RelatedProducts;
+var mapStateToProps = (state) => ({
+  product: state.currentProduct
+});
+
+var mapDispatchToProps = (dispatch) => {
+  return {
+    getRelatedProducts: (id) => dispatch(getRelatedProducts(id))
+  };
+};
+
+let RelatedProductsContainer = connect(mapStateToProps, null)(RelatedProducts);
+
+export default RelatedProductsContainer;
 
 // react fragments
 // Thanks Daniel

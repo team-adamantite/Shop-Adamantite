@@ -138,6 +138,16 @@ const ProductRatings = () => {
     }, 1200);
   };
 
+  const sortRatingsDesc = () => {
+    setSorting(true);
+    setSortType('Lowest Ratings');
+    setItems([...items.sort((a, b) => (a.rating > b.rating ? 1 : -1))]);
+
+    setTimeout(() => {
+      setSorting(false);
+    }, 1200);
+  };
+
   const sortHelpfulness = () => {
     setSorting(true);
     setSortType('Helpfulness');
@@ -152,10 +162,14 @@ const ProductRatings = () => {
     }, 1200);
   };
 
-  const sortRatingsDesc = () => {
+  const sortRelevance = () => {
     setSorting(true);
-    setSortType('Lowest Ratings');
-    setItems([...items.sort((a, b) => (a.rating > b.rating ? 1 : -1))]);
+    setSortType('Relevance');
+    setItems([
+      ...items.sort((a, b) =>
+        a.rating < b.rating ? 1 : a.helpfulness < b.helpfulness ? 0 : -1
+      )
+    ]);
 
     setTimeout(() => {
       setSorting(false);
@@ -200,7 +214,6 @@ const ProductRatings = () => {
           className='reviews__col w-60'
           style={{ width: expandedView ? '70vw' : '60vw' }}
         >
-          {/* {reviews.list && <Message>No Reviews</Message>} */}
           <div className='dropdown-group'>
             <h4 className='review__sort fs-5' style={{ textAlign: 'left' }}>
               <strong>
@@ -212,10 +225,11 @@ const ProductRatings = () => {
                 <strong>{sortType}</strong>
               </button>
               <div className='dropdown-content'>
-                <a onClick={reorder}>Relevance</a>
+                <a onClick={sortRelevance}>Relevance</a>
                 <a onClick={sortHelpfulness}>Helpfulness</a>
                 <a onClick={sortRatingsAsc}>Highest Rating</a>
                 <a onClick={sortRatingsDesc}>Lowest Rating</a>
+                <a onClick={reorder}>Surprise Me</a>
               </div>
             </div>
             <div className='dropdown-chevron'> &#x25BE;</div>

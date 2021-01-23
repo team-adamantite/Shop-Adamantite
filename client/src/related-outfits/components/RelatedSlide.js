@@ -6,7 +6,7 @@ import 'react-multi-carousel/lib/styles.css';
 
 const RelatedSlide = ({ product, thumbnail }) => {
   let thumbnailStyle = {
-    backgroundImage: `url(${thumbnail})`,
+    backgroundImage: `url(${product.thumbnail})`,
     width: '150px',
     height: '150px',
     // align: 'center',
@@ -14,6 +14,8 @@ const RelatedSlide = ({ product, thumbnail }) => {
     backgroundPosition: 'center',
     borderRadius: '50%'
   };
+
+  // let modalComparisonData = [product]
 
   return (
     <>

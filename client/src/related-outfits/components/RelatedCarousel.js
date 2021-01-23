@@ -2,14 +2,14 @@ import React, { useEffect, useLayoutEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
 import Carousel from 'react-multi-carousel';
 import { Container } from 'react-bootstrap';
-import 'react-multi-carousel/lib/styles.css';
+import '../../../../node_modules/react-multi-carousel/lib/styles.css';
 import RelatedSlide from './RelatedSlide.js';
-import { products, styles } from '../../dummyData.js';
+// import { products, styles } from '../../dummyData.js';
 import '../../store.js';
-// import '../styles/related.css';
 
-const RelatedCarousel = () => {
-  let thumbnail = styles.results[0].photos[0].thumbnail_url;
+const RelatedCarousel = ({ products }) => {
+  console.log(products);
+  // let thumbnail = styles.results[0].photos[0].thumbnail_url;
 
   // let test = useSelector(state => state.relatedProducts.productDetails || []);
   // let [products, setProducts] = useState([]);
@@ -24,6 +24,10 @@ const RelatedCarousel = () => {
   //   // setProducts([{name: 'Matthew'}, {name: "Chris"}])
   // }, [test, setProducts])
 
+  // useEffect(() => {
+  //   console.log('carousel products: ', products.length);
+  // })
+
   const responsive = {
     superLargeDesktop: {
       breakpoint: { max: 4000, min: 3000 },
@@ -31,8 +35,7 @@ const RelatedCarousel = () => {
     },
     desktop: {
       breakpoint: { max: 2560, min: 1024 },
-      items: 3,
-      partialVisibilityGutter: 40
+      items: 3
     },
     tablet: {
       breakpoint: { max: 1024, min: 464 },

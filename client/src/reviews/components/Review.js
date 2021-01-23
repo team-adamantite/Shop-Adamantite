@@ -46,7 +46,7 @@ const Review = forwardRef(
             text.substring(Math.floor(ref.current.offsetWidth) / 8, text.length)
         );
       }
-      console.log(ref.current.offsetWidth, width);
+      // console.log(ref.current.offsetWidth, width);
     }, [ref.current, width]);
 
     window.addEventListener('resize', handleResize);
