@@ -80,14 +80,10 @@ const RelatedProducts = ({ product }) => {
   const handleClose = () => setShow(false);
 
 
-    // if (productDetails !== null) {
-    //   console.log('true: ', productDetails[0])
-    //   return <div>{productDetails[0].name}</div>
-    // } else {
-    //   console.log('false: ',productDetails)
-    //   return <div>def</div>
-    // }
+  // const handleOpen = (product) => {
 
+  //   setShow(true)
+  // }
 
   return (
     <>
