@@ -8,12 +8,15 @@ const compression = require('compression');
 
 const app = express();
 
+// console.log('this is the token ', token)
+
 // middleware
 // compress all responses
 app.use(compression());
 app.use(express.json());
 app.use(cors());
 app.use(express.static(path.join(__dirname, '../client/public')));
+
 app.use(
   '/proxy',
   proxy('https://app-hrsei-api.herokuapp.com/api/fec2/hratx/products/')
