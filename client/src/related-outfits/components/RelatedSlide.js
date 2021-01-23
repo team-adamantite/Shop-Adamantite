@@ -5,12 +5,8 @@ import '../styles/related.css';
 // { name, description, category, default_price, thumbnail }
 // { name, category, default_price, thumbnail }
 
-<<<<<<< HEAD
 const RelatedSlide = ({product, handleOpen, handleClose }) => {
 
-=======
-const RelatedSlide = ({ product, thumbnail }) => {
->>>>>>> main
   let thumbnailStyle = {
     backgroundImage: `url(${product.thumbnail})`,
     width: '150px',

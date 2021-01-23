@@ -49,7 +49,6 @@ const RelatedCarousel = ({ products }) => {
 
   return (
     <>
-<<<<<<< HEAD
     <div onClick={() => {console.log(products.length)}}>abc</div>
     <Container className="relatedContainer" width="75%" align="center">
     <div width="75%">
@@ -67,36 +66,6 @@ const RelatedCarousel = ({ products }) => {
               // console.log('What the hell is this? ', product);
               // return <div handleOpen={handleOpen} key={product.id}><RelatedSlide product={product} thumbnail={thumbnail} /></div>
               return <RelatedSlide key={product.id} product={product} />
-=======
-      <Container width='75%' align='center'>
-        <div width='75%'>
-          <h1>Related Products</h1>
-          <Carousel
-            id='relatedContainer'
-            responsive={responsive}
-            swipeable={true}
-            draggable={true}
-            showDots={true}
-            renderButtonGroupOutside={true}
-          >
-            {/* <div onClick={console.log('AAAHAAHHHAHHA ')}>abc</div> */}
-            {/* console.log(products); */}
-
-            {/* {setTimeout(products.map(product => {
-              return <div>{product.description}</div>
-            }), 1000)} */}
-
-            {products.map((product) => {
-              // return <RelatedSlide key={product.id} product={product} />
-              // console.log('What the hell is this? ', product);
-              return (
-                <RelatedSlide
-                  key={product.id}
-                  product={product}
-                  thumbnail={thumbnail}
-                />
-              );
->>>>>>> main
             })}
           </Carousel>
         </div>
