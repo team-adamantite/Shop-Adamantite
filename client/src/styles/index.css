@@ -486,13 +486,11 @@ svg {
 .styleThumb:hover {
   opacity: 100%;
   animation: 0.44s scale-up ease-in-out forwards;
-  border-top: 2px solid #111;
 }
 
 .thumb__clicked {
   opacity: 100%;
   animation: 0s scale-up ease-in-out forwards;
-  border-top: 2px solid #111;
 }
 
 .image-gallery-thumbnail .image-gallery-thumbnail-image,
@@ -685,23 +683,6 @@ h1 {
   text-align: left;
 }
 
-.modalStar {
-  float: right;
-  text-align: right;
-  color: #484848;
-  padding-right: 1em;
-  margin-right: 3em;
-}
-
-.modalHeader {
-  font-size: 22px;
-  font-weight: bold;
-}
-
-.modalRows {
-  font-size: 18px;
-}
-
 .relatedContainer {
   font-family: 'Source Sans Pro', sans-serif;
   font-weight: 300;
@@ -732,7 +713,7 @@ h1 {
 .productDesc {
   font-size: 16px;
   text-align: justify;
-  line-height: 1.5;
+  line-height: 1;
   padding-top: 1em;
   padding-right: 3em;
 }
@@ -777,11 +758,9 @@ h1 {
 @keyframes scale-up {
   from {
     transform: scale(1);
-    border: 2px solid #111;
   }
   to {
-    transform: scale(1.24);
-    border: 2px solid #111;
+    transform: scale(1.2);
   }
 }
 

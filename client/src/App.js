@@ -7,10 +7,10 @@ const QAcontainer = React.lazy(() => import('./questions/components/main'));
 const OverviewContainer = React.lazy(() =>
   import('./overview/components/overviewMain')
 );
-// const RelatedOutfits = React.lazy(() =>
-//   import('./related-outfits/RelatedOutfits.js')
-// );
-import RelatedOutfits from './related-outfits/RelatedOutfits.js';
+const RelatedOutfits = React.lazy(() =>
+  import('./related-outfits/RelatedOutfits.js')
+);
+// import RelatedOutfits from './related-outfits/RelatedOutfits.js';
 
 export default class App extends Component {
   constructor(props) {
@@ -22,9 +22,9 @@ export default class App extends Component {
         <Suspense fallback={<div>Loading...</div>}>
           <OverviewContainer />
         </Suspense>
-        {/* <Suspense fallback={<div>Loading...</div>}> */}
-        {/* <RelatedOutfits /> */}
-        {/* </Suspense> */}
+        <Suspense fallback={<div>Loading...</div>}>
+          <RelatedOutfits />
+        </Suspense>
         <Suspense fallback={<div>Loading...</div>}>
           <QAcontainer />
         </Suspense>
