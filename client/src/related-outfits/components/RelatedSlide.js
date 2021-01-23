@@ -5,10 +5,10 @@ import '../styles/related.css';
 // { name, description, category, default_price, thumbnail }
 // { name, category, default_price, thumbnail }
 
-const RelatedSlide = ({product, thumbnail, handleOpen, handleClose }) => {
+const RelatedSlide = ({product, handleOpen, handleClose }) => {
 
   let thumbnailStyle = {
-    backgroundImage: `url(${thumbnail})`,
+    backgroundImage: `url(${product.thumbnail})`,
     width: '150px',
     height: '150px',
     // align: 'center',
@@ -17,16 +17,18 @@ const RelatedSlide = ({product, thumbnail, handleOpen, handleClose }) => {
     borderRadius: '50%'
   }
 
+  // let modalComparisonData = [product]
+
   return (
     <>
-      <div onClick={() => handleOpen(product, thumbnail)}>
+      {/* <div onClick={() => handleOpen(product, thumbnail)}> */}
         <div className="modalStar">&#9733;</div>
         <div style={thumbnailStyle}></div>
         <div className="productCategory">{product.category}</div>
         <div className="productName">{product.name}</div>
         <div className="productDesc">{product.description}</div>
         <div className="productPrice">${product.default_price}</div>
-      </div>
+      {/* </div> */}
     </>
   )
 }

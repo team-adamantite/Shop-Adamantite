@@ -3,15 +3,6 @@ import token from '../../../config/config.js';
 import changeStyle from './currentStyleActions.js';
 
 var getStyles = (productId) => (dispatch) => {
-<<<<<<< HEAD
-  axios.get(`https://app-hrsei-api.herokuapp.com/api/fec2/hratx/products/${productId}/styles`, {
-    headers: {
-      Authorization: token
-    }
-  })
-    .then ((res) => {
-      // console.log('results from call', res.data.results)
-=======
   axios
     .get(
       `https://app-hrsei-api.herokuapp.com/api/fec2/hratx/products/${productId}/styles`,
@@ -23,7 +14,6 @@ var getStyles = (productId) => (dispatch) => {
     )
     .then((res) => {
       console.log('results from call', res.data.results);
->>>>>>> main
       dispatch({
         type: 'CHANGE_STYLES',
         payload: res.data

@@ -13,8 +13,8 @@ export default class App extends Component {
       <div id="main">
         <OverviewContainer />
         <RelatedOutfits />
-        {/* <QAcontainer /> */}
-        {/* <ProductRatings /> */}
+        <QAcontainer />
+        <ProductRatings />
       </div>
     );
   }

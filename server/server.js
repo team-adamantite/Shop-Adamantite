@@ -5,7 +5,6 @@ const cors = require('cors');
 const path = require('path');
 const sharp = require('sharp');
 const compression = require('compression');
->>>>>>> main
 
 const app = express();
 

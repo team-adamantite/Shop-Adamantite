@@ -13,19 +13,19 @@ const tableProducts = [
 
 const RelatedModal = ({ comparisonProducts }) => {
 
-  let currentProduct = comparisonProducts.currentProduct;
-  let compProduct = comparisonProducts.compareProduct;
+//   let currentProduct = comparisonProducts.currentProduct;
+//   let compProduct = comparisonProducts.compareProduct;
 
-  function featuresCheck(product) {
-    let counter = 2;
-    let features = {}
+//   function featuresCheck(product) {
+//     let counter = 2;
+//     let features = {}
 
-    for (let i = 0; i < features.length; i++) {
-      features.id: counter;
-      features.value: '✓';
-      features.category: features.
-    }
-  }
+//     for (let i = 0; i < features.length; i++) {
+//       features.id: counter;
+//       features.value: '✓';
+//       features.category: features.
+//     }
+//   }
 
   // let data = {
   //   {prod1: compare}

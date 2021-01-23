@@ -4,12 +4,12 @@ import Carousel from 'react-multi-carousel';
 import { Container } from 'react-bootstrap';
 import '../../../../node_modules/react-multi-carousel/lib/styles.css';
 import RelatedSlide from './RelatedSlide.js';
-import { products, styles } from '../../dummyData.js';
+// import { products, styles } from '../../dummyData.js';
 import '../../store.js';
 import '../styles/related.css';
 
-const RelatedCarousel = ({ handleOpen }) => {
-  let thumbnail = styles.results[0].photos[0].thumbnail_url;
+const RelatedCarousel = ({ products }) => {
+  // let thumbnail = styles.results[0].photos[0].thumbnail_url;
 
   // let test = useSelector(state => state.relatedProducts.productDetails || []);
   // let [products, setProducts] = useState([]);
@@ -23,6 +23,10 @@ const RelatedCarousel = ({ handleOpen }) => {
   //   setProducts(test);
   //   // setProducts([{name: 'Matthew'}, {name: "Chris"}])
   // }, [test, setProducts])
+
+  // useEffect(() => {
+  //   console.log('carousel products: ', products.length);
+  // })
 
   const responsive = {
     superLargeDesktop: {
@@ -45,6 +49,7 @@ const RelatedCarousel = ({ handleOpen }) => {
 
   return (
     <>
+    <div onClick={() => {console.log(products.length)}}>abc</div>
     <Container className="relatedContainer" width="75%" align="center">
     <div width="75%">
       <h1>RELATED PRODUCTS</h1>
@@ -56,18 +61,11 @@ const RelatedCarousel = ({ handleOpen }) => {
           renderButtonGroupOutside={true}
           keyboard={true}
         >
-            {/* <div onClick={console.log('AAAHAAHHHAHHA ')}>abc</div> */}
-            {/* console.log(products); */}
-
-            {/* {setTimeout(products.map(product => {
-              return <div>{product.description}</div>
-            }), 1000)} */}
-
             {products.map(product => {
               // return <RelatedSlide key={product.id} product={product} />
               // console.log('What the hell is this? ', product);
               // return <div handleOpen={handleOpen} key={product.id}><RelatedSlide product={product} thumbnail={thumbnail} /></div>
-              return <RelatedSlide handleOpen={handleOpen} key={product.id} product={product} thumbnail={thumbnail} />
+              return <RelatedSlide key={product.id} product={product} />
             })}
         </Carousel>
       </div>
