@@ -1,8 +1,15 @@
-import React, { Component } from 'react';
-import ProductRatings from './reviews/components/ProductRatings';
-import QAcontainer from './questions/components/main';
-import OverviewContainer from './overview/components/overviewMain';
-import RelatedOutfits from './related-outfits/RelatedOutfits.js';
+import React, { Component, Suspense } from 'react';
+const ProductRatings = React.lazy(() =>
+  import('./reviews/components/ProductRatings')
+);
+// import ProductRatings from './reviews/components/ProductRatings';
+const QAcontainer = React.lazy(() => import('./questions/components/main'));
+const OverviewContainer = React.lazy(() =>
+  import('./overview/components/overviewMain')
+);
+const RelatedOutfits = React.lazy(() =>
+  import('./related-outfits/RelatedOutfits.js')
+);
 
 export default class App extends Component {
   constructor(props) {
@@ -10,11 +17,19 @@ export default class App extends Component {
   }
   render() {
     return (
-      <div id="main">
-        <OverviewContainer />
-        <RelatedOutfits />
-        <QAcontainer />
-        <ProductRatings />
+      <div id='main'>
+        <Suspense fallback={<div>Loading...</div>}>
+          <OverviewContainer />
+        </Suspense>
+        <Suspense fallback={<div>Loading...</div>}>
+          <RelatedOutfits />
+        </Suspense>
+        <Suspense fallback={<div>Loading...</div>}>
+          <QAcontainer />
+        </Suspense>
+        <Suspense fallback={<div>Loading...</div>}>
+          <ProductRatings />
+        </Suspense>
       </div>
     );
   }

@@ -1,3 +1,9 @@
+*.mjs
+*.LICENSE.txt
+*.css
+!index.css
+index.html
+
 ###OSX###
 
 .DS_Store

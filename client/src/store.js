@@ -1,6 +1,6 @@
 import { createStore, combineReducers, applyMiddleware } from 'redux';
 import thunk from 'redux-thunk';
-import { composeWithDevTools } from 'redux-devtools-extension';
+// import { composeWithDevTools } from 'redux-devtools-extension';
 import productReviewReducer from './reviews/reviewReducers/reviewsReducer';
 import { product, styles } from './dummyData.js';
 //import { relatedProductsReducer, relatedDetailsReducer } from './related-outfits/reducers/relatedReducer.js'
@@ -34,7 +34,7 @@ const rootReducer = combineReducers({
 const store = createStore(
   rootReducer,
   { currentProduct: product, productStyles: { results: [] }, currentStyle: {} },
-  composeWithDevTools(applyMiddleware(thunk))
+  applyMiddleware(thunk)
 );
 
 export default store;

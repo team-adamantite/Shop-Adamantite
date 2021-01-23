@@ -1,18 +1,15 @@
-import React, { useState, useEffect, useRef, createRef, Fragment } from 'react';
+import React, { useState, useEffect, useRef, createRef, Suspense } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import shuffle from 'lodash/shuffle';
 import { Waypoint } from 'react-waypoint';
-import {
-  Row,
-  Col,
-  Container,
-  Image,
-  ListGroup,
-  Card,
-  Button,
-  Form,
-  Modal
-} from 'react-bootstrap';
+import { Container } from 'react-bootstrap';
+
+// const Review = React.lazy(() => import('./Review'));
+// const ReviewModal = React.lazy(() => import('./ReviewModal'));
+// const AnimateReviews = React.lazy(() => import('./AnimateReviews'));
+// const BarChart = React.lazy(() => import('./BarChart'));
+// const LineChart = React.lazy(() => import('./LineChart'));
+// const StarRating = React.lazy(() => import('./StarRating'));
 
 import Review from './Review';
 import ReviewModal from './ReviewModal';
@@ -21,8 +18,6 @@ import BarChart from './BarChart';
 import LineChart from './LineChart';
 import StarRating from './StarRating';
 import { data2, data3, reviews2, reviews3 } from '../utils/data';
-import '../../styles/chart.css';
-import '../../styles/reviews.css';
 
 import { getProductReviews } from '../reviewActions/productReviewsActions';
 
@@ -175,6 +170,7 @@ const ProductRatings = () => {
           className='charts__col w-40'
           style={{ width: expandedView ? '30vw' : '40vw' }}
         >
+          {/* <Suspense fallback={<div>Loading...</div>}> */}
           <div className='ratings__avg d-flex justify-content-left'>
             <h1 className='ratings__avg_num' ref={block}>
               {average}
@@ -184,6 +180,9 @@ const ProductRatings = () => {
           <h3 className='chart__title fs-5 my-2' style={{ textAlign: 'left' }}>
             <strong>{percent}%</strong> of reviews recommend this product
           </h3>
+          {/* </Suspense> */}
+
+          {/* <Suspense fallback={<div>Loading...</div>}> */}
           <div className='charts__container'>
             {items.length > 0 && <BarChart reviews={reviews} />}
             <h4 className='chart__subtitle' style={{ textAlign: 'left' }}>
@@ -195,6 +194,7 @@ const ProductRatings = () => {
             </h4>
             <LineChart data={data3} split={false} />
           </div>
+          {/* </Suspense> */}
         </div>
         <div
           className='reviews__col w-60'
@@ -325,7 +325,9 @@ const ProductRatings = () => {
             </button>
           </div>
         </div>
+        {/* <Suspense fallback={<div>Loading...</div>}> */}
         <ReviewModal show={show} handleClose={handleClose} />
+        {/* </Suspense> */}
       </div>
     </Container>
   );

@@ -4,7 +4,6 @@ import { Modal, Button, Form } from 'react-bootstrap';
 import axios from 'axios';
 import Question from './question';
 import token from '../../../config/config.js';
-import '../style/question.css';
 axios.defaults.headers.common['Authorization'] = token;
 
 const QA = ({ product }) => {

@@ -1,7 +1,6 @@
 import React from 'react';
 // import Carousel from 'react-multi-carousel';
 import 'react-multi-carousel/lib/styles.css';
-import '../styles/related.css';
 // { name, description, category, default_price, thumbnail }
 // { name, category, default_price, thumbnail }
 
