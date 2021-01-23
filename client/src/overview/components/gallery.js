@@ -16,7 +16,7 @@ var gallery = ({ styles, currentStyle }) => {
 
       });
     }
-    console.log('newimage', newImages);
+    // console.log('newimage', newImages);
     return (
       <div className = 'carouselDiv'>
         <ImageGallery className = 'imageGallery'

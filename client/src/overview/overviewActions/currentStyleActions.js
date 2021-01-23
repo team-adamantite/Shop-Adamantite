@@ -6,7 +6,6 @@ var changeStyle = (style) => {
     size = Number(size) / 2;
     let query = Number(image.url.split(`&q=`)[1]);
     let originalResized = `${resized}&w=400&h=400`;
-    console.log(originalResized);
     let thumbResized = image.thumbnail_url.split(`&w=`)[0];
     let thumbSize = image.thumbnail_url.split(`&q=`)[0];
     thumbSize = thumbSize.split(`&w=`)[1];
