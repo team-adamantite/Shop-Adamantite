@@ -4,6 +4,7 @@
   /* padding: 0.2rem; */
   box-sizing: border-box;
   /* max-width: 62%; */
+  height: 200px;
   padding: 1em;
   margin-top: 2em;
   margin-bottom: 2em;
@@ -54,10 +55,7 @@ h1 {
 .modalRows {
   font-size: 18px;
 }
-<<<<<<< HEAD
 
 .modalFeatureColumn {
   background-color: lightgray;
 }
-=======
->>>>>>> main

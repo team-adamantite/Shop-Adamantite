@@ -3,12 +3,8 @@ import { connect } from 'react-redux';
 import ImageGallery from 'react-image-gallery';
 
 var gallery = ({ styles, currentStyle }) => {
-<<<<<<< HEAD
-  // console.log('what is the photo', currentStyle.photos);
-=======
 
   var newImages = [];
->>>>>>> main
 
   if (!currentStyle.photos) {
     return null;
