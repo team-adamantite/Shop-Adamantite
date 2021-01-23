@@ -18,7 +18,6 @@ export default function Question({ question, name }) {
     photos: [],
   });
 
-  // console.log(`for each question id`, question.question_id);
   function sortAnswers(answers) {
     var result = Object.values(answers);
     result.sort((a, b) => {
@@ -67,9 +66,15 @@ export default function Question({ question, name }) {
       alert(
         'Dear customer, you must fill out all required inputs before submitting'
       );
+    } else {
+      axios
+        .post(
+          `https://app-hrsei-api.herokuapp.com/api/fec2/hratx/qa/questions/${question.question_id}/answers`,
+          inputs
+        )
+        .then((res) => alert(`you have successfully post your answers`))
+        .catch((err) => console.log(`err from post an answer`, err));
     }
-    // how could i find the photo url????
-    // axios.post(url, inputs)
   }
 
   function fileUploadHandler(e) {

@@ -1,9 +1,9 @@
 import React from 'react';
 
-const StarRating = ({ value }) => {
+const StarRating = ({ value, type }) => {
+  // Use .map() or for loop
   return (
-    // Use .map() or for loop
-    <div className='star-rating'>
+    <div className={type === 'avg' ? 'star-rating-avg' : 'star-rating'}>
       <span>
         <i
           className={

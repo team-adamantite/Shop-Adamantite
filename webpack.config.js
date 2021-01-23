@@ -6,11 +6,11 @@ module.exports = {
   entry: ['@babel/polyfill', __dirname + '/client/src/index.js'],
   output: {
     filename: 'bundle.js',
-    path: BUILD_DIR
+    path: BUILD_DIR,
   },
   watchOptions: {
     poll: true,
-    ignored: /node_modules/
+    ignored: /node_modules/,
   },
   module: {
     rules: [
@@ -20,9 +20,9 @@ module.exports = {
         use: {
           loader: 'babel-loader',
           options: {
-            presets: ['@babel/preset-react', '@babel/preset-env']
-          }
-        }
+            presets: ['@babel/preset-react', '@babel/preset-env'],
+          },
+        },
       },
       {
         test: /\.css$/i,
@@ -35,6 +35,6 @@ module.exports = {
     ]
   },
   resolve: {
-    extensions: ['.js', '.css', '.scss']
+    extensions: ['.js', '.jsx']
   }
 };

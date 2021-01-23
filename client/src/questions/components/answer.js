@@ -6,8 +6,6 @@ const Answer = ({ answer }) => {
   const [report, setReport] = useState('Report');
   const [clicked, setClicked] = useState(false);
 
-  //console.log(`what is answers`, question_id);
-
   function formatDate(date) {
     const formattedDate = new Date(date).toLocaleDateString(
       {},

@@ -10,7 +10,7 @@ axios.defaults.headers.common['Authorization'] = token;
 const QA = ({ product }) => {
   const [questions, setQuestions] = useState([]);
   const [allQuestions, setAllQuestions] = useState([]);
-  const [count, setCount] = useState(4);
+  const [count, setCount] = useState(2);
   const [show, setShow] = useState(false);
   const [inputs, setInputs] = useState({
     body: '',
@@ -65,10 +65,10 @@ const QA = ({ product }) => {
   }, []);
 
   function handleClickLoadMore() {
-    if (count === 4) {
+    if (count === 2) {
       setCount(questions.length);
     } else {
-      setCount(4);
+      setCount(2);
     }
   }
 
