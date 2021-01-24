@@ -126,13 +126,12 @@ const ReviewModal = ({
                     />
                   ))}
                 </Form.Group>
-                <br />
               </div>
             ))}
           </Form.Group>
         </FormContainer>
       </Modal.Body>
-      <Modal.Footer>
+      <Modal.Footer className='my-0'>
         <Button variant='secondary' onClick={handleClose}>
           Close
         </Button>
