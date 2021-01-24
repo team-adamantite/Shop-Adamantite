@@ -30,6 +30,7 @@ const RelatedCarousel = ({ products, handleOpen }) => {
   return (
     <>
 <<<<<<< HEAD
+<<<<<<< HEAD
     <Container className="relatedContainer" width="75%" align="center">
     <div width="75%">
       <h1>RELATED PRODUCTS</h1>
@@ -44,6 +45,8 @@ const RelatedCarousel = ({ products, handleOpen }) => {
             {products.map(product => {
               return <RelatedSlide key={product.id} product={product} handleOpen={handleOpen} />
 =======
+=======
+>>>>>>> main
       <div
         onClick={() => {
           console.log(products.length);
@@ -71,6 +74,9 @@ const RelatedCarousel = ({ products, handleOpen }) => {
                   handleOpen={handleOpen}
                 />
               );
+<<<<<<< HEAD
+>>>>>>> main
+=======
 >>>>>>> main
             })}
           </Carousel>

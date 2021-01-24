@@ -28,6 +28,7 @@ const RelatedProducts = ({ product }) => {
   }, [id]);
 
 <<<<<<< HEAD
+<<<<<<< HEAD
   // let modalTableData;
   // var modalTableData = [];
 
@@ -104,6 +105,8 @@ const RelatedProducts = ({ product }) => {
 
 =======
 >>>>>>> main
+=======
+>>>>>>> main
   // const tableProducts = [
   //   { id: 1, product1: '', feature: 'Features', product2: ''},
   //   { id: 2, product1: '✓', feature: 'Does the Job', produc2: 'Meh'},
@@ -136,6 +139,7 @@ const RelatedProducts = ({ product }) => {
 
   const handleClose = () => setShow(false);
 
+<<<<<<< HEAD
 <<<<<<< HEAD
   return (
     <>
@@ -173,6 +177,18 @@ const RelatedProducts = ({ product }) => {
 
   return (
     <>
+=======
+  // if (productDetails !== null) {
+  //   console.log('true: ', productDetails[0])
+  //   return <div>{productDetails[0].name}</div>
+  // } else {
+  //   console.log('false: ',productDetails)
+  //   return <div>def</div>
+  // }
+
+  return (
+    <>
+>>>>>>> main
       {productDetails ? (
         <RelatedCarousel products={productDetails} handleOpen={handleOpen} />
       ) : (
@@ -198,6 +214,9 @@ const RelatedProducts = ({ product }) => {
     </>
   );
 };
+<<<<<<< HEAD
+>>>>>>> main
+=======
 >>>>>>> main
 
 var mapStateToProps = (state) => ({

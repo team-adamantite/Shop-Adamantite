@@ -17,6 +17,7 @@ const RelatedSlide = ({ product, handleOpen }) => {
   return (
     <>
 <<<<<<< HEAD
+<<<<<<< HEAD
       <div className="slideCard" onClick={() => handleOpen(product)}>
         <div className="modalStar">&#9733;</div>
         <div style={thumbnailStyle}></div>
@@ -28,10 +29,18 @@ const RelatedSlide = ({ product, handleOpen }) => {
       <div onClick={() => handleOpen(product)}>
         <div className='modalStar'>&#9733;</div>
         <div style={thumbnailStyle}></div>
+=======
+      <div onClick={() => handleOpen(product)}>
+        <div className='modalStar'>&#9733;</div>
+        <div style={thumbnailStyle}></div>
+>>>>>>> main
         <div className='productCategory'>{product.category}</div>
         <div className='productName'>{product.name}</div>
         <div className='productDesc'>{product.description}</div>
         <div className='productPrice'>${product.default_price}</div>
+<<<<<<< HEAD
+>>>>>>> main
+=======
 >>>>>>> main
       </div>
 

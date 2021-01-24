@@ -38,9 +38,13 @@
     "redux": "^4.0.5",
     "redux-thunk": "^2.3.0",
 <<<<<<< HEAD
+<<<<<<< HEAD
     "resize-observer-polyfill": "^1.5.1",
     "style-loader": "^1.2.1",
     "uuid": "^8.3.2"
+=======
+    "resize-observer-polyfill": "^1.5.1"
+>>>>>>> main
 =======
     "resize-observer-polyfill": "^1.5.1"
 >>>>>>> main
