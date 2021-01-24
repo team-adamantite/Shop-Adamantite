@@ -7,7 +7,6 @@ import RelatedModal from './RelatedModal.js';
 import { Container, Modal, Button } from 'react-bootstrap';
 import { getRelatedProducts } from '../actions/relatedActions.js';
 import store from '../../store.js';
-import '../styles/related.css';
 
 const RelatedProducts = ({ product }) => {
   const dispatch = useDispatch();
@@ -20,15 +19,15 @@ const RelatedProducts = ({ product }) => {
   // let products = useSelector(state => state.related.productDetails || []  );
   const { id } = product;
 
-  const [ productDetails, setProductDetails ] = useState(null);
+  const [productDetails, setProductDetails] = useState(null);
   useEffect(() => {
-    getRelatedProducts(id)
-    .then(response => {
-      console.log('we got here', response)
-      setProductDetails(response)
-    })
+    getRelatedProducts(id).then((response) => {
+      console.log('we got here', response);
+      setProductDetails(response);
+    });
   }, [id]);
 
+<<<<<<< HEAD
   // let modalTableData;
   // var modalTableData = [];
 
@@ -103,6 +102,8 @@ const RelatedProducts = ({ product }) => {
 
   // console.log('modal data: ', modalData);
 
+=======
+>>>>>>> main
   // const tableProducts = [
   //   { id: 1, product1: '', feature: 'Features', product2: ''},
   //   { id: 2, product1: '✓', feature: 'Does the Job', produc2: 'Meh'},
@@ -135,6 +136,7 @@ const RelatedProducts = ({ product }) => {
 
   const handleClose = () => setShow(false);
 
+<<<<<<< HEAD
   return (
     <>
     {productDetails ? <RelatedCarousel products={productDetails} handleOpen={handleOpen} /> : <div></div>}
@@ -160,6 +162,43 @@ const RelatedProducts = ({ product }) => {
    </>
   )
 }
+=======
+  // if (productDetails !== null) {
+  //   console.log('true: ', productDetails[0])
+  //   return <div>{productDetails[0].name}</div>
+  // } else {
+  //   console.log('false: ',productDetails)
+  //   return <div>def</div>
+  // }
+
+  return (
+    <>
+      {productDetails ? (
+        <RelatedCarousel products={productDetails} handleOpen={handleOpen} />
+      ) : (
+        <div>def</div>
+      )}
+
+      <Modal show={show} onHide={handleClose} size='lg'>
+        <Modal.Header>
+          <Modal.Title>COMPARE PRODUCTS</Modal.Title>
+        </Modal.Header>
+        <Modal.Body>
+          <div style={{ padding: '20px', textAlign: 'center' }}>
+            {/* <BootstrapTable keyField="id" data={comparisonProducts} columns={columns} headerClasses="modalHeader" rowClasses="modalRows" /> */}
+            {/* <BootstrapTable keyField="id" data={tableProducts} columns={columns} headerClasses="modalHeader" rowClasses="modalRows" /> */}
+          </div>
+        </Modal.Body>
+        <Modal.Footer>
+          <Button variant='primary' onClick={handleClose}>
+            Close
+          </Button>
+        </Modal.Footer>
+      </Modal>
+    </>
+  );
+};
+>>>>>>> main
 
 var mapStateToProps = (state) => ({
   product: state.currentProduct
@@ -167,13 +206,10 @@ var mapStateToProps = (state) => ({
 
 var mapDispatchToProps = (dispatch) => {
   return {
-    getRelatedProducts: (id) => dispatch(getRelatedProducts(id)),
+    getRelatedProducts: (id) => dispatch(getRelatedProducts(id))
   };
 };
 
-let RelatedProductsContainer = connect(
-  mapStateToProps,
-  null
-)(RelatedProducts);
+let RelatedProductsContainer = connect(mapStateToProps, null)(RelatedProducts);
 
 export default RelatedProductsContainer;

@@ -1,10 +1,8 @@
 import React from 'react';
 import { Card } from 'react-bootstrap';
 import 'react-multi-carousel/lib/styles.css';
-import '../styles/related.css';
 
-const RelatedSlide = ({product, handleOpen }) => {
-
+const RelatedSlide = ({ product, handleOpen }) => {
   let thumbnailStyle = {
     backgroundImage: `url(${product.thumbnail})`,
     width: '100px',
@@ -18,6 +16,7 @@ const RelatedSlide = ({product, handleOpen }) => {
 
   return (
     <>
+<<<<<<< HEAD
       <div className="slideCard" onClick={() => handleOpen(product)}>
         <div className="modalStar">&#9733;</div>
         <div style={thumbnailStyle}></div>
@@ -25,6 +24,15 @@ const RelatedSlide = ({product, handleOpen }) => {
         <div className="productCategory">{product.category}</div>
         <div className="productDesc">{product.description}</div>
         <div className="productPrice">${product.default_price}</div>
+=======
+      <div onClick={() => handleOpen(product)}>
+        <div className='modalStar'>&#9733;</div>
+        <div style={thumbnailStyle}></div>
+        <div className='productCategory'>{product.category}</div>
+        <div className='productName'>{product.name}</div>
+        <div className='productDesc'>{product.description}</div>
+        <div className='productPrice'>${product.default_price}</div>
+>>>>>>> main
       </div>
 
       {/* <Card className="slideCard">

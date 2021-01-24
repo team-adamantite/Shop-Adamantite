@@ -17,9 +17,7 @@ const Answer = ({ answer }) => {
   function handleHelpfulness() {
     if (clicked === false) {
       axios
-        .put(
-          `https://app-hrsei-api.herokuapp.com/api/fec2/hratx/qa/answers/${answer.id}/helpful`
-        )
+        .put(`/proxy/api/fec2/hratx/qa/answers/${answer.id}/helpful`)
         .catch((err) =>
           console.log(`err from mark the answer as helpful`, err)
         );
@@ -31,9 +29,7 @@ const Answer = ({ answer }) => {
   function handleReport() {
     setReport('Reported');
     axios
-      .put(
-        `https://app-hrsei-api.herokuapp.com/api/fec2/hratx/qa/answers/${answer.id}/report`
-      )
+      .put(`/proxy/api/fec2/hratx/qa/answers/${answer.id}/report`)
       .catch((err) => console.log(`err from report the answer`, err));
   }
 
@@ -43,7 +39,7 @@ const Answer = ({ answer }) => {
         <strong>A: {answer.body}</strong>
       </span>
       <div>
-        <span className="poster">
+        <span className='poster'>
           by{' '}
           {answer.answerer_name === 'Seller' ? (
             <strong>Seller</strong>
@@ -53,7 +49,7 @@ const Answer = ({ answer }) => {
           , {formatDate(answer.date)}
         </span>
         <span>|</span>
-        <span className="helper_bar">
+        <span className='helper_bar'>
           Helpful?
           <u onClick={handleHelpfulness}> Yes</u> ({countHelpfulness}) |
           <u onClick={handleReport}>{report}</u>
@@ -62,7 +58,7 @@ const Answer = ({ answer }) => {
 
       {answer.photos.length > 0 &&
         answer.photos.map((url, index) => {
-          return <img key={index} src={url} className="img-thumbnail" alt="" />;
+          return <img key={index} src={url} className='img-thumbnail' alt='' />;
         })}
     </React.Fragment>
   );

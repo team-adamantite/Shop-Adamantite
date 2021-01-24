@@ -4,14 +4,11 @@ import changeStyle from './currentStyleActions.js';
 
 var getStyles = (productId) => (dispatch) => {
   axios
-    .get(
-      `https://app-hrsei-api.herokuapp.com/api/fec2/hratx/products/${productId}/styles`,
-      {
-        headers: {
-          Authorization: token
-        }
+    .get(`/proxy/api/fec2/hratx/products/${productId}/styles`, {
+      headers: {
+        Authorization: token
       }
-    )
+    })
     .then((res) => {
       dispatch({
         type: 'CHANGE_STYLES',

@@ -15,7 +15,7 @@ export default function Question({ question, name }) {
     body: '',
     name: '',
     email: '',
-    photos: [],
+    photos: []
   });
 
   function sortAnswers(answers) {
@@ -37,7 +37,7 @@ export default function Question({ question, name }) {
       setCountHelpfulness(countHelpfulness + 1);
       axios
         .put(
-          `https://app-hrsei-api.herokuapp.com/api/fec2/hratx/qa/questions/${question.question_id}/helpful`
+          `/proxy/api/fec2/hratx/qa/questions/${question.question_id}/helpful`
         )
         .catch((err) => console.log(`err from mark question as helpful`, err));
       setClicked(true);
@@ -69,7 +69,7 @@ export default function Question({ question, name }) {
     } else {
       axios
         .post(
-          `https://app-hrsei-api.herokuapp.com/api/fec2/hratx/qa/questions/${question.question_id}/answers`,
+          `/proxy/api/fec2/hratx/qa/questions/${question.question_id}/answers`,
           inputs
         )
         .then((res) => alert(`you have successfully post your answers`))
@@ -84,19 +84,19 @@ export default function Question({ question, name }) {
     // setInputs here for the photos
   }
   return (
-    <div className="question_box">
-      <div className="row">
-        <div className="col-sm-8">
+    <div className='question_box'>
+      <div className='row'>
+        <div className='col-sm-8'>
           <strong>Q: {question.question_body}</strong>
         </div>
 
-        <div className="col-sm-4">
+        <div className='col-sm-4'>
           Helpful? <u onClick={handleHelpfulCount}> Yes</u> ({countHelpfulness})
           |
           <>
             <button
-              type="button"
-              className="btn btn-link btn-sm"
+              type='button'
+              className='btn btn-link btn-sm'
               onClick={handleShow}
             >
               Add an Answer
@@ -105,9 +105,9 @@ export default function Question({ question, name }) {
             <Modal
               show={show}
               onHide={handleClose}
-              backdrop="static"
-              size="lg"
-              aria-labelledby="contained-modal-title-vcenter"
+              backdrop='static'
+              size='lg'
+              aria-labelledby='contained-modal-title-vcenter'
               centered
             >
               <Form onSubmit={handleInputSubmit}>
@@ -118,24 +118,24 @@ export default function Question({ question, name }) {
                   </Modal.Title>
                 </Modal.Header>
                 <Modal.Body>
-                  <Form.Group controlId="addAnswer.ControlTextarea1">
+                  <Form.Group controlId='addAnswer.ControlTextarea1'>
                     <Form.Label>* Your Answer</Form.Label>
                     <Form.Control
-                      as="textarea"
+                      as='textarea'
                       rows={4}
-                      placeholder="write your Answer here..."
-                      name="body"
+                      placeholder='write your Answer here...'
+                      name='body'
                       value={inputs.body}
                       onChange={handleInputChange}
                     />
                   </Form.Group>
 
-                  <Form.Group controlId="addAnswer.ControlInput1">
+                  <Form.Group controlId='addAnswer.ControlInput1'>
                     <Form.Label>* What is your nickname</Form.Label>
                     <Form.Control
-                      type="text"
-                      placeholder="example: Jackson543!"
-                      name="name"
+                      type='text'
+                      placeholder='example: Jackson543!'
+                      name='name'
                       value={inputs.name}
                       onChange={handleInputChange}
                     />
@@ -145,12 +145,12 @@ export default function Question({ question, name }) {
                     </Form.Text>
                   </Form.Group>
 
-                  <Form.Group controlId="addAnswer.ControlInput2">
+                  <Form.Group controlId='addAnswer.ControlInput2'>
                     <Form.Label>* Your email</Form.Label>
                     <Form.Control
-                      type="email"
-                      placeholder="Example: jack@email.com"
-                      name="email"
+                      type='email'
+                      placeholder='Example: jack@email.com'
+                      name='email'
                       value={inputs.email}
                       onChange={handleInputChange}
                     />
@@ -158,17 +158,17 @@ export default function Question({ question, name }) {
                       For authentication reasons, you will not be emailed
                     </Form.Text>
                   </Form.Group>
-                  <input type="file" onChange={fileSelectedHandler} multiple />
+                  <input type='file' onChange={fileSelectedHandler} multiple />
                   <button onClick={fileUploadHandler}>Upload</button>
                 </Modal.Body>
                 <Modal.Footer>
-                  <Button variant="outline-secondary" onClick={handleClose}>
+                  <Button variant='outline-secondary' onClick={handleClose}>
                     Close
                   </Button>
                   <Button
-                    variant="outline-success"
-                    type="submit"
-                    value="Submit"
+                    variant='outline-success'
+                    type='submit'
+                    value='Submit'
                   >
                     Submit answer
                   </Button>
@@ -190,8 +190,8 @@ export default function Question({ question, name }) {
       })}
       {answers.length > count && (
         <button
-          type="button"
-          className="btn btn-link btn-sm"
+          type='button'
+          className='btn btn-link btn-sm'
           onClick={() => setCount(answers.length)}
         >
           see more answers

@@ -6,10 +6,8 @@ import '../../../../node_modules/react-multi-carousel/lib/styles.css';
 import RelatedSlide from './RelatedSlide.js';
 // import { products, styles } from '../../dummyData.js';
 import '../../store.js';
-// import '../styles/related.css';
 
 const RelatedCarousel = ({ products, handleOpen }) => {
-
   const responsive = {
     superLargeDesktop: {
       breakpoint: { max: 4000, min: 3000 },
@@ -31,6 +29,7 @@ const RelatedCarousel = ({ products, handleOpen }) => {
 
   return (
     <>
+<<<<<<< HEAD
     <Container className="relatedContainer" width="75%" align="center">
     <div width="75%">
       <h1>RELATED PRODUCTS</h1>
@@ -44,6 +43,35 @@ const RelatedCarousel = ({ products, handleOpen }) => {
         >
             {products.map(product => {
               return <RelatedSlide key={product.id} product={product} handleOpen={handleOpen} />
+=======
+      <div
+        onClick={() => {
+          console.log(products.length);
+        }}
+      >
+        abc
+      </div>
+      <Container className='relatedContainer' width='75%' align='center'>
+        <div width='75%'>
+          <h1>RELATED PRODUCTS</h1>
+          <Carousel
+            id='relatedContainer'
+            responsive={responsive}
+            swipeable={true}
+            draggable={true}
+            showDots={true}
+            renderButtonGroupOutside={true}
+            keyboard={true}
+          >
+            {products.map((product) => {
+              return (
+                <RelatedSlide
+                  key={product.id}
+                  product={product}
+                  handleOpen={handleOpen}
+                />
+              );
+>>>>>>> main
             })}
           </Carousel>
         </div>
