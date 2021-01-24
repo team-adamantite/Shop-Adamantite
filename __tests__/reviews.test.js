@@ -23,7 +23,7 @@ afterAll(() => {
   browser.close();
 });
 
-describe('Main', () => {
+describe('Reviews', () => {
   test('access page', async () => {
     await app.goto(client);
   });

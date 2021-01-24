@@ -56,12 +56,12 @@ export default function Question({ question, name }) {
     setInputs({ ...inputs, [e.target.name]: e.target.value });
   }
   function fileSelectedHandler(e) {
-    console.log('what is e.target.files?', e.target.files);
+    // console.log('what is e.target.files?', e.target.files);
     setInputs({ ...inputs, photos: [...e.target.files] });
   }
   function handleInputSubmit(e) {
     e.preventDefault();
-    console.log(`what is inputs now`, inputs);
+    // console.log(`what is inputs now`, inputs);
     if (Object.values(inputs).includes('')) {
       alert(
         'Dear customer, you must fill out all required inputs before submitting'

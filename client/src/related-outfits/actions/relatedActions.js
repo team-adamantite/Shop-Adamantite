@@ -1,91 +1,151 @@
 import axios from 'axios';
 import token from '../../../config/config.js';
-// const token = "cbef60b42a3e41174f9bb65c0325c91cbace367c";
-// axios.defaults.headers.common['Authorization'] = token;
 export const GET_RELATED_SUCCESS = 'GET_RELATED_SUCCESS';
 export const GET_RELATED_FAILURE = 'GET_RELATED_FAILURE';
+export const GET_THUMBNAILS_FAILURE = 'GET_THUMBNAILS_FAILURE';
 export const GET_PRODUCT_DETAILS_SUCCESS = 'GET_PRODUCT_DETAILS_SUCCESS';
 export const GET_PRODUCT_DETAILS_FAILURE = 'GET_PRODUCT_DETAILS_FAILURE';
 
+// const dispatch = useDispatch();
 const URL = 'https://app-hrsei-api.herokuapp.com/api/fec2/hratx';
 
-// export function getRelatedProducts (id) {
-//   return function(dispatch) {
-//     axios
-//       .get(`${URL}/products/${id}/related`, {
-//         headers: {
-//           Authorization: token
-//         }
-//       })
-//       .then(res => {
-//         dispatch({
-//           type: 'GET_RELATED_SUCCESS',
-//           payload: res.data
-//         })
-//       })
-//       .catch(err => {
-//         dispatch({
-//           type: 'GET_RELATED_FAILURE',
-//           payload: err.response.statusText
-//         })
-//       });
-//   }
-// };
-
-export function getRelatedProducts(id) {
+export function getRelatedProducts(id, dispatch) {
   let productDetails = [];
-  return function(dispatch) {
-    axios
+  // return function(dispatch) {
+    return axios
       .get(`${URL}/products/${id}/related`, {
         headers: {
           Authorization: token
         }
       })
       .then(products => {
-        products.data.map(productId => {
-          let productObj = {};
+        var productRequestsPromises = products.data.map(productId => {
+
           return axios
             .get(`${URL}/products/${productId}`, {
               headers: {
                 Authorization: token
               }
             })
-            .then(response => {
-              productObj = response.data;
-            })
-            .then(() => {
+            .then(productResponse => {
               return axios
                 .get(`${URL}/products/${productId}/styles`)
-                .then(response => {
-                  productObj.thumbnail = response.data.results[0].photos[0].thumbnail_url;
-                })
-                .then(() => {
-                  productDetails.push(productObj)
+                .then(stylesResponse => {
+                  // console.log('product response: ', productResponse.data);
+                  let productObj = {};
+                  productObj = productResponse.data;
+                  productObj.thumbnail = stylesResponse.data.results[0].photos[0].thumbnail_url;
+                  // console.log('temp product obj', productObj)
+                  return productObj;
                 })
                 .catch(err => {
                   console.error('Could not retrieve thumbnail: ', err)
                 })
             })
         })
+        return Promise.all(productRequestsPromises);
       })
-      .then(() => {
-        dispatch({
-          type: 'GET_RELATED_SUCCESS',
-          payload: productDetails
-        })
+      .then(arrayOfProductResponses => {
+        console.log('action array: ', arrayOfProductResponses)
+        return arrayOfProductResponses;
       })
-      .catch(err => {
-        dispatch({
-          type: 'GET_RELATED_FAILURE',
-          // payload: err.response.statusText
-        })
-      });
-  }
+      // .then(() => {
+      //   console.log('productDetails: ', productDetails);
+      //   return {
+      //     type: 'GET_RELATED_SUCCESS',
+      //     payload: productDetails
+      //   }
+      // })
+      // .catch(err => {
+      //   return {
+      //     type: 'GET_RELATED_FAILURE',
+      //     payload: err
+      //   }
+      // });
+  // }
 }
 
 
 
+// const getProductIds = (id, dispatch) => {
+//   return function(dispatch) {
+//   axios
+//   .get(`${URL}/products/${id}/related`, {
+//     headers: {
+//       Authorization: token
+//     }
+//   })
+//   .then(response => {
+//     console.log(response.data);
+//     getProductDetails(response.data, dispatch);
+//     dispatch({
+//       type: 'GET_IDS_SUCCESS',
+//       payload: response.data
+//     })
+//   })
+//   .catch(err => {
+//     dispatch({
+//       type: 'GET_IDS_FAILURE',
+//       payload: err
+//     });
+//   })
+//   }
+// }
+
+// const getProductDetails = (ids, dispatch) => {
+//   let productDetails = [];
+//     ids.map(id => {
+//     let productStorage = {};
+//     return axios
+//     .get(`${URL}/products/${id}`, {
+//       headers: {
+//         Authorization: token
+//       }
+//     })
+//     .then(response => {
+//       productStorage = response.data;
+//     })
+//     .then(() => {
+//       return axios
+//       .get(`${URL}/products/${id}/styles`, {
+//         headers: {
+//           Authorization: token
+//         }
+//       })
+//       .then(styles => {
+//         // console.log(styles.data.results[0].photos[0].thumbnail_url)
+//         productStorage.thumbnail = styles.data.results[0].photos[0].thumbnail_url
+//       })
+//       .then(() => {
+//         console.log(productStorage)
+//         productDetails.push(productStorage);
+//         console.log('Whats in the array ', productDetails);
+//       })
+//       .catch(err => {
+//         console.error('Could not retrieve thumbnails: ', err);
+//       })
+//     })
+//   })
+//   .then(() => {
+//     dispatch({
+//       type: 'GET_PRODUCT_DETAILS_SUCCESS',
+//       payload: productDetails
+//     });
+//   })
+//   .catch(err => {
+//     dispatch({
+//       type: 'GET_PRODUCT_DETAILS_FAILURE',
+//       payload: err
+//     })
+//   })
+// }
+
 // export {
-//   getRelatedProducts,
+//   getProductIds,
 //   getProductDetails
-// };
+// }
+
+// export {
+//   getProductIds,
+//   getProductDetails
+// }

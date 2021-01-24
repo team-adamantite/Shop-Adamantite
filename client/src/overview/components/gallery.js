@@ -3,7 +3,6 @@ import { connect } from 'react-redux';
 import ImageGallery from 'react-image-gallery';
 
 var gallery = ({ styles, currentStyle }) => {
-
   var newImages = [];
 
   if (!currentStyle.photos) {
@@ -12,14 +11,14 @@ var gallery = ({ styles, currentStyle }) => {
     for (let image of currentStyle.photos) {
       newImages.push({
         original: image.url,
-        thumbnail: image.thumbnail_url,
-
+        thumbnail: image.thumbnail_url
       });
     }
     // console.log('newimage', newImages);
     return (
-      <div className = 'carouselDiv'>
-        <ImageGallery className = 'imageGallery'
+      <div className='carouselDiv'>
+        <ImageGallery
+          className='imageGallery'
           items={newImages}
           thumbnailPosition={'left'}
           showBullets={false}

@@ -1,11 +1,11 @@
 import React from 'react'
-import RelatedProducts from './components/RelatedProducts.js';
+import RelatedProductsContainer from './components/RelatedProducts.js';
 import OutfitDesigner from './components/OutfitDesigner.js';
 
 const RelatedOutfits = () => {
   return (
     <div>
-      <RelatedProducts />
+      <RelatedProductsContainer />
     </div>
   )
 }

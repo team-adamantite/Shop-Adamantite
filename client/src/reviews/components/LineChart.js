@@ -2,7 +2,6 @@ import React, { useRef, useEffect } from 'react';
 import { select, scaleBand, scaleLinear } from 'd3';
 import useResizeObserver from '../utils/useResizeObserver';
 import rightRoundedRect from '../utils/handleCornersSvg';
-import '../../styles/chart.css';
 
 function LineChart({ data, split }) {
   const svgRef = useRef();

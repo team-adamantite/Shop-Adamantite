@@ -1,5 +1,5 @@
-import React from 'react';
-import {useEffect, useState} from 'react';
+
+import React, {useEffect, useState} from 'react';
 import { connect, useDispatch, useSelector} from 'react-redux';
 import StarRating from '../../reviews/components/StarRating';
 import {getProductReviews} from '../../reviews/reviewActions/productReviewsActions';
