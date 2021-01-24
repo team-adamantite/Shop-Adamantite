@@ -16,28 +16,36 @@ var productStyles = ({
 
   const currentSku = useState();
 
+  const [selected, setSelected] = useState('');
+
 
   return (
     <div>
-      <div className='styleName fs-0'>
+      <div className='styleName'>
         Style: {currentStyle ? currentStyle.name : styles.results[0].name}
       </div>
       <div id='productStyles'>
         {styles.results.map((style) => {
           return (
-            <span  className='styleSpan' key={style.style_id}>
-              <img
-                className='styleThumb'
+            <img
+                className={
+                  selected === style.style_id
+                    ? 'styleThumb thumb__clicked'
+                    : 'styleThumb'
+                }
                 src={style.photos[0].thumbnail_url}
-                onClick={() => changeStyle(style)}
-              />
-            </span>
+                onClick={() => {
+                  changeStyle(style);
+                  setSelected(style.style_id);
+                }}
+            />
           );
         })}
       </div>
         <div id='sizeQuant'>
           <div id='size'>
             <select
+              className = 'dropDown'
               onChange={(e) => currentSku[1](currentStyle.skus[e.target.value])}>
               <option>Select Size</option>
               {currentStyle.skus ? (
@@ -69,7 +77,17 @@ var productStyles = ({
           <button type="button" className="btn btn-primary btn-sm addToCart">Add To Cart</button>
         </div>
       <div className = 'shareButtons'>
-        <div className='sharethis-inline-share-buttons'></div>
+        <div className='socialButtons'>
+        <a href = "https://twitter.com/intent/tweet?button_hashtag=teamadamanatite&ref_src=twsrc%5Etfw" >
+          <i className="fab fa-twitter-square shareIcon" id= 'twitter'></i>
+        </a>
+        <a href="http://pinterest.com/pin/create/button/?url={http://www.teamadamanatite.com}" className="pin-it-button" count-layout="horizontal">
+          <i className="fab fa-pinterest-square shareIcon" id='pinterest'></i>
+        </a>
+        <a href = "https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fwww.teamadamanatite.com%2F&amp;src=sdkpreparse">
+          <i className="fab fa-facebook-square shareIcon" id='facebook'></i>
+        </a>
+        </div>
       </div>
     </div>
   );
@@ -94,3 +112,5 @@ var productStylesContainer = connect(
 )(productStyles);
 
 export default productStylesContainer;
+
+{/* <a href="https://twitter.com/intent/tweet?button_hashtag=teamadamanatite&ref_src=twsrc%5Etfw" class="twitter-hashtag-button" data-show-count="false">Tweet #LoveTwitter</a><script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script> */}
