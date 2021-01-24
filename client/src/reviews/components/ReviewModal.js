@@ -84,6 +84,7 @@ const ReviewModal = ({
               style={{ width: '100%', height: '80px' }}
               row='3'
               value={summary}
+              placeholder='Enter Product Summary'
               onChange={(e) => setSummary(e.target.value)}
             ></Form.Control>
           </Form.Group>
@@ -93,6 +94,7 @@ const ReviewModal = ({
               as='textarea'
               style={{ width: '100%', height: '100px' }}
               row='4'
+              placeholder='Enter Product Commentary'
               value={comment}
               onChange={(e) => setComment(e.target.value)}
             ></Form.Control>
