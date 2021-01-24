@@ -40,7 +40,6 @@
     "redux-devtools-extension": "^2.13.8",
     "redux-thunk": "^2.3.0",
     "resize-observer-polyfill": "^1.5.1",
-    "sharp": "^0.27.0",
     "style-loader": "^1.2.1",
     "uuid": "^8.3.2"
   },

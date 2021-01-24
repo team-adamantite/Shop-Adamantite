@@ -3,7 +3,6 @@ const proxy = require('express-http-proxy');
 const PORT = 3000;
 const cors = require('cors');
 const path = require('path');
-const sharp = require('sharp');
 const compression = require('compression');
 
 const app = express();

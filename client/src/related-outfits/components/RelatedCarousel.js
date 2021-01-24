@@ -31,7 +31,6 @@ const RelatedCarousel = ({ products, handleOpen }) => {
 
   return (
     <>
-    <div onClick={() => {console.log(products.length)}}>abc</div>
     <Container className="relatedContainer" width="75%" align="center">
     <div width="75%">
       <h1>RELATED PRODUCTS</h1>
