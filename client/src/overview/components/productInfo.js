@@ -1,21 +1,44 @@
-import React, {useEffect} from 'react';
-import { connect, useDispatch, useSelector } from 'react-redux';
+
+import React, {useEffect, useState} from 'react';
+import { connect, useDispatch, useSelector} from 'react-redux';
 import StarRating from '../../reviews/components/StarRating';
+import {getProductReviews} from '../../reviews/reviewActions/productReviewsActions';
 
 var productInfo = ({ currentProduct, currentStyle }) => {
   const dispatch = useDispatch();
   const reviews = useSelector((state) => state.reviews);
 
+  useEffect(() => {
+    dispatch(getProductReviews(currentProduct.id));
+  }, [dispatch, currentProduct.id])
+
+  const [average, setAverage] = useState(3);
+
+  useEffect(() => {
+    if (reviews.hasOwnProperty('list')){
+      setAverage(
+        ((
+          reviews.list.results
+            .map((review) => review.rating)
+            .reduce((acc, current) => acc + current, 0) /
+          reviews.list.results.reduce((acc) => acc + 5, 0)
+        ).toFixed(1) *
+          10) /
+          2
+      );
+    }
+  }, [reviews])
+
+
   return (
     <div id='productInfo'>
-      <div className='fs-2 py-0' id='productName'>{currentProduct.name}</div>
-      <div className= 'fs-0' id='productCategory'>{currentProduct.category}</div>
+      <div className='py-0' id='productName'>{currentProduct.name}</div>
+      <div id='productCategory'>{currentProduct.category}</div>
       <div id='overviewReviews'>
-          <StarRating value={reviews.list ? reviews.list.results[0].rating : 0} />
-        <a href='http://localhost:3000/'>Read # Reviews</a>
+          <StarRating value={average} type='avg' />
+        <a id='reviewsLink' href='#reviews__container'> Read {reviews.list ? reviews.list.results.length : 0} Reviews</a>
       </div>
-      <div className='priceDiv fs-3'>
-{/*Possibly change*/}
+      <div className='priceDiv'>
       {currentStyle.sale_price ? (
       <div id='onSaleDiv'>
         <div id='salePrice'>${currentStyle.sale_price}</div>
