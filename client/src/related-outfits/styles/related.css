@@ -1,0 +1,65 @@
+.relatedContainer {
+  /* display: flex; */
+  font-family: 'Source Sans Pro', sans-serif;
+  font-weight: 300;
+  box-sizing: border-box;
+  margin-top: 2em;
+  margin-bottom: 2em;
+  border-top: 1px solid black;
+  border-bottom: 1px solid black;
+  align-items: center;
+}
+
+h1 {
+  font-size: 24px;
+  font-weight: bold;
+  text-align: center;
+  padding-bottom: 1.2em;
+}
+
+.slideCard {
+  height: 300px;
+  width: 300px;
+  margin: 0.001em;
+}
+
+.productName {
+  font-size: 16px;
+  font-weight: bold;
+  text-align: left;
+  padding-top: 0.5em;
+}
+
+.productDesc {
+  font-size: 12px;
+  text-align: justify;
+  line-height: 1;
+  padding-top: 0.5em;
+  padding-right: 3em;
+}
+
+.productPrice {
+  font-weight: bold;
+  text-align: left;
+}
+
+.modalStar {
+  float: right;
+  text-align: right;
+  color: #484848;
+  padding-right: 0.1em;
+  margin-right: 1em;
+}
+
+.modalHeader {
+  font-size: 22px;
+  font-weight: bold;
+}
+
+.modalRows {
+  font-size: 18px;
+}
+
+.modalFeatureColumn {
+  background-color: lightgray;
+}

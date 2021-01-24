@@ -12,7 +12,6 @@ const OverviewContainer = React.lazy(() =>
 const RelatedOutfits = React.lazy(() =>
   import('./related-outfits/RelatedOutfits.js')
 );
-// import RelatedOutfits from './related-outfits/RelatedOutfits.js';
 
 export default class App extends Component {
   constructor(props) {

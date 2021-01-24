@@ -11,10 +11,9 @@ import store from '../../store.js';
 const RelatedProducts = ({ product }) => {
   const dispatch = useDispatch();
   const [show, setShow] = useState(false);
-  // const currentProduct = useSelector(state => state.currentProduct);
-  // const currentThumbnail = useSelector(state => state.productStyles.results[0].photos[0].thumbnail_url);
-  // const productIds = useSelector(state => state.relatedIds.ids);
-  // let products = useSelector(state => state.related.productDetails || []  );
+  const currentProduct = useSelector(state => state.currentProduct);
+  const [modalData, setModalData] = useState([]);
+  const [comparisonProductName, setComparisonProductName] = useState('');
   const { id } = product;
 
   const [productDetails, setProductDetails] = useState(null);
@@ -25,92 +24,118 @@ const RelatedProducts = ({ product }) => {
     });
   }, [id]);
 
-  // const tableProducts = [
-  //   { id: 1, value1: '', category: 'Features', value2: ''},
-  //   { id: 2, value1: '✓', category: 'Does the Job', value2: 'Meh'},
-  //   { id: 3, value1: '✓', category: 'Impresses Strangers', value2: '✓'},
-  //   { id: 4, value1: 'They\'re never impressed.', category: 'Impresses Friends', value2: 'See left'},
-  //   { id: 5, value1: 'Taco Bell', category: 'Date Material', value2: '✓✓✓'},
-  //   { id: 6, value1: 'Do you know the deceased?', category: 'Can Be Worn at a Funeral', value2: 'Do you care about the deceased?'}
-  // ];
+  const updateModalData = (data) => setModalData(data);
+  const updateComparisonProductName = (name) => setComparisonProductName(name);
 
-  // const columns = [
-  //   {
-  //     dataField: 'id',
-  //     value1: '',
-  //     hidden: true
-  //   },
-  //   {
-  //     dataField: 'value1',
-  //     text: 'So Fatigues'
-  //   },
-  //   {
-  //     dataField: 'category',
-  //     text: '',
-  //     style: { backgroundColor: 'lightgray'}
-  //   },
-  //   {
-  //     dataField: 'value2',
-  //     text: 'Camo Onesie'
-  //   }
-  // ];
+  // modal data creator
+  const handleOpen = (compareProduct) => {
+    let featuresData = [];
+    let featuresUsed = {};
+    console.log('features used: ', featuresUsed);
 
-  // let comparisonProducts = {
-  //   currentProduct:
-  //     {
-  //       details: currentProduct
-  //       // thumbnail: currentThumbnail
-  //     },
-  //   compareProduct:
-  //     {
-  //       details: {},
-  //       thumbnail: ''
-  //     }
-  // };
+    let currentFeatures = currentProduct.features;
+    let compareFeatures = compareProduct.features;
 
-  // const handleOpen = (productDetails, compareThumbnail) => {
-  //   comparisonProducts.compareProduct.details = productDetails;
-  //   // comparisonProducts.compareProduct.thumbnail = compareThumbnail;
-  //   setShow(true);
-  // }
-  const handleOpen = () => setShow(true);
+    let currentIdCounter = 1;
+
+    for (let i = 0; i < currentFeatures.length; i++) {
+
+      let data = {id: 0, property1: '', feature: '', property2: ''};
+      let curFeatures = currentFeatures[i];
+      data.feature = curFeatures.feature
+      featuresUsed[curFeatures.feature] = i;
+
+      if (curFeatures.value !== null) {
+        data.property1 = curFeatures.value;
+      } else {
+        data.property1 = '✓';
+      }
+      data.id = currentIdCounter;
+      currentIdCounter++;
+
+      if (Object.keys(data).length !== 0) {
+        featuresData.push(data);
+      }
+    }
+
+    for (let i = 0; i < compareFeatures.length; i++) {
+      let data = {id: 0, property1: '', feature: '', property2: ''};
+      let compFeatures = compareFeatures[i];
+
+      if (featuresUsed[compFeatures.feature]) {
+        if (compFeatures.value !== null) {
+          featuresData[featuresUsed[compFeatures.feature]].product2 = compFeatures.value;
+        } else {
+          featuresData[featuresUsed[compFeatures.feature]].product2 = '✓';
+        }
+      } else {
+        data.feature = compFeatures.feature;
+        if (compFeatures.value !== null) {
+          data.property2 = compFeatures.value;
+        } else {
+          data.property2 = '✓';
+        }
+      }
+      data.id = currentIdCounter;
+      currentIdCounter++;
+
+      if (Object.keys(data).length !== 0) {
+        featuresData.push(data);
+      }
+    }
+
+    updateModalData(featuresData);
+    updateComparisonProductName(compareProduct.name);
+    return setShow(true);
+  }
+
+  const modalTableColumns = [
+    {
+      dataField: 'id',
+      text: '',
+      hidden: true
+    },
+    {
+      dataField: 'product1',
+      text: ''
+    },
+    {
+      dataField: 'feature',
+      text: 'Features',
+      style: { backgroundColor: 'lightgray'}
+    },
+    {
+      dataField: 'property2',
+      text: ''
+    }
+  ];
+
   const handleClose = () => setShow(false);
-
-  // if (productDetails !== null) {
-  //   console.log('true: ', productDetails[0])
-  //   return <div>{productDetails[0].name}</div>
-  // } else {
-  //   console.log('false: ',productDetails)
-  //   return <div>def</div>
-  // }
 
   return (
     <>
-      {productDetails ? (
-        <RelatedCarousel products={productDetails} handleOpen={handleOpen} />
-      ) : (
-        <div>def</div>
-      )}
+    {productDetails ? <RelatedCarousel products={productDetails} handleOpen={handleOpen} /> : <div></div>}
 
-      <Modal show={show} onHide={handleClose} size='lg'>
-        <Modal.Header>
-          <Modal.Title>COMPARE PRODUCTS</Modal.Title>
-        </Modal.Header>
-        <Modal.Body>
-          <div style={{ padding: '20px', textAlign: 'center' }}>
-            {/* <BootstrapTable keyField="id" data={comparisonProducts} columns={columns} headerClasses="modalHeader" rowClasses="modalRows" /> */}
-            {/* <BootstrapTable keyField="id" data={tableProducts} columns={columns} headerClasses="modalHeader" rowClasses="modalRows" /> */}
-          </div>
-        </Modal.Body>
-        <Modal.Footer>
-          <Button variant='primary' onClick={handleClose}>
-            Close
-          </Button>
-        </Modal.Footer>
-      </Modal>
-    </>
-  );
-};
+    <Modal
+      show={show}
+      onHide={handleClose}
+      size="lg"
+    >
+      <Modal.Header>
+        <Modal.Title>COMPARE PRODUCTS</Modal.Title>
+      </Modal.Header>
+      <Modal.Body>
+        <div style={{ padding: "20px", textAlign: "center"}}>
+          <BootstrapTable keyField="id" data={modalData} columns={modalTableColumns} headerClasses="modalHeader" rowClasses="modalRows" />
+        </div>
+      </Modal.Body>
+      <Modal.Footer>
+     <Button variant="primary" onClick={handleClose}>Close</Button>
+   </Modal.Footer>
+   </Modal>
+   </>
+  )
+}
 
 var mapStateToProps = (state) => ({
   product: state.currentProduct

@@ -22,25 +22,6 @@ const relatedProductsReducer = (state = [], action) => {
   }
 }
 
-
-
-// const relatedDetailsReducer = (state = {}, action) => {
-//   switch (action.type) {
-//     case 'GET_PRODUCT_DETAILS_SUCCESS':
-//       return {
-//         ...state,
-//         productDetails: action.payload
-//       };
-//     case 'GET_PRODUCT_DETAILS_FAILURE':
-//       return {
-//         ...state,
-//         error: action.payload
-//       }
-//     default:
-//       return state;
-//   }
-// }
-
 export {
   relatedProductsReducer
 }

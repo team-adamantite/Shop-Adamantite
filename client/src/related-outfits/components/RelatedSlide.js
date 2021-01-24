@@ -1,4 +1,5 @@
 import React from 'react';
+import { Card } from 'react-bootstrap';
 import 'react-multi-carousel/lib/styles.css';
 
 const RelatedSlide = ({ product, handleOpen }) => {
@@ -11,18 +12,26 @@ const RelatedSlide = ({ product, handleOpen }) => {
     borderRadius: '50%'
   };
 
-  // let modalComparisonData = [product]
-
   return (
     <>
-      <div onClick={() => handleOpen(product)}>
-        <div className='modalStar'>&#9733;</div>
+      <div className="slideCard" onClick={() => handleOpen(product)}>
+        <div className="modalStar">&#9733;</div>
         <div style={thumbnailStyle}></div>
-        <div className='productCategory'>{product.category}</div>
-        <div className='productName'>{product.name}</div>
-        <div className='productDesc'>{product.description}</div>
-        <div className='productPrice'>${product.default_price}</div>
+        <div className="productName">{product.name}</div>
+        <div className="productCategory">{product.category}</div>
+        <div className="productDesc">{product.description}</div>
+        <div className="productPrice">${product.default_price}</div>
       </div>
+
+      {/* <Card className="slideCard">
+        <Card.Body>
+          <Card.Image variant="top" src={(product.thumbnail)}></Card.Image>
+          <Card.Title>{product.name}</Card.Title>
+          <Card.Subtitle>{product.category}</Card.Subtitle>
+          <Card.Text>{product.description}</Card.Text>
+          <Card.Text>${product.default_price}</Card.Text>
+        </Card.Body>
+      </Card> */}
     </>
   );
 };
