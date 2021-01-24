@@ -60,40 +60,28 @@ const ProductRatings = () => {
     dispatch(getProductReviews(id));
     dispatch(getProductReviewsMeta(id));
 
-    if (sortType === 'Surprise Me') {
-      reorder();
-    } else if (sortType === 'Relevance') {
-      sortRelevance();
-    } else if (sortType === 'Highest Ratings') {
-      sortRatingsAsc();
-    } else if (sortType === 'Lowest Ratings') {
-      sortRatingsDesc();
-    } else if (sortType === 'Helpfulness') {
-      sortHelpfulness();
-    }
-
     // eslint-disable-next-line
   }, [dispatch, id]); // dispatch, id
 
   useEffect(() => {
-    if (reviews.hasOwnProperty('list') && reviews.hasOwnProperty('meta')) {
+    if (reviews.hasOwnProperty('list')) {
       if (!retrieved) {
         setItems([...reviews.list.results]);
-        setMeta(reviews.meta);
+        // setMeta(reviews.meta);
         setRetreived(true);
       }
 
-      if (sortType === 'Surprise Me') {
-        reorder();
-      } else if (sortType === 'Relevance') {
-        sortRelevance();
-      } else if (sortType === 'Highest Ratings') {
-        sortRatingsAsc();
-      } else if (sortType === 'Lowest Ratings') {
-        sortRatingsDesc();
-      } else if (sortType === 'Helpfulness') {
-        sortHelpfulness();
-      }
+      // if (sortType === 'Surprise Me') {
+      //   reorder();
+      // } else if (sortType === 'Relevance') {
+      //   sortRelevance();
+      // } else if (sortType === 'Highest Ratings') {
+      //   sortRatingsAsc();
+      // } else if (sortType === 'Lowest Ratings') {
+      //   sortRatingsDesc();
+      // } else if (sortType === 'Helpfulness') {
+      //   sortHelpfulness();
+      // }
 
       setPercent(
         (
@@ -124,7 +112,7 @@ const ProductRatings = () => {
     // console.log('loading more items...');
     const itemsToAdd = 3;
     const secondsToWait = 2;
-    if (reviews3) {
+    if (reviews.hasOwnProperty('list')) {
       setLoading(true);
       setTimeout(() => {
         // add data
@@ -205,6 +193,7 @@ const ProductRatings = () => {
   };
 
   console.log(reviews);
+  console.log(items);
 
   return (
     <Container id='reviews__container'>
