@@ -1,7 +1,5 @@
 import React from 'react'
 import BootstrapTable from 'react-bootstrap-table-next';
-// import { Table, Button } from "react-bootstrap";
-// import { products, product, styles } from '../../dummyData.js';
 
 const tableProducts = [
   { value1: '✓', category: 'Does the Job', value2: 'Meh'},
@@ -13,23 +11,6 @@ const tableProducts = [
 
 const RelatedModal = ({ comparisonProducts }) => {
 
-//   let currentProduct = comparisonProducts.currentProduct;
-//   let compProduct = comparisonProducts.compareProduct;
-
-//   function featuresCheck(product) {
-//     let counter = 2;
-//     let features = {}
-
-//     for (let i = 0; i < features.length; i++) {
-//       features.id: counter;
-//       features.value: '✓';
-//       features.category: features.
-//     }
-//   }
-
-  // let data = {
-  //   {prod1: compare}
-  // }
 
   let product = products[0];
   const columns = [

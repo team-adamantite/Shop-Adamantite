@@ -24,11 +24,6 @@ const RelatedProducts = ({ product }) => {
     });
   }, [id]);
 
-<<<<<<< HEAD
-<<<<<<< HEAD
-  // let modalTableData;
-  // var modalTableData = [];
-
   const updateModalData = (data) => setModalData(data);
   const updateComparisonProductName = (name) => setComparisonProductName(name);
 
@@ -89,29 +84,10 @@ const RelatedProducts = ({ product }) => {
       }
     }
 
-    console.log('featuresData: ', featuresData);
     updateModalData(featuresData);
     updateComparisonProductName(compareProduct.name);
-    // modalTableData = featuresData;
-    // console.log('modal table data: ', modalTableData);
     return setShow(true);
-
   }
-
-  // console.log('modal data: ', modalData);
-
-=======
->>>>>>> main
-=======
->>>>>>> main
-  // const tableProducts = [
-  //   { id: 1, product1: '', feature: 'Features', product2: ''},
-  //   { id: 2, product1: '✓', feature: 'Does the Job', produc2: 'Meh'},
-  //   { id: 3, product1: '✓', feature: 'Impresses Strangers', produc2: '✓'},
-  //   { id: 4, product1: 'They\'re never impressed.', feature: 'Impresses Friends', produc2: 'See left'},
-  //   { id: 5, product1: 'Taco Bell', feature: 'Date Material', produc2: '✓✓✓'},
-  //   { id: 6, product1: 'Do you know the deceased?', feature: 'Can Be Worn at a Funeral', produc2: 'Do you care about the deceased?'}
-  // ];
 
   const modalTableColumns = [
     {
@@ -136,8 +112,6 @@ const RelatedProducts = ({ product }) => {
 
   const handleClose = () => setShow(false);
 
-<<<<<<< HEAD
-<<<<<<< HEAD
   return (
     <>
     {productDetails ? <RelatedCarousel products={productDetails} handleOpen={handleOpen} /> : <div></div>}
@@ -153,7 +127,6 @@ const RelatedProducts = ({ product }) => {
       <Modal.Body>
         <div style={{ padding: "20px", textAlign: "center"}}>
           <BootstrapTable keyField="id" data={modalData} columns={modalTableColumns} headerClasses="modalHeader" rowClasses="modalRows" />
-          {/* <BootstrapTable keyField="id" data={tableProducts} columns={columns} headerClasses="modalHeader" rowClasses="modalRows" /> */}
         </div>
       </Modal.Body>
       <Modal.Footer>
@@ -163,58 +136,6 @@ const RelatedProducts = ({ product }) => {
    </>
   )
 }
-=======
-  // if (productDetails !== null) {
-  //   console.log('true: ', productDetails[0])
-  //   return <div>{productDetails[0].name}</div>
-  // } else {
-  //   console.log('false: ',productDetails)
-  //   return <div>def</div>
-  // }
-
-  return (
-    <>
-=======
-  // if (productDetails !== null) {
-  //   console.log('true: ', productDetails[0])
-  //   return <div>{productDetails[0].name}</div>
-  // } else {
-  //   console.log('false: ',productDetails)
-  //   return <div>def</div>
-  // }
-
-  return (
-    <>
->>>>>>> main
-      {productDetails ? (
-        <RelatedCarousel products={productDetails} handleOpen={handleOpen} />
-      ) : (
-        <div>def</div>
-      )}
-
-      <Modal show={show} onHide={handleClose} size='lg'>
-        <Modal.Header>
-          <Modal.Title>COMPARE PRODUCTS</Modal.Title>
-        </Modal.Header>
-        <Modal.Body>
-          <div style={{ padding: '20px', textAlign: 'center' }}>
-            {/* <BootstrapTable keyField="id" data={comparisonProducts} columns={columns} headerClasses="modalHeader" rowClasses="modalRows" /> */}
-            {/* <BootstrapTable keyField="id" data={tableProducts} columns={columns} headerClasses="modalHeader" rowClasses="modalRows" /> */}
-          </div>
-        </Modal.Body>
-        <Modal.Footer>
-          <Button variant='primary' onClick={handleClose}>
-            Close
-          </Button>
-        </Modal.Footer>
-      </Modal>
-    </>
-  );
-};
-<<<<<<< HEAD
->>>>>>> main
-=======
->>>>>>> main
 
 var mapStateToProps = (state) => ({
   product: state.currentProduct

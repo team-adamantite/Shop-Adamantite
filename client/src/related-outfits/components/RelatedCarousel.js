@@ -4,7 +4,6 @@ import Carousel from 'react-multi-carousel';
 import { Container } from 'react-bootstrap';
 import '../../../../node_modules/react-multi-carousel/lib/styles.css';
 import RelatedSlide from './RelatedSlide.js';
-// import { products, styles } from '../../dummyData.js';
 import '../../store.js';
 
 const RelatedCarousel = ({ products, handleOpen }) => {
@@ -29,8 +28,6 @@ const RelatedCarousel = ({ products, handleOpen }) => {
 
   return (
     <>
-<<<<<<< HEAD
-<<<<<<< HEAD
     <Container className="relatedContainer" width="75%" align="center">
     <div width="75%">
       <h1>RELATED PRODUCTS</h1>
@@ -44,40 +41,6 @@ const RelatedCarousel = ({ products, handleOpen }) => {
         >
             {products.map(product => {
               return <RelatedSlide key={product.id} product={product} handleOpen={handleOpen} />
-=======
-=======
->>>>>>> main
-      <div
-        onClick={() => {
-          console.log(products.length);
-        }}
-      >
-        abc
-      </div>
-      <Container className='relatedContainer' width='75%' align='center'>
-        <div width='75%'>
-          <h1>RELATED PRODUCTS</h1>
-          <Carousel
-            id='relatedContainer'
-            responsive={responsive}
-            swipeable={true}
-            draggable={true}
-            showDots={true}
-            renderButtonGroupOutside={true}
-            keyboard={true}
-          >
-            {products.map((product) => {
-              return (
-                <RelatedSlide
-                  key={product.id}
-                  product={product}
-                  handleOpen={handleOpen}
-                />
-              );
-<<<<<<< HEAD
->>>>>>> main
-=======
->>>>>>> main
             })}
           </Carousel>
         </div>
