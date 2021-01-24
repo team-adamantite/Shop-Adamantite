@@ -2,6 +2,7 @@
 *.LICENSE.txt
 *.css
 !index.css
+.env
 
 ###OSX###
 
