@@ -678,7 +678,9 @@ img .image-gallery-image {
   grid-row-gap: 0.25em;
 }
 #productName {
-  padding-top: 0;
+  position: relative;
+  top: -8px;
+  vertical-align: text-top;
   margin: 0;
   font-size: 3.0vw;
 }
@@ -734,9 +736,9 @@ img .image-gallery-image {
   grid-template-columns: repeat(4, 1fr);
   grid-template-rows: 50% 50%;
   grid-auto-rows: auto;
-  grid-column-gap: 1em;
+  grid-column-gap: .5em;
   grid-row-gap: .5em;
-  margin: 1.5em 0em;
+  margin: .5em 0;
 }
 
 .styleThumb {
@@ -772,6 +774,7 @@ img .image-gallery-image {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr 1fr;
   white-space: nowrap;
+  margin-top: 1em;
 }
 .dropDown{
   width: 8vw;
