@@ -1,12 +1,18 @@
 import React, { useState, Fragment } from 'react';
 
-const AddStarRating = ({ value }) => {
+const AddStarRating = () => {
   const [rating, setRating] = useState(0);
+  const [value, setValue] = useState(0);
   // Use .map() or for loop
   return (
     <Fragment>
       <div className='half-star-rating'>
-        <span onMouseOver={() => setRating(1)} value={rating}>
+        <span
+          onMouseEnter={() => setRating(1)}
+          onMouseLeave={() => !value && setRating(0)}
+          onClick={() => setValue(1)}
+          value={rating ? (value ? value : rating) : 0}
+        >
           <i
             className={
               rating >= 1
@@ -17,7 +23,12 @@ const AddStarRating = ({ value }) => {
             }
           ></i>
         </span>
-        <span onMouseOver={() => setRating(2)} value={rating}>
+        <span
+          onMouseEnter={() => setRating(2)}
+          onMouseLeave={() => !value && setRating(0)}
+          onClick={() => setValue(2)}
+          value={rating ? (value ? value : rating) : 0}
+        >
           <i
             className={
               rating >= 2
@@ -28,7 +39,12 @@ const AddStarRating = ({ value }) => {
             }
           ></i>
         </span>
-        <span onMouseOver={() => setRating(3)} value={rating}>
+        <span
+          onMouseEnter={() => setRating(3)}
+          onMouseLeave={() => !value && setRating(0)}
+          onClick={() => setValue(3)}
+          value={rating ? (value ? value : rating) : 0}
+        >
           <i
             className={
               rating >= 3
@@ -39,7 +55,12 @@ const AddStarRating = ({ value }) => {
             }
           ></i>
         </span>
-        <span onMouseOver={() => setRating(4)} value={rating}>
+        <span
+          onMouseEnter={() => setRating(4)}
+          onMouseLeave={() => !value && setRating(0)}
+          onClick={() => setValue(4)}
+          value={rating ? (value ? value : rating) : 0}
+        >
           <i
             className={
               rating >= 4
@@ -50,7 +71,12 @@ const AddStarRating = ({ value }) => {
             }
           ></i>
         </span>
-        <span onMouseOver={() => setRating(5)} value={rating}>
+        <span
+          onMouseEnter={() => setRating(5)}
+          onMouseLeave={() => !value && setRating(0)}
+          onClick={() => setValue(5)}
+          value={rating ? (value ? value : rating) : 0}
+        >
           <i
             className={
               rating >= 5

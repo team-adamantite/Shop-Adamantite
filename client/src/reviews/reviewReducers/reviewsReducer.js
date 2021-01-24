@@ -5,6 +5,16 @@ const productReviewReducer = (state = {}, action) => {
         ...state,
         list: action.payload
       };
+    case 'GET_PRODUCT_REVIEWS_META':
+      return {
+        ...state,
+        meta: action.payload
+      };
+    case 'CREATE_PRODUCT_REVIEW':
+      return {
+        ...state,
+        message: action.payload
+      };
     case 'PRODUCT_REVIEWS_ERROR':
       console.error(action.payload);
       return {

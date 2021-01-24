@@ -19,14 +19,17 @@ import LineChart from './LineChart';
 import StarRating from './StarRating';
 import { data2, data3, reviews2, reviews3 } from '../utils/data';
 
-import { getProductReviews } from '../reviewActions/productReviewsActions';
+import {
+  getProductReviews,
+  getProductReviewsMeta
+} from '../reviewActions/productReviewsActions';
 
 const ProductRatings = () => {
   const dispatch = useDispatch();
   const product = useSelector((state) => state.currentProduct);
   const { id } = product;
   const reviews = useSelector((state) => state.reviews);
-  const [comment, setComment] = useState('');
+  const [meta, setMeta] = useState({});
   const [items, setItems] = useState([]);
   const [show, setShow] = useState(false);
   const [rating, setRating] = useState(0);
@@ -55,16 +58,41 @@ const ProductRatings = () => {
 
   useEffect(() => {
     dispatch(getProductReviews(id));
-    reorder();
+    dispatch(getProductReviewsMeta(id));
+
+    if (sortType === 'Surprise Me') {
+      reorder();
+    } else if (sortType === 'Relevance') {
+      sortRelevance();
+    } else if (sortType === 'Highest Ratings') {
+      sortRatingsAsc();
+    } else if (sortType === 'Lowest Ratings') {
+      sortRatingsDesc();
+    } else if (sortType === 'Helpfulness') {
+      sortHelpfulness();
+    }
 
     // eslint-disable-next-line
   }, [dispatch, id]); // dispatch, id
 
   useEffect(() => {
-    if (reviews.hasOwnProperty('list')) {
+    if (reviews.hasOwnProperty('list') && reviews.hasOwnProperty('meta')) {
       if (!retrieved) {
         setItems([...reviews.list.results]);
+        setMeta(reviews.meta);
         setRetreived(true);
+      }
+
+      if (sortType === 'Surprise Me') {
+        reorder();
+      } else if (sortType === 'Relevance') {
+        sortRelevance();
+      } else if (sortType === 'Highest Ratings') {
+        sortRatingsAsc();
+      } else if (sortType === 'Lowest Ratings') {
+        sortRatingsDesc();
+      } else if (sortType === 'Helpfulness') {
+        sortHelpfulness();
       }
 
       setPercent(
@@ -120,7 +148,7 @@ const ProductRatings = () => {
 
   const reorder = () => {
     setSorting(true);
-    setSortType('Relevance');
+    setSortType('Surprise Me');
     setItems([...shuffle(items)]);
 
     setTimeout(() => {
@@ -175,6 +203,8 @@ const ProductRatings = () => {
       setSorting(false);
     }, 1200);
   };
+
+  console.log(reviews);
 
   return (
     <Container id='reviews__container'>
@@ -340,7 +370,20 @@ const ProductRatings = () => {
           </div>
         </div>
         {/* <Suspense fallback={<div>Loading...</div>}> */}
-        <ReviewModal show={show} handleClose={handleClose} />
+        {reviews.hasOwnProperty('list') && reviews.hasOwnProperty('meta') && (
+          <ReviewModal
+            meta={reviews.meta}
+            show={show}
+            handleClose={handleClose}
+            id={id}
+            sortType={sortType}
+            setSortType={setSortType}
+            review_id={
+              reviews.list.results[reviews.list.results.length - 1].review_id +
+              1
+            }
+          />
+        )}
         {/* </Suspense> */}
       </div>
     </Container>

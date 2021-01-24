@@ -28,6 +28,7 @@ div {
 
 #main {
   margin: 1.4rem 2rem;
+  margin-top: 0rem;
   box-sizing: border-box;
 }
 
@@ -36,6 +37,13 @@ div {
   padding: 0.8rem;
   overflow-y: scroll;
   position: relative;
+}
+
+.navbar-brand {
+  font-family: 'Roboto Mono', monospace;
+  font-weight: 500;
+  font-size: 2rem;
+  margin-left: 1rem;
 }
 
 .star-rating {
@@ -742,6 +750,10 @@ h1 {
 
 .modalFeatureColumn {
   background-color: lightgray;
+}
+
+.wrapper {
+  padding-top: 0;
 }
 
 @keyframes anim-lightspeed-in {
