@@ -14,9 +14,6 @@ const RelatedProducts = ({ product }) => {
   const currentProduct = useSelector(state => state.currentProduct);
   const [modalData, setModalData] = useState([]);
   const [comparisonProductName, setComparisonProductName] = useState('');
-  // const currentThumbnail = useSelector(state => state.productStyles.results[0].photos[0].thumbnail_url);
-  // const productIds = useSelector(state => state.relatedIds.ids);
-  // let products = useSelector(state => state.related.productDetails || []  );
   const { id } = product;
 
   const [productDetails, setProductDetails] = useState(null);
