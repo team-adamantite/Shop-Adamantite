@@ -35,10 +35,7 @@ const QA = ({ product }) => {
     if (Object.values(inputs).includes('') === false) {
       const postObj = { ...inputs, product_id: product.id };
       axios
-        .post(
-          `https://app-hrsei-api.herokuapp.com/api/fec2/hratx/qa/questions`,
-          postObj
-        )
+        .post(`/proxy/api/fec2/hratx/qa/questions`, postObj)
         .then((res) => {
           alert(`Congrats! Your question has been posted!`);
         })
@@ -47,9 +44,7 @@ const QA = ({ product }) => {
   }
   function loadQuestionList(id) {
     axios
-      .get(
-        `https://app-hrsei-api.herokuapp.com/api/fec2/hratx/qa/questions?product_id=${id}&count=50`
-      )
+      .get(`/proxy/api/fec2/hratx/qa/questions?product_id=${id}&count=50`)
       .then((res) => {
         const questionList = res.data.results
           .slice()

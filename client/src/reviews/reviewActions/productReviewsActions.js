@@ -2,7 +2,7 @@ import axios from 'axios';
 
 import token from '../../../config/config.js';
 
-const BASE_URL = 'https://app-hrsei-api.herokuapp.com/api/fec2/hratx';
+const BASE_URL = '/proxy/api/fec2/hratx';
 
 // Get reviews from API
 const getProductReviews = (id) => async (dispatch) => {
