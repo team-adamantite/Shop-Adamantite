@@ -30,9 +30,7 @@ var productInfo = ({ currentProduct, currentStyle }) => {
 
   return (
     <div id='productInfo'>
-      <div className='productName py-0' id='productName'>
-        {currentProduct.name}
-      </div>
+      <div id='productName'>{currentProduct.name}</div>
       <div id='productCategory'>{currentProduct.category}</div>
       <div id='overviewReviews'>
         <StarRating value={average} type='avg' />
