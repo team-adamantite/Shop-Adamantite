@@ -2,7 +2,6 @@ import React, { useRef, useState, useEffect } from 'react';
 import { select, scaleBand, scaleLinear, max } from 'd3';
 import useResizeObserver from '../utils/useResizeObserver';
 import rightRoundedRect from '../utils/handleCornersSvg';
-import '../../styles/chart.css';
 
 function BarChart({ reviews }) {
   const svgRef = useRef();
