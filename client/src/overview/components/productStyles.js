@@ -27,7 +27,7 @@ var productStyles = ({
       <div id='productStyles'>
         {styles.results.map((style) => {
           return (
-            <img
+            <img key = {style.style_id}
                 className={
                   selected === style.style_id
                     ? 'styleThumb thumb__clicked'
