@@ -3,8 +3,8 @@ import { connect } from 'react-redux';
 import { Modal, Button, Form } from 'react-bootstrap';
 import axios from 'axios';
 import Question from './question';
-import token from '../../../config/config.js';
-axios.defaults.headers.common['Authorization'] = token;
+// import token from '../../../config/config.js';
+// axios.defaults.headers.common['Authorization'] = token;
 
 const QA = ({ product }) => {
   const [questions, setQuestions] = useState([]);
