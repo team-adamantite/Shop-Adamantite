@@ -6,7 +6,7 @@ const BUILD_DIR = path.resolve(__dirname, './client/public/');
 const APP_DIR = path.resolve(__dirname, './client');
 
 module.exports = {
-  mode: 'development',
+  mode: 'production',
   plugins: [
     new HtmlWebpackPlugin(),
     new MiniCssExtractPlugin(),
