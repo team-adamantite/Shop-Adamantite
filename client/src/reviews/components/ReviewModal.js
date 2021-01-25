@@ -5,26 +5,18 @@ import { Modal, Form, Button } from 'react-bootstrap';
 import FormContainer from './FormContainer';
 import AddStarRating from './AddStarRating';
 
-import { addProductReview } from '../reviewActions/productReviewsActions';
+import {
+  addProductReview,
+  getProductReviews,
+  getProductReviewsMeta
+} from '../reviewActions/productReviewsActions';
 
-const ReviewModal = ({
-  meta,
-  show,
-  handleClose,
-  id,
-  sortType,
-  setSortType
-}) => {
+const ReviewModal = ({ meta, show, handleClose, id, handleReviewAdd }) => {
   const dispatch = useDispatch();
   const [comment, setComment] = useState('');
   const [summary, setSummary] = useState('');
   const [recommended, setRecommended] = useState(false);
-  const [userRating, setUserRating] = useState(1);
-  // let data = {
-  //   product_id: id,
-  //   rating: userRating,
-  //   photos: []
-  // };
+  const [userRating, setUserRating] = useState(0);
   let characteristics = {};
 
   const updateCharacteristics = (e) => {
@@ -44,23 +36,26 @@ const ReviewModal = ({
         characteristics: ${characteristics}
       `);
 
-    // let data = {
-    //   product_id: id,
-    //   rating: userRating,
-    //   summary,
-    //   body: comment,
-    //   recommend: recommended,
-    //   name: 'Adamantite',
-    //   email: 'adamant@gmail.com',
-    //   // date: moment().format('YYYY-MM-DD'),
-    //   photos: [],
-    //   characteristics
-    // };
+    let data = {
+      product_id: id,
+      rating: userRating,
+      summary,
+      body: comment,
+      recommend: recommended,
+      name: 'Adamantite',
+      email: 'adamant@gmail.com',
+      date: moment().format('YYYY-MM-DD'),
+      photos: [],
+      characteristics
+    };
 
-    // console.log(data);
+    console.log(data);
 
-    // dispatch(addProductReview(data));
-    // setSortType(sortType);
+    dispatch(addProductReview(data));
+    handleReviewAdd(data);
+    console.log('Review Added!');
+
+    handleClose();
   };
 
   return (
@@ -71,12 +66,7 @@ const ReviewModal = ({
 
       <Modal.Body>
         <FormContainer className='justify-content-left'>
-          <div className='d-flex justify-content-between'>
-            <AddStarRating
-              value={0}
-              onClick={(e) => setUserRating(e.target.value)}
-            />
-          </div>
+          <AddStarRating setUserRating={setUserRating} />
           <Form.Group controlId='summary'>
             <Form.Label>Review Summary: </Form.Label>
             <Form.Control

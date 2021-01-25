@@ -48,16 +48,11 @@ const getProductReviewsMeta = (id) => async (dispatch) => {
 
 const addProductReview = (data) => async (dispatch) => {
   try {
-    const res = await axios.post(`${BASE_URL}/reviews/`, {
-      data,
-      headers: {
-        Authorization: token
-      }
-    });
+    const res = await axios.post(`${BASE_URL}/reviews/`, data);
 
     dispatch({
       type: 'CREATE_PRODUCT_REVIEW',
-      payload: { success: true, msg: 'User Review Added! Thank You!' }
+      payload: res.data
     });
   } catch (err) {
     dispatch({

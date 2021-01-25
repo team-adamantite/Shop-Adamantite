@@ -37,7 +37,7 @@ const AnimateReviews = ({ children }) => {
               // After the previous frame, remove
               // the transistion to play the animation
               domNode.style.transform = '';
-              domNode.style.transition = 'transform 1100ms';
+              domNode.style.transition = 'transform 1200ms';
             });
           });
         }

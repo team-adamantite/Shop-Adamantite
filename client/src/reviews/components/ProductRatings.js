@@ -29,15 +29,12 @@ const ProductRatings = () => {
   const product = useSelector((state) => state.currentProduct);
   const { id } = product;
   const reviews = useSelector((state) => state.reviews);
-  const [meta, setMeta] = useState({});
+  const [newId, setNewId] = useState(1);
   const [items, setItems] = useState([]);
+  const [allItems, setAllItems] = useState([]);
   const [show, setShow] = useState(false);
-  const [rating, setRating] = useState(0);
-  const [removedItems, setRemovedItems] = useState([]);
-  const [page, setPage] = useState(1);
   const [hasNextPage, setHasNextPage] = useState(true);
   const [loading, setLoading] = useState(false);
-  const [chart, updateChart] = useState(false);
   const [sorting, setSorting] = useState(false);
   const [retrieved, setRetreived] = useState(false);
   const [sortType, setSortType] = useState('Relevance');
@@ -67,6 +64,7 @@ const ProductRatings = () => {
     if (reviews.hasOwnProperty('list')) {
       if (!retrieved) {
         setItems([...reviews.list.results]);
+        setAllItems([...reviews.list.results, ...reviews3.list.results]);
         // setMeta(reviews.meta);
         setRetreived(true);
       }
@@ -82,49 +80,117 @@ const ProductRatings = () => {
       // } else if (sortType === 'Helpfulness') {
       //   sortHelpfulness();
       // }
-
-      setPercent(
-        (
-          (reviews.list.results.filter((review) => review.recommend).length /
-            reviews.list.results.length) *
-          100
-        ).toFixed(0)
-      );
-
-      setAverage(
-        ((
-          reviews.list.results
-            .map((review) => review.rating)
-            .reduce((acc, current) => acc + current, 0) /
-          reviews.list.results.reduce((acc) => acc + 5, 0)
-        ).toFixed(1) *
-          10) /
-          2
-      );
     }
   }, [reviews]);
 
-  const loadMoreItems = () => {
-    if (!retrieved && reviews.list) {
-      setItems([...reviews.list.results]);
-      setRetreived(true);
+  const handleReviewAdd = (data) => {
+    if (data && reviews.hasOwnProperty('list')) {
+      // reviews.list.results.push({
+      //   body: data.body,
+      //   date: data.date,
+      //   helpfulness: 0,
+      //   rating: data.rating,
+      //   recommend: data.recommend,
+      //   review_id:
+      //     reviews.list.results[reviews.list.results.length - 1].review_id + 1,
+      //   reviewer_name: data.name,
+      //   summary: data.summary
+      // });
+      setLoading(true);
+      setTimeout(() => {
+        setItems([
+          {
+            review_id: setNewId((prevId) => prevId + 1),
+            rating: data.rating,
+            summary: data.summary,
+            body: data.body,
+            date: data.date,
+            helpfulness: 0,
+            recommend: data.recommend,
+            reviewer_name: data.name
+          },
+          ...items
+        ]);
+        setAllItems([
+          {
+            review_id: setNewId((prevId) => prevId + 1),
+            rating: data.rating,
+            summary: data.summary,
+            body: data.body,
+            date: data.date,
+            helpfulness: 0,
+            recommend: data.recommend,
+            reviewer_name: data.name
+          },
+          ...allItems
+        ]);
+        setLoading(false);
+      }, 600);
+
+      setHasNextPage(true);
+      // loadMoreItems();
     }
+  };
+
+  useEffect(() => {
+    if (reviews.hasOwnProperty('list') && items.length > 0) {
+      // setLoading(true);
+      setTimeout(() => {
+        const currentItems = [...allItems];
+
+        setPercent(
+          (
+            (currentItems.filter((review) => review.recommend).length /
+              currentItems.length) *
+            100
+          ).toFixed(0)
+        );
+
+        setAverage(
+          ((
+            currentItems
+              .map((review) => review.rating)
+              .reduce((acc, current) => acc + current, 0) /
+            currentItems.reduce((acc) => acc + 5, 0)
+          ).toFixed(1) *
+            10) /
+            2
+        );
+        // setLoading(false);
+      }, 400);
+    }
+  }, [items]);
+
+  const loadMoreItems = () => {
     // console.log('loading more items...');
     const itemsToAdd = 3;
     const secondsToWait = 2;
-    if (reviews.hasOwnProperty('list')) {
+    const length = reviews3.list.results.length;
+    if (reviews.hasOwnProperty('list') && hasNextPage) {
       setLoading(true);
       setTimeout(() => {
         // add data
         let currentItems = [...items];
-        if (reviews3.list.results.length) {
+        if (currentItems.length <= reviews.list.results.length + length) {
           for (let i = 0; i < itemsToAdd; i++) {
-            if (reviews3.list.results.length) {
-              currentItems.push(reviews3.list.results.shift());
+            if (currentItems.length < reviews.list.results.length) {
+              currentItems.push(
+                reviews.list.results[currentItems.length - 1 + i]
+              );
+            } else {
+              if (
+                currentItems.length < reviews.list.results.length + length &&
+                reviews3.list.results.length
+              ) {
+                currentItems.push(reviews3.list.results.shift());
+              }
             }
           }
           setItems(currentItems);
           setLoading(false);
+          if (currentItems.length === reviews.list.results.length + length) {
+            setHasNextPage(false);
+          }
           // setPage((page) => page + 1);
         } else {
           setLoading(false);
@@ -204,20 +270,27 @@ const ProductRatings = () => {
           style={{ width: expandedView ? '30vw' : '40vw' }}
         >
           {/* <Suspense fallback={<div>Loading...</div>}> */}
-          <div className='ratings__avg d-flex justify-content-left'>
-            <h1 className='ratings__avg_num' ref={block}>
-              {average}
-            </h1>
-            <StarRating value={average} type='avg' />
-          </div>
-          <h3 className='chart__title fs-5 my-2' style={{ textAlign: 'left' }}>
-            <strong>{percent}%</strong> of reviews recommend this product
-          </h3>
+          {reviews.hasOwnProperty('list') && (
+            <div className='ratings__avg d-flex justify-content-left'>
+              <h1 className='ratings__avg_num' ref={block}>
+                {average}
+              </h1>
+              <StarRating value={average} type='avg' />
+            </div>
+          )}
+          {reviews.hasOwnProperty('list') && (
+            <h3
+              className='chart__title fs-5 my-2'
+              style={{ textAlign: 'left' }}
+            >
+              <strong>{percent}%</strong> of reviews recommend this product
+            </h3>
+          )}
           {/* </Suspense> */}
 
           {/* <Suspense fallback={<div>Loading...</div>}> */}
           <div className='charts__container'>
-            {items.length > 0 && <BarChart reviews={reviews} />}
+            {allItems.length > 0 && <BarChart items={allItems} />}
             <h4 className='chart__subtitle' style={{ textAlign: 'left' }}>
               Size
             </h4>
@@ -236,7 +309,7 @@ const ProductRatings = () => {
           <div className='dropdown-group'>
             <h4 className='review__sort fs-5' style={{ textAlign: 'left' }}>
               <strong>
-                {items.length > 0 && items.length} reviews, sorted by{' '}
+                {items.length > 0 && allItems.length} reviews, sorted by{' '}
               </strong>{' '}
             </h4>
             <div className='dropdown'>
@@ -365,8 +438,7 @@ const ProductRatings = () => {
             show={show}
             handleClose={handleClose}
             id={id}
-            sortType={sortType}
-            setSortType={setSortType}
+            handleReviewAdd={handleReviewAdd}
             review_id={
               reviews.list.results[reviews.list.results.length - 1].review_id +
               1
