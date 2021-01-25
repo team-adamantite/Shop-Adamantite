@@ -73,7 +73,7 @@ export default function Question({ question, name }) {
           inputs,
           {
             headers: {
-              Authorization: '974cd013dc314dda3b7a145b94a23ba6826841b7',
+              Authorization: 'for your token',
             },
           }
         )

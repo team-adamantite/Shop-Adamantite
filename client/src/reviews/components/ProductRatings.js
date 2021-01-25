@@ -21,7 +21,7 @@ import { data2, data3, reviews2, reviews3 } from '../utils/data';
 
 import {
   getProductReviews,
-  getProductReviewsMeta
+  getProductReviewsMeta,
 } from '../reviewActions/productReviewsActions';
 
 const ProductRatings = () => {
@@ -58,7 +58,7 @@ const ProductRatings = () => {
     dispatch(getProductReviewsMeta(id));
 
     // eslint-disable-next-line
-  }, [dispatch, id]); // dispatch, id
+  }, [dispatch, id, product]); // dispatch, id
 
   useEffect(() => {
     if (reviews.hasOwnProperty('list')) {
@@ -107,9 +107,9 @@ const ProductRatings = () => {
             date: data.date,
             helpfulness: 0,
             recommend: data.recommend,
-            reviewer_name: data.name
+            reviewer_name: data.name,
           },
-          ...items
+          ...items,
         ]);
         setAllItems([
           {
@@ -120,9 +120,9 @@ const ProductRatings = () => {
             date: data.date,
             helpfulness: 0,
             recommend: data.recommend,
-            reviewer_name: data.name
+            reviewer_name: data.name,
           },
-          ...allItems
+          ...allItems,
         ]);
         setLoading(false);
       }, 600);
@@ -236,7 +236,7 @@ const ProductRatings = () => {
     setItems([
       ...items.sort((a, b) =>
         a.helpfulness < b.helpfulness ? 1 : a.rating < b.rating ? 0 : -1
-      )
+      ),
     ]);
 
     setTimeout(() => {
@@ -250,7 +250,7 @@ const ProductRatings = () => {
     setItems([
       ...items.sort((a, b) =>
         a.rating < b.rating ? 1 : a.helpfulness < b.helpfulness ? 0 : -1
-      )
+      ),
     ]);
 
     setTimeout(() => {
@@ -262,25 +262,25 @@ const ProductRatings = () => {
   // console.log(items);
 
   return (
-    <Container id='reviews__container'>
-      <h3 className='reviews__title fs-4 my-3'>RATINGS &amp; REVIEWS</h3>
-      <div className='d-flex'>
+    <Container id="reviews__container">
+      <h3 className="reviews__title fs-4 my-3">RATINGS &amp; REVIEWS</h3>
+      <div className="d-flex">
         <div
-          className='charts__col w-40'
+          className="charts__col w-40"
           style={{ width: expandedView ? '30vw' : '40vw' }}
         >
           {/* <Suspense fallback={<div>Loading...</div>}> */}
           {reviews.hasOwnProperty('list') && (
-            <div className='ratings__avg d-flex justify-content-left'>
-              <h1 className='ratings__avg_num' ref={block}>
+            <div className="ratings__avg d-flex justify-content-left">
+              <h1 className="ratings__avg_num" ref={block}>
                 {average}
               </h1>
-              <StarRating value={average} type='avg' />
+              <StarRating value={average} type="avg" />
             </div>
           )}
           {reviews.hasOwnProperty('list') && (
             <h3
-              className='chart__title fs-5 my-2'
+              className="chart__title fs-5 my-2"
               style={{ textAlign: 'left' }}
             >
               <strong>{percent}%</strong> of reviews recommend this product
@@ -289,13 +289,13 @@ const ProductRatings = () => {
           {/* </Suspense> */}
 
           {/* <Suspense fallback={<div>Loading...</div>}> */}
-          <div className='charts__container'>
+          <div className="charts__container">
             {allItems.length > 0 && <BarChart items={allItems} />}
-            <h4 className='chart__subtitle' style={{ textAlign: 'left' }}>
+            <h4 className="chart__subtitle" style={{ textAlign: 'left' }}>
               Size
             </h4>
             <LineChart data={data2} split={true} />
-            <h4 className='chart__subtitle' style={{ textAlign: 'left' }}>
+            <h4 className="chart__subtitle" style={{ textAlign: 'left' }}>
               Comfort
             </h4>
             <LineChart data={data3} split={false} />
@@ -303,20 +303,20 @@ const ProductRatings = () => {
           {/* </Suspense> */}
         </div>
         <div
-          className='reviews__col w-60'
+          className="reviews__col w-60"
           style={{ width: expandedView ? '70vw' : '60vw' }}
         >
-          <div className='dropdown-group'>
-            <h4 className='review__sort fs-5' style={{ textAlign: 'left' }}>
+          <div className="dropdown-group">
+            <h4 className="review__sort fs-5" style={{ textAlign: 'left' }}>
               <strong>
                 {items.length > 0 && allItems.length} reviews, sorted by{' '}
               </strong>{' '}
             </h4>
-            <div className='dropdown'>
-              <button className='dropdown-btn fs-5'>
+            <div className="dropdown">
+              <button className="dropdown-btn fs-5">
                 <strong>{sortType}</strong>
               </button>
-              <div className='dropdown-content'>
+              <div className="dropdown-content">
                 <a onClick={sortRelevance}>Relevance</a>
                 <a onClick={sortHelpfulness}>Helpfulness</a>
                 <a onClick={sortRatingsAsc}>Highest Rating</a>
@@ -324,11 +324,11 @@ const ProductRatings = () => {
                 <a onClick={reorder}>Surprise Me</a>
               </div>
             </div>
-            <div className='dropdown-chevron'> &#x25BE;</div>
+            <div className="dropdown-chevron"> &#x25BE;</div>
           </div>
 
           <div
-            className='__scrollable-parent'
+            className="__scrollable-parent"
             style={{ height: expandedView ? '86vh' : '660px' }}
           >
             {items.length > 0 && !loading ? (
@@ -343,7 +343,7 @@ const ProductRatings = () => {
                     helpfulness,
                     recommend,
                     date,
-                    body
+                    body,
                   }) => (
                     <Review
                       key={review_id}
@@ -373,7 +373,7 @@ const ProductRatings = () => {
                   helpfulness,
                   recommend,
                   date,
-                  body
+                  body,
                 }) => (
                   <Review
                     key={review_id}
@@ -395,26 +395,26 @@ const ProductRatings = () => {
 
             {loading && hasNextPage && (
               <div
-                className='spinner-border text-primary text-center  m-2'
-                role='status'
+                className="spinner-border text-primary text-center  m-2"
+                role="status"
               ></div>
             )}
             {!hasNextPage && (
-              <div className='text-primary text-center  m-2' role='status'>
+              <div className="text-primary text-center  m-2" role="status">
                 <span>No More Results...</span>
               </div>
             )}
 
-            <div className='infinite-scroll__waypoint'>
+            <div className="infinite-scroll__waypoint">
               {!loading && hasNextPage && (
-                <Waypoint onEnter={loadMoreItems} bottomOffset='-1%' />
+                <Waypoint onEnter={loadMoreItems} bottomOffset="-1%" />
               )}
             </div>
           </div>
           <div>
             <button
-              type='button'
-              className='reviews__btn btn btn-outline-dark btn-lg'
+              type="button"
+              className="reviews__btn btn btn-outline-dark btn-lg"
               onClick={(e) => {
                 setExpandedView((prevView) => !prevView);
                 handleScrollToElement(e);
@@ -423,8 +423,8 @@ const ProductRatings = () => {
               {expandedView ? 'LESS REVIEWS' : 'MORE REVIEWS'}
             </button>
             <button
-              type='button'
-              className='reviews__btn btn btn-outline-primary btn-lg m-2'
+              type="button"
+              className="reviews__btn btn btn-outline-primary btn-lg m-2"
               onClick={handleShow}
             >
               ADD A REVIEW +
