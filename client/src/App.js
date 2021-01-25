@@ -1,10 +1,8 @@
 import React, { Component, Suspense, Fragment } from 'react';
 import Loader from './Loader';
 const Header = React.lazy(() => import('./Header'));
-const ProductRatings = React.lazy(() =>
-  import('./reviews/components/ProductRatings')
-);
-// import ProductRatings from './reviews/components/ProductRatings';
+
+import ProductRatings from './reviews/components/ProductRatings';
 const QAcontainer = React.lazy(() => import('./questions/components/main'));
 const OverviewContainer = React.lazy(() =>
   import('./overview/components/overviewMain')
@@ -29,7 +27,7 @@ export default class App extends Component {
         >
           <Header />
         </Suspense>
-        <div id='main'>
+        <div id="main">
           <Suspense
             fallback={
               <div>
@@ -57,15 +55,8 @@ export default class App extends Component {
           >
             <QAcontainer />
           </Suspense>
-          <Suspense
-            fallback={
-              <div>
-                <Loader />
-              </div>
-            }
-          >
-            <ProductRatings />
-          </Suspense>
+
+          <ProductRatings />
         </div>
       </Fragment>
     );

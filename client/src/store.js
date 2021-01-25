@@ -8,9 +8,9 @@ import currentStyleReducer from './overview/overviewReducers/currentStyle.js';
 import { relatedProductsReducer } from './related-outfits/reducers/RelatedReducer';
 
 //action
-var changeCurrentProduct = (product) => ({
+export const changeCurrentProduct = (product) => ({
   type: 'CHANGE_PRODUCT',
-  payload: product
+  payload: product,
 });
 //reducer
 var currentProductReducer = (state = { currentProduct: {} }, action) => {
@@ -27,7 +27,7 @@ const rootReducer = combineReducers({
   productStyles: productStylesReducer,
   reviews: productReviewReducer,
   currentStyle: currentStyleReducer,
-  related: relatedProductsReducer
+  related: relatedProductsReducer,
 });
 
 const store = createStore(
@@ -36,7 +36,7 @@ const store = createStore(
     currentProduct: product,
     productStyles: { results: [] },
     currentStyle: {},
-    related: []
+    related: [],
   },
   applyMiddleware(thunk)
 );

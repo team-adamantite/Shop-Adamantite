@@ -18,6 +18,7 @@ const Answer = ({ answer }) => {
     if (clicked === false) {
       axios
         .put(`/proxy/api/fec2/hratx/qa/answers/${answer.id}/helpful`)
+        .then((res) => console.log(`hello from clicked helpful`, res.data))
         .catch((err) =>
           console.log(`err from mark the answer as helpful`, err)
         );
