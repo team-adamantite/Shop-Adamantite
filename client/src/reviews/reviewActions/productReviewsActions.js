@@ -9,12 +9,12 @@ const getProductReviews = (id) => async (dispatch) => {
 
     dispatch({
       type: 'GET_PRODUCT_REVIEWS',
-      payload: res.data,
+      payload: res.data
     });
   } catch (err) {
     dispatch({
       type: 'PRODUCT_REVIEWS_ERROR',
-      payload: err,
+      payload: err
     });
   }
 };
@@ -26,12 +26,12 @@ const getProductReviewsMeta = (id) => async (dispatch) => {
 
     dispatch({
       type: 'GET_PRODUCT_REVIEWS_META',
-      payload: res.data,
+      payload: res.data
     });
   } catch (err) {
     dispatch({
       type: 'PRODUCT_REVIEWS_META_ERROR',
-      payload: err,
+      payload: err
     });
   }
 };
@@ -42,12 +42,12 @@ const addProductReview = (data) => async (dispatch) => {
 
     dispatch({
       type: 'CREATE_PRODUCT_REVIEW',
-      payload: { success: true, msg: 'User Review Added! Thank You!' },
+      payload: res.data
     });
   } catch (err) {
     dispatch({
       type: 'PRODUCT_REVIEWS_ERROR',
-      payload: err,
+      payload: err
     });
   }
 };
@@ -61,5 +61,5 @@ export {
   getProductReviewsMeta,
   addProductReview,
   getProductRatings,
-  addProductRating,
+  addProductRating
 };

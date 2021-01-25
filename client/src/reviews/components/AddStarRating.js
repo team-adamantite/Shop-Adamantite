@@ -1,137 +1,134 @@
-import React, { useState, Fragment } from 'react';
+import React, { useState } from 'react';
 
-const AddStarRating = () => {
-  const [rating, setRating] = useState(0);
+const AddStarRating = ({ setUserRating }) => {
   const [value, setValue] = useState(0);
+
+  const handleClick = (val) => {
+    setValue(val);
+    setUserRating(val);
+  };
   // Use .map() or for loop
   return (
-    <Fragment>
-      <div className='half-star-rating'>
-        <span
-          onMouseEnter={() => setRating(1)}
-          onMouseLeave={() => !value && setRating(0)}
-          onClick={() => setValue(1)}
-          value={rating ? (value ? value : rating) : 0}
-        >
-          <i
-            className={
-              rating >= 1
-                ? 'fas fa-star'
-                : rating >= 0.5
-                ? 'fas fa-star-half-alt'
-                : 'far fa-star'
-            }
-          ></i>
-        </span>
-        <span
-          onMouseEnter={() => setRating(2)}
-          onMouseLeave={() => !value && setRating(0)}
-          onClick={() => setValue(2)}
-          value={rating ? (value ? value : rating) : 0}
-        >
-          <i
-            className={
-              rating >= 2
-                ? 'fas fa-star'
-                : rating >= 1.5
-                ? 'fas fa-star-half-alt'
-                : 'far fa-star'
-            }
-          ></i>
-        </span>
-        <span
-          onMouseEnter={() => setRating(3)}
-          onMouseLeave={() => !value && setRating(0)}
-          onClick={() => setValue(3)}
-          value={rating ? (value ? value : rating) : 0}
-        >
-          <i
-            className={
-              rating >= 3
-                ? 'fas fa-star'
-                : rating >= 2.5
-                ? 'fas fa-star-half-alt'
-                : 'far fa-star'
-            }
-          ></i>
-        </span>
-        <span
-          onMouseEnter={() => setRating(4)}
-          onMouseLeave={() => !value && setRating(0)}
-          onClick={() => setValue(4)}
-          value={rating ? (value ? value : rating) : 0}
-        >
-          <i
-            className={
-              rating >= 4
-                ? 'fas fa-star'
-                : rating >= 3.5
-                ? 'fas fa-star-half-alt'
-                : 'far fa-star'
-            }
-          ></i>
-        </span>
-        <span
-          onMouseEnter={() => setRating(5)}
-          onMouseLeave={() => !value && setRating(0)}
-          onClick={() => setValue(5)}
-          value={rating ? (value ? value : rating) : 0}
-        >
-          <i
-            className={
-              rating >= 5
-                ? 'fas fa-star'
-                : rating >= 4.5
-                ? 'fas fa-star-half-alt'
-                : 'far fa-star'
-            }
-          ></i>
-        </span>
-        {/* <div className='overlay'> */}
-        {/* <span
+    <div className='half-star-rating'>
+      <span
+        onMouseEnter={() => setValue(1)}
+        onClick={() => handleClick(1)}
+        value={value}
+      >
+        <i
+          className={
+            value >= 1
+              ? 'fas fa-star'
+              : value >= 0.5
+              ? 'fas fa-star-half-alt'
+              : 'far fa-star'
+          }
+        ></i>
+      </span>
+      <span
+        onMouseEnter={() => setValue(2)}
+        onClick={() => handleClick(2)}
+        value={value}
+      >
+        <i
+          className={
+            value >= 2
+              ? 'fas fa-star'
+              : value >= 1.5
+              ? 'fas fa-star-half-alt'
+              : 'far fa-star'
+          }
+        ></i>
+      </span>
+      <span
+        onMouseEnter={() => setValue(3)}
+        onClick={() => handleClick(3)}
+        value={value}
+      >
+        <i
+          className={
+            value >= 3
+              ? 'fas fa-star'
+              : value >= 2.5
+              ? 'fas fa-star-half-alt'
+              : 'far fa-star'
+          }
+        ></i>
+      </span>
+      <span
+        onMouseEnter={() => setValue(4)}
+        onClick={() => handleClick(4)}
+        value={value}
+      >
+        <i
+          className={
+            value >= 4
+              ? 'fas fa-star'
+              : value >= 3.5
+              ? 'fas fa-star-half-alt'
+              : 'far fa-star'
+          }
+        ></i>
+      </span>
+      <span
+        onMouseEnter={() => setValue(5)}
+        onClick={() => handleClick(5)}
+        value={value}
+      >
+        <i
+          className={
+            value >= 5
+              ? 'fas fa-star'
+              : value >= 4.5
+              ? 'fas fa-star-half-alt'
+              : 'far fa-star'
+          }
+        ></i>
+      </span>
+      {/* <div className='overlay'> */}
+      {/* <span
             className='overlay-item'
             onMouseOver={() => setRating(0.5)}
             onMouseOut={() => setRating(0)}
           ></span> */}
-        {/* <span
+      {/* <span
             className='overlay-item'
             onMouseOver={() => setRating(1)}
           ></span> */}
-        {/* <span
+      {/* <span
             className='overlay-item'
             onMouseOver={() => setRating(1.5)}
           ></span> */}
-        {/* <span
+      {/* <span
             className='overlay-item'
             onMouseOver={() => setRating(2)}
           ></span> */}
-        {/* <span
+      {/* <span
             className='overlay-item'
             onMouseOver={() => setRating(2.5)}
           ></span> */}
-        {/* <span
+      {/* <span
             className='overlay-item'
             onMouseOver={() => setRating(3)}
           ></span> */}
-        {/* <span
+      {/* <span
             className='overlay-item'
             onMouseOver={() => setRating(3.5)}
           ></span> */}
-        {/* <span
+      {/* <span
             className='overlay-item'
             onMouseOver={() => setRating(4)}
           ></span> */}
-        {/* <span
+      {/* <span
             className='overlay-item'
             onMouseOver={() => setRating(4.5)}
           ></span> */}
-        {/* <span
+      {/* <span
             className='overlay-item'
             onMouseOver={() => setRating(5)}
           ></span> */}
-        {/* </div> */}
-      </div>
-    </Fragment>
+      {/* </div> */}
+    </div>
   );
 };
 
