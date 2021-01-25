@@ -32,9 +32,19 @@ const QA = ({ product }) => {
     }
     if (Object.values(inputs).includes('') === false) {
       const postObj = { ...inputs, product_id: product.id };
+      console.log('post product', postObj);
       axios
-        .post(`/proxy/api/fec2/hratx/qa/questions`, postObj)
+        .post(
+          `https://app-hrsei-api.herokuapp.com/api/fec2/hratx/qa/questions`,
+          postObj,
+          {
+            headers: {
+              Authorization: '974cd013dc314dda3b7a145b94a23ba6826841b7',
+            },
+          }
+        )
         .then((res) => {
+          console.log('responsw', res.data);
           alert(`Congrats! Your question has been posted!`);
         })
         .catch((err) => console.log(`err from posting a question`, err));

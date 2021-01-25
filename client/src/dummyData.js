@@ -82,6 +82,26 @@ export const product = {
       value: 'Brass',
     },
   ],
+  // id: 12014,
+  // campus: 'hratx',
+  // name: 'Morning Joggers',
+  // slogan: 'Make yourself a morning person',
+  // description:
+  //   "Whether you're a morning person or not.  Whether you're gym bound or not.  Everyone looks good in joggers.",
+  // category: 'Pants',
+  // default_price: '40.00',
+  // created_at: '2021-01-12T21:43:28.366Z',
+  // updated_at: '2021-01-12T21:43:28.366Z',
+  // features: [
+  //   {
+  //     feature: 'Fabric',
+  //     value: '100% Cotton',
+  //   },
+  //   {
+  //     feature: 'Cut',
+  //     value: 'Skinny',
+  //   },
+  // ],
 };
 
 export const styles = {

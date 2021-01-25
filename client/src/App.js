@@ -29,7 +29,7 @@ export default class App extends Component {
         >
           <Header />
         </Suspense>
-        <div id='main'>
+        <div id="main">
           <Suspense
             fallback={
               <div>
@@ -57,7 +57,7 @@ export default class App extends Component {
           >
             <QAcontainer />
           </Suspense>
-          <Suspense
+          {/* <Suspense
             fallback={
               <div>
                 <Loader />
@@ -65,7 +65,7 @@ export default class App extends Component {
             }
           >
             <ProductRatings />
-          </Suspense>
+          </Suspense> */}
         </div>
       </Fragment>
     );
