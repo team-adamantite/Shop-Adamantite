@@ -12,8 +12,7 @@ const productReviewReducer = (state = {}, action) => {
       };
     case 'CREATE_PRODUCT_REVIEW':
       return {
-        ...state,
-        message: action.payload
+        ...state
       };
     case 'PRODUCT_REVIEWS_ERROR':
       console.error(action.payload);

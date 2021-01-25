@@ -3,44 +3,58 @@ import { select, scaleBand, scaleLinear, max } from 'd3';
 import useResizeObserver from '../utils/useResizeObserver';
 import rightRoundedRect from '../utils/handleCornersSvg';
 
-function BarChart({ reviews }) {
+function BarChart({ items }) {
   const svgRef = useRef();
   const wrapperRef = useRef();
   const dimensions = useResizeObserver(wrapperRef);
+  const [mounted, setMounted] = useState(false);
   const [data, setData] = useState([
     {
       name: '1 stars',
-      value: 5
+      value: 0
     },
     {
       name: '2 stars',
-      value: 2
+      value: 0
     },
     {
       name: '3 stars',
-      value: 2
+      value: 0
     },
     {
       name: '4 stars',
-      value: 4
+      value: 0
     },
     {
       name: '5 stars',
-      value: 1
+      value: 0
     }
   ]);
 
   useEffect(() => {
-    if (reviews) {
+    if (items && !mounted) {
       setData((prevData) => {
-        reviews.list.results.forEach((review) => {
+        items.forEach((review) => {
           prevData[Math.floor(review.rating.toFixed(0)) - 1].value =
             prevData[Math.floor(review.rating.toFixed(0)) - 1].value + 1;
         });
         return prevData.reverse();
       });
     }
-  }, [reviews]);
+
+    setMounted(true);
+  }, []);
+
+  useEffect(() => {
+    if (items) {
+      setData((prevData) => {
+        prevData.reverse();
+        prevData[Math.floor(items[0].rating.toFixed(0)) - 1].value =
+          prevData[Math.floor(items[0].rating.toFixed(0)) - 1].value + 1;
+        return prevData.reverse();
+      });
+    }
+  }, [items]);
 
   useEffect(() => {
     const svg = select(svgRef.current);
@@ -165,7 +179,8 @@ function BarChart({ reviews }) {
       .transition()
       .duration(1000)
       .attr('x', (entry) => xScale(entry.value) / 1.32 + 62)
-      .attr('y', (entry, index) => yScale(index) + yScale.bandwidth() / 2 + 5);
+      .attr('y', (entry, index) => yScale(index) + yScale.bandwidth() / 2 + 5)
+      .text((entry) => `${entry.value}`);
 
     // draw the labels
     svg
@@ -188,7 +203,7 @@ function BarChart({ reviews }) {
       .duration(1000)
       .attr('x', 0)
       .attr('y', (entry, index) => yScale(index) + yScale.bandwidth() / 2 + 5);
-  }, [data, dimensions]);
+  }, [data, dimensions, items]);
 
   return (
     <div ref={wrapperRef} className='chart__wrapper'>

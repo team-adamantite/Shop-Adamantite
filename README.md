@@ -37,6 +37,7 @@ From within the root directory:
 npm install -g webpack-cli
 npm install
 ```
+> Make sure to create a `.env` configuration file with your private GitHub API Access Token listed as `TOKEN=<your_token>`
 
 - Run `npm run watch` to build the bundles and watch for changes.
 

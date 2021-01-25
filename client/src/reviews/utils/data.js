@@ -239,81 +239,83 @@ export const reviews3 = {
       {
         review_id: 91466,
         rating: 5,
-        reviewer_name: 'Gandalf',
-        date: '2019-01-01T00:00:00.000Z',
-        summary: 'This product was great!',
-        body:
-          'I really did or did not like this product based on whether it was sustainably sourced. Then I found out that its made from nothing at all.',
+        reviewer_name: 'Bojoer',
+        date: '2019-06-12T00:00:00.000Z',
+        summary: 'This product was exactly what I needed!',
+        body: `Now that I can get to rate, I'd give it five.. My co-workers love the "fun/new" dummy text the documents!! Works like a charm, as you might be able to figure out ;)`,
         helpfulness: 6,
         recommend: true
       },
       {
         review_id: 91467,
-        rating: 4,
-        reviewer_name: 'Gandalf',
-        date: '2019-01-01T00:00:00.000Z',
-        summary: 'This product was great!',
-        body:
-          'I really did or did not like this product based on whether it was sustainably sourced. Then I found out that its made from nothing at all.',
+        rating: 5,
+        reviewer_name: `Kay Stenschke
+        `,
+        date: '2020-05-04T00:00:00.000Z',
+        summary: `Love this plugin! Does exactly what it is supposed to do and so far without any real issues.`,
+        body: `Love this plugin! Does exactly what it is supposed to do and so far without any real issues.`,
         helpfulness: 11,
         recommend: true
       },
       {
         review_id: 91468,
-        rating: 5,
-        reviewer_name: 'Gandalf',
-        date: '2019-01-01T00:00:00.000Z',
-        summary:
-          'Lorem ipsum dolor sit amet consectetur adipisicing elit. Laudantium, nobis!',
-        body:
-          'I really did or did not like this product based on whether it was sustainably sourced. Then I found out that its made from nothing at all.',
+        rating: 4,
+        reviewer_name: 'Moe Finley',
+        date: '2020-03-08T00:00:00.000Z',
+        summary: `Nice idea, this adds a little flavor to all those ! I can recommend setting up keystrokes for this, it'll speed up the process a lot!`,
+        body: `Well, seems like a nice plugin and all, but it doesn't work on mac.. Or atleast, I can't get it to work :( Tried to open the "Generate" by shortcut and by right-click - no such luck.. I won't be rating this plugin, since it "don't" work on Mac, so no worries -- won't destroy the ratings.. Atleast not untill I try the plugin lol :P`,
         helpfulness: 4,
         recommend: true
       },
       {
         review_id: 91469,
         rating: 3,
-        reviewer_name: 'Gandalf',
-        date: '2019-01-01T00:00:00.000Z',
-        summary:
-          'Lorem ipsum dolor sit amet consectetur adipisicing elit. Blanditiis!',
+        reviewer_name: 'Liubov Melnikova',
+        date: '2019-07-01T00:00:00.000Z',
+        summary: 'Comparable to Hanes',
         body:
-          'I really did or did not like this product based on whether it was sustainably sourced. Then I found out that its made from nothing at all.',
+          'My minor complaint is that the arm holes and girth around the belly is ever so slightly larger than the Hanes, which are also too large.',
         helpfulness: 6
       },
       {
         review_id: 91470,
-        rating: 4,
-        reviewer_name: 'Gandalf',
-        date: '2019-01-01T00:00:00.000Z',
-        summary:
-          'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Odio laboriosam ut, ad, maiores voluptates ipsum nemo iste fugit fuga est id deserunt.!',
-        body:
-          'I really did or did not like this product based on whether it was sustainably sourced. Then I found out that its made from nothing at all.',
+        rating: 3,
+        reviewer_name: 'Raphael Parree',
+        date: '2019-09-13T00:00:00.000Z',
+        summary: 'Plenty good enough for the price!',
+        body: `I love this plugin. Thanks. Some improvments: Make it availavle under alt+insert (generate) Make it easier (submenu under alt+insert) to choose style. And remember: "The seeker has solitude, but not everyone disturbs it The body of suffering is full of fear " :)`,
         helpfulness: 7,
         recommend: true
       },
       {
         review_id: 91471,
-        rating: 2,
-        reviewer_name: 'Gandalf',
-        date: '2019-01-01T00:00:00.000Z',
+        rating: 1,
+        reviewer_name: 'Anonymous',
+        date: '2020-07-16T00:00:00.000Z',
         summary:
-          'Lorem, ipsum dolor sit amet consectetur adipisicing elit. Maxime, dicta voluptates!',
-        body:
-          'I really did or did not like this product based on whether it was sustainably sourced. Then I found out that its made from nothing at all.',
+          'Do not buy this product, I did not like it and am contacting customer services!',
+        body: `It will come un tucked under my work shirt. But so does every other cheap bulk pack non-tall shirt.
+          I really probably should've went with a tall size, but these will do fine for an undershirt.
+          Nice summer weight.`,
         helpfulness: 9
       },
       {
         review_id: 91472,
-        rating: 3,
-        reviewer_name: 'Gandalf',
-        date: '2019-01-01T00:00:00.000Z',
-        summary:
-          'Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quos aperiam eligendi earum quo, nam rem.!',
-        body:
-          'I really did or did not like this product based on whether it was sustainably sourced. Then I found out that its made from nothing at all.',
+        rating: 2,
+        reviewer_name: 'Anonymous',
+        date: '2019-01-05T00:00:00.000Z',
+        summary: 'Decent shirt, but shoddy QC.',
+        body: `The shirts are comfortable, but the quality control is bad. One of the shirts had a little white sticker with a red arrow that pointed to a hole in the shirt.`,
         helpfulness: 2
+      },
+      {
+        review_id: 91473,
+        rating: 4,
+        reviewer_name: 'Sherry Gildreth',
+        date: '2019-04-22T00:00:00.000Z',
+        summary: 'I thought this product was a steal for the price.',
+        body: `I looked for the same thing at Target and one of the shirts had a 1" diameter hole in it, so apparently this is an ongoing problem with quality control.`,
+        helpfulness: 4
       }
     ]
   }
