@@ -25,9 +25,9 @@ This is a front end application for retailers. The initial release will focus on
 - [Jerrick Ravelo](https://github.com/CheddarChzKeys)
 
 ### Development
-Development requires eslint (for linting) and Jest (for testing).  All dev dependencies are listed in the package.json file.
+> Development requires eslint (for linting) and Jest (for testing).  All dev dependencies are listed in the package.json file.
 
-Contributions are welcome, please add tests and make sure that all tests pass.
+> Contributions are welcome, please add tests and make sure that all tests pass.
 
 ### Installing Dependencies
 
@@ -50,6 +50,7 @@ npm install
 - Run `node server.js` to start the server
 
 ## Roadmap
+- Trim/cleanup underutilized depencencies
 - Add more testing coverage and integration testing steps
 - Modularize code further
 - Deploy to Docker (unnecessary)
