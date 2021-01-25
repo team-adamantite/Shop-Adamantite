@@ -10,7 +10,7 @@
 1. [Team Members](#team-members)
 1. [Development](#development)
 1. [Usage](#usage)
-1. [Future Plans](#future plans)
+1. [Future](#future)
 1. [License](#license)
 ## Description
 > This is a front end application for retailers. The initial release will focus on providing the minimum viable product for our retail application. Features implemented will be constrained to the client experience which enables customers to search, browse, add to cart, and checkout.
