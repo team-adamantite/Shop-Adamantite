@@ -258,8 +258,8 @@ const ProductRatings = () => {
     }, 1200);
   };
 
-  console.log(reviews);
-  console.log(items);
+  // console.log(reviews);
+  // console.log(items);
 
   return (
     <Container id='reviews__container'>

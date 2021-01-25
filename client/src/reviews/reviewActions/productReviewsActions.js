@@ -1,17 +1,11 @@
 import axios from 'axios';
 
-import token from '../../../config/config.js';
-
 const BASE_URL = '/proxy/api/fec2/hratx';
 
 // Get reviews from API
 const getProductReviews = (id) => async (dispatch) => {
   try {
-    const res = await axios.get(`${BASE_URL}/reviews?product_id=${id}`, {
-      headers: {
-        Authorization: token
-      }
-    });
+    const res = await axios.get(`${BASE_URL}/reviews?product_id=${id}`);
 
     dispatch({
       type: 'GET_PRODUCT_REVIEWS',
@@ -28,11 +22,7 @@ const getProductReviews = (id) => async (dispatch) => {
 // Get reviews metadata from API
 const getProductReviewsMeta = (id) => async (dispatch) => {
   try {
-    const res = await axios.get(`${BASE_URL}/reviews/meta?product_id=${id}`, {
-      headers: {
-        Authorization: token
-      }
-    });
+    const res = await axios.get(`${BASE_URL}/reviews/meta?product_id=${id}`);
 
     dispatch({
       type: 'GET_PRODUCT_REVIEWS_META',
