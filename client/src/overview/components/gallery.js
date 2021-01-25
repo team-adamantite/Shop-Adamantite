@@ -11,14 +11,14 @@ var gallery = ({ styles, currentStyle }) => {
     for (let image of currentStyle.photos) {
       newImages.push({
         original: image.url,
-        thumbnail: image.thumbnail_url
+        thumbnail: image.thumbnail_url,
       });
     }
-    // console.log('newimage', newImages);
+
     return (
-      <div className='carouselDiv'>
+      <div className="carouselDiv">
         <ImageGallery
-          className='imageGallery'
+          className="imageGallery"
           items={newImages}
           thumbnailPosition={'left'}
           showBullets={false}
@@ -33,7 +33,7 @@ var gallery = ({ styles, currentStyle }) => {
 
 var mapStateToProps = (state) => ({
   styles: state.productStyles,
-  currentStyle: state.currentStyle
+  currentStyle: state.currentStyle,
 });
 
 var galleryContainer = connect(mapStateToProps, null)(gallery);

@@ -1,18 +1,13 @@
 import axios from 'axios';
-import token from '../../../config/config.js';
 import changeStyle from './currentStyleActions.js';
 
 var getStyles = (productId) => (dispatch) => {
   axios
-    .get(`/proxy/api/fec2/hratx/products/${productId}/styles`, {
-      headers: {
-        Authorization: token
-      }
-    })
+    .get(`/proxy/api/fec2/hratx/products/${productId}/styles`)
     .then((res) => {
       dispatch({
         type: 'CHANGE_STYLES',
-        payload: res.data
+        payload: res.data,
       });
       return res;
     })
@@ -22,7 +17,7 @@ var getStyles = (productId) => (dispatch) => {
     .catch((error) => {
       dispatch({
         type: null,
-        payload: null
+        payload: null,
       });
     });
 };

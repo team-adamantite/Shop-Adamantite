@@ -11,7 +11,7 @@ import store from '../../store.js';
 const RelatedProducts = ({ product }) => {
   const dispatch = useDispatch();
   const [show, setShow] = useState(false);
-  const currentProduct = useSelector(state => state.currentProduct);
+  const currentProduct = useSelector((state) => state.currentProduct);
   const [modalData, setModalData] = useState([]);
   const [comparisonProductName, setComparisonProductName] = useState('');
   const { id } = product;
@@ -31,7 +31,7 @@ const RelatedProducts = ({ product }) => {
   const handleOpen = (compareProduct) => {
     let featuresData = [];
     let featuresUsed = {};
-    console.log('features used: ', featuresUsed);
+    // console.log('features used: ', featuresUsed);
 
     let currentFeatures = currentProduct.features;
     let compareFeatures = compareProduct.features;
@@ -39,10 +39,9 @@ const RelatedProducts = ({ product }) => {
     let currentIdCounter = 1;
 
     for (let i = 0; i < currentFeatures.length; i++) {
-
-      let data = {id: 0, property1: '', feature: '', property2: ''};
+      let data = { id: 0, property1: '', feature: '', property2: '' };
       let curFeatures = currentFeatures[i];
-      data.feature = curFeatures.feature
+      data.feature = curFeatures.feature;
       featuresUsed[curFeatures.feature] = i;
 
       if (curFeatures.value !== null) {
@@ -59,12 +58,13 @@ const RelatedProducts = ({ product }) => {
     }
 
     for (let i = 0; i < compareFeatures.length; i++) {
-      let data = {id: 0, property1: '', feature: '', property2: ''};
+      let data = { id: 0, property1: '', feature: '', property2: '' };
       let compFeatures = compareFeatures[i];
 
       if (featuresUsed[compFeatures.feature]) {
         if (compFeatures.value !== null) {
-          featuresData[featuresUsed[compFeatures.feature]].product2 = compFeatures.value;
+          featuresData[featuresUsed[compFeatures.feature]].product2 =
+            compFeatures.value;
         } else {
           featuresData[featuresUsed[compFeatures.feature]].product2 = '✓';
         }
@@ -87,63 +87,71 @@ const RelatedProducts = ({ product }) => {
     updateModalData(featuresData);
     updateComparisonProductName(compareProduct.name);
     return setShow(true);
-  }
+  };
 
   const modalTableColumns = [
     {
       dataField: 'id',
       text: '',
-      hidden: true
+      hidden: true,
     },
     {
       dataField: 'product1',
-      text: ''
+      text: '',
     },
     {
       dataField: 'feature',
       text: 'Features',
-      style: { backgroundColor: 'lightgray'}
+      style: { backgroundColor: 'lightgray' },
     },
     {
       dataField: 'property2',
-      text: ''
-    }
+      text: '',
+    },
   ];
 
   const handleClose = () => setShow(false);
 
   return (
     <>
-    {productDetails ? <RelatedCarousel products={productDetails} handleOpen={handleOpen} /> : <div></div>}
+      {productDetails ? (
+        <RelatedCarousel products={productDetails} handleOpen={handleOpen} />
+      ) : (
+        <div></div>
+      )}
 
-    <Modal
-      show={show}
-      onHide={handleClose}
-      size="lg"
-    >
-      <Modal.Header>
-        <Modal.Title>COMPARE PRODUCTS</Modal.Title>
-      </Modal.Header>
-      <Modal.Body>
-        <div style={{ padding: "20px", textAlign: "center"}}>
-          <BootstrapTable keyField="id" data={modalData} columns={modalTableColumns} headerClasses="modalHeader" rowClasses="modalRows" />
-        </div>
-      </Modal.Body>
-      <Modal.Footer>
-     <Button variant="primary" onClick={handleClose}>Close</Button>
-   </Modal.Footer>
-   </Modal>
-   </>
-  )
-}
+      <Modal show={show} onHide={handleClose} size="lg">
+        <Modal.Header>
+          <Modal.Title>COMPARE PRODUCTS</Modal.Title>
+        </Modal.Header>
+        <Modal.Body>
+          <div style={{ padding: '20px', textAlign: 'center' }}>
+            <BootstrapTable
+              keyField="id"
+              data={modalData}
+              columns={modalTableColumns}
+              headerClasses="modalHeader"
+              rowClasses="modalRows"
+            />
+          </div>
+        </Modal.Body>
+        <Modal.Footer>
+          <Button variant="primary" onClick={handleClose}>
+            Close
+          </Button>
+        </Modal.Footer>
+      </Modal>
+    </>
+  );
+};
 
 var mapStateToProps = (state) => ({
-  product: state.currentProduct
+  product: state.currentProduct,
 });
 
 var mapDispatchToProps = (dispatch) => {
   return {
-    getRelatedProducts: (id) => dispatch(getRelatedProducts(id))
+    getRelatedProducts: (id) => dispatch(getRelatedProducts(id)),
   };
 };
 
