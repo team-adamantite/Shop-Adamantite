@@ -13,7 +13,7 @@
 1. [Roadmap](#roadmap)
 1. [License](#license)
 ## Description
-This is a front end application for retailers. The initial release will focus on providing the minimum viable product for our retail application. Features implemented will be constrained to the client experience which enables customers to search, browse, add to cart, and checkout.
+> This is a front end application for retailers. The initial release will focus on providing the minimum viable product for our retail application. Features implemented will be constrained to the client experience which enables customers to search, browse, add to cart, and checkout.
 
 ## Requirements
 - Node 15.4.0
@@ -50,7 +50,7 @@ npm install
 - Run `node server.js` to start the server
 
 ## Roadmap
-- Trim/cleanup underutilized depencencies
+- Trim/cleanup under-utilized depencencies
 - Add more testing coverage and integration testing steps
 - Modularize code further
 - Deploy to Docker (unnecessary)
