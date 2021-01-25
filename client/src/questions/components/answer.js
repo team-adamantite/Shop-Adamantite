@@ -39,7 +39,7 @@ const Answer = ({ answer }) => {
         <strong>A: {answer.body}</strong>
       </span>
       <div>
-        <span className='poster'>
+        <span className="poster">
           by{' '}
           {answer.answerer_name === 'Seller' ? (
             <strong>Seller</strong>
@@ -49,7 +49,7 @@ const Answer = ({ answer }) => {
           , {formatDate(answer.date)}
         </span>
         <span>|</span>
-        <span className='helper_bar'>
+        <span className="helper_bar">
           Helpful?
           <u onClick={handleHelpfulness}> Yes</u> ({countHelpfulness}) |
           <u onClick={handleReport}>{report}</u>
@@ -58,7 +58,7 @@ const Answer = ({ answer }) => {
 
       {answer.photos.length > 0 &&
         answer.photos.map((url, index) => {
-          return <img key={index} src={url} className='img-thumbnail' alt='' />;
+          return <img key={index} src={url} className="img-thumbnail" alt="" />;
         })}
     </React.Fragment>
   );
