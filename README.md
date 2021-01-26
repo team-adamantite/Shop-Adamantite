@@ -3,7 +3,6 @@
 [![code style: prettier](https://img.shields.io/badge/code_style-prettier-ff69b4.svg?style=flat-square)](https://github.com/prettier/prettier)
 
 # Front-End-Capstone - HRATX53 Team Adamantite
-## Contents
 
 1. [Description](#description)
 1. [Requirements](#requirements)
